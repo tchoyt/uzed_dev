@@ -1,0 +1,35 @@
+Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2016.4 (lin64) Build 1733598 Wed Dec 14 22:35:42 MST 2016
+| Date         : Fri Feb  3 11:26:12 2017
+| Host         : thoyt-dell7510 running 64-bit Ubuntu 16.04.1 LTS
+| Command      : report_drc -file zynq_top_wrapper_drc_opted.rpt
+| Design       : zynq_top_wrapper
+| Device       : xc7z010clg400-1
+| Speed File   : -1
+| Design State : Fully Placed
+------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 0
++------+----------+-------------+------------+
+| Rule | Severity | Description | Violations |
++------+----------+-------------+------------+
++------+----------+-------------+------------+
+
+2. REPORT DETAILS
+-----------------
+
