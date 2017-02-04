@@ -1,0 +1,7 @@
+//arch = zynq; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader]/home/thoyt/sw_work/xilinx_sdk_workspace/uzed_fsbl/Debug/uzed_fsbl.elf
+	/home/thoyt/sw_work/xilinx_sdk_workspace/uzed_base/zynq_top_wrapper.bit
+	/home/thoyt/sw_work/xilinx_sdk_workspace/zynqddr_test_uzed/Debug/zynqddr_test_uzed.elf
+}

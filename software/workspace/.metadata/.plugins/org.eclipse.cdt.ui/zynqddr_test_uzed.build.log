@@ -1,0 +1,8 @@
+13:20:24 **** Auto Build of configuration Debug for project zynqddr_test_uzed ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+
+13:20:24 Build Finished (took 71ms)
+

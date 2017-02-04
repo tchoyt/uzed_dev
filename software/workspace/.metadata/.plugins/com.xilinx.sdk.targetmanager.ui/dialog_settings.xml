@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="zynq_top_wrapper.bit" key="uzed_base-bitFile"/>
+	<item value="Local" key="uzed_base-target"/>
+	<item value="" key="uzed_base-bmmFile"/>
+	<item value="uzed_base" key="programfpga.hwplatform"/>
+	<item value="Auto Detect" key="uzed_base-device"/>
+	<item value="false" key="uzed_base-partial_bit"/>
+</section>

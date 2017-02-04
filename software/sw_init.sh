@@ -8,3 +8,5 @@ git clone https://github.com/Xilinx/u-boot-xlnx.git
 
 # Ubuntu 16.04.1rootFS fron eewiki.net
 wget -c https://rcn-ee.com/rootfs/eewiki/minfs/ubuntu-16.04.1-minimal-armhf-2017-01-14.tar.xz
+tar xf ubuntu-16.04.1-minimal-armhf-2017-01-14.tar.xz
+
