@@ -1,0 +1,16 @@
+14:28:40 INFO  : Registering command handlers for SDK TCF services
+14:28:43 INFO  : Launching XSCT server: xsct -n -interactive /home/thoyt/fpga_work/uzed_dev/software/sdk_workspace/temp_xsdb_launch_script.tcl
+14:28:44 INFO  : XSCT server has started successfully.
+14:28:44 INFO  : Successfully done setting XSCT server connection channel  
+14:28:44 INFO  : Successfully done setting SDK workspace  
+14:31:32 INFO  : Project 'uzed_base' created. You can now create BSPs and application projects targeting this hardware platform.
+14:46:32 INFO  : Invoking Bootgen: bootgen -image uzed_mem_test.bif -arch zynq -o /home/thoyt/fpga_work/uzed_dev/software/sdk_workspace/uzed_mem_test/bootimage/BOOT.bin
+14:46:32 INFO  : Creating new bif file /home/thoyt/fpga_work/uzed_dev/software/sdk_workspace/uzed_mem_test/bootimage/uzed_mem_test.bif
+14:46:32 INFO  : Bootgen command execution is done.
+14:47:19 INFO  : Invoking Bootgen: bootgen -image uzed_periph_test.bif -arch zynq -o /home/thoyt/fpga_work/uzed_dev/software/sdk_workspace/uzed_periph_test/bootimage/BOOT.bin
+14:47:19 INFO  : Creating new bif file /home/thoyt/fpga_work/uzed_dev/software/sdk_workspace/uzed_periph_test/bootimage/uzed_periph_test.bif
+14:47:20 INFO  : Bootgen command execution is done.
+14:47:34 INFO  : Invoking Bootgen: bootgen -image uzed_ddr_test.bif -arch zynq -o /home/thoyt/fpga_work/uzed_dev/software/sdk_workspace/uzed_ddr_test/bootimage/BOOT.bin
+14:47:34 INFO  : Creating new bif file /home/thoyt/fpga_work/uzed_dev/software/sdk_workspace/uzed_ddr_test/bootimage/uzed_ddr_test.bif
+14:47:34 INFO  : Bootgen command execution is done.
+15:09:12 INFO  : The new hardware specification file contains the same information as the current specification file. No changes were done to the workspace.
