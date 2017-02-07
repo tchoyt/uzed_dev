@@ -1,8 +1,5 @@
 fpga/*/*.cache/
 fpga/*/*.runs/
-software/sdk_workspace/.metadata/*
-software/sdk_workspace/SDK.log
-software/sdk_workspace/webtalk/*
 software/device-tree-xlnx/
 software/dtc/
 software/fsbl/BOOT.bin
