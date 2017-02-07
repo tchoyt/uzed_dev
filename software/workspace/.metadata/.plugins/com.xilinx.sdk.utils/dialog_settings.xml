@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<section name="Workbench">
-	<item value="/home/thoyt/sw_work/xilinx_boot_image" key="bootgen_files_selection"/>
-	<item value="/home/thoyt/fpga_work/uzed_base_system/uzed_base_system.sdk" key="com.xilinx.sdk.hw.ui.hwspec.last"/>
-	<item value="/home/thoyt/fpga_work/uzed_base_system/uzed_base_system.sdk" key="last_stored_selection"/>
-</section>
