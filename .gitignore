@@ -6,7 +6,6 @@ software/fsbl/BOOT.bin
 software/fsbl/devicetree.dtb
 software/fsbl/u-boot.elf
 software/fsbl/uImage.bin
-software/fsbl/uzed_fsbl.elf
 software/linux-xlnx/
 software/u-boot-xlnx/
 software/ubuntu-16.04.1-minimal-*
