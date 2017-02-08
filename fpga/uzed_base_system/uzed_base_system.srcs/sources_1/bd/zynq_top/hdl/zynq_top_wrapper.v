@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1733598 Wed Dec 14 22:35:42 MST 2016
-//Date        : Tue Feb  7 13:25:12 2017
+//Date        : Wed Feb  8 12:42:45 2017
 //Host        : thoyt-dell7510 running 64-bit Ubuntu 16.04.1 LTS
 //Command     : generate_target zynq_top_wrapper.bd
 //Design      : zynq_top_wrapper
@@ -30,7 +30,17 @@ module zynq_top_wrapper
     FIXED_IO_mio,
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
-    FIXED_IO_ps_srstb);
+    FIXED_IO_ps_srstb,
+    M_AVALON_address,
+    M_AVALON_byteenable,
+    M_AVALON_read,
+    M_AVALON_readdata,
+    M_AVALON_readdatavalid,
+    M_AVALON_response,
+    M_AVALON_waitrequest,
+    M_AVALON_write,
+    M_AVALON_writedata,
+    M_AVALON_writeresponsevalid);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
@@ -52,6 +62,16 @@ module zynq_top_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
+  output [31:0]M_AVALON_address;
+  output [3:0]M_AVALON_byteenable;
+  output M_AVALON_read;
+  input [31:0]M_AVALON_readdata;
+  input M_AVALON_readdatavalid;
+  input [1:0]M_AVALON_response;
+  input M_AVALON_waitrequest;
+  output M_AVALON_write;
+  output [31:0]M_AVALON_writedata;
+  input M_AVALON_writeresponsevalid;
 
   wire [14:0]DDR_addr;
   wire [2:0]DDR_ba;
@@ -74,6 +94,16 @@ module zynq_top_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
+  wire [31:0]M_AVALON_address;
+  wire [3:0]M_AVALON_byteenable;
+  wire M_AVALON_read;
+  wire [31:0]M_AVALON_readdata;
+  wire M_AVALON_readdatavalid;
+  wire [1:0]M_AVALON_response;
+  wire M_AVALON_waitrequest;
+  wire M_AVALON_write;
+  wire [31:0]M_AVALON_writedata;
+  wire M_AVALON_writeresponsevalid;
 
   zynq_top zynq_top_i
        (.DDR_addr(DDR_addr),
@@ -96,5 +126,15 @@ module zynq_top_wrapper
         .FIXED_IO_mio(FIXED_IO_mio),
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
-        .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb));
+        .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+        .M_AVALON_address(M_AVALON_address),
+        .M_AVALON_byteenable(M_AVALON_byteenable),
+        .M_AVALON_read(M_AVALON_read),
+        .M_AVALON_readdata(M_AVALON_readdata),
+        .M_AVALON_readdatavalid(M_AVALON_readdatavalid),
+        .M_AVALON_response(M_AVALON_response),
+        .M_AVALON_waitrequest(M_AVALON_waitrequest),
+        .M_AVALON_write(M_AVALON_write),
+        .M_AVALON_writedata(M_AVALON_writedata),
+        .M_AVALON_writeresponsevalid(M_AVALON_writeresponsevalid));
 endmodule
