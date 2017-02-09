@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1733598 Wed Dec 14 22:35:42 MST 2016
-//Date        : Thu Feb  9 10:07:45 2017
+//Date        : Thu Feb  9 10:55:41 2017
 //Host        : thoyt-dell7510 running 64-bit Ubuntu 16.04.1 LTS
 //Command     : generate_target zynq_top.bd
 //Design      : zynq_top
@@ -969,11 +969,9 @@ module zynq_top
     avm_pls_gen_read,
     avm_pls_gen_readdata,
     avm_pls_gen_readdatavalid,
-    avm_pls_gen_response,
     avm_pls_gen_waitrequest,
     avm_pls_gen_write,
     avm_pls_gen_writedata,
-    avm_pls_gen_writeresponsevalid,
     axi_ref_clk,
     axi_rst_n,
     zynq_ddr_addr,
@@ -1002,11 +1000,9 @@ module zynq_top
   output avm_pls_gen_read;
   input [31:0]avm_pls_gen_readdata;
   input avm_pls_gen_readdatavalid;
-  input [1:0]avm_pls_gen_response;
   input avm_pls_gen_waitrequest;
   output avm_pls_gen_write;
   output [31:0]avm_pls_gen_writedata;
-  input avm_pls_gen_writeresponsevalid;
   output axi_ref_clk;
   output [0:0]axi_rst_n;
   inout [14:0]zynq_ddr_addr;
@@ -1037,11 +1033,9 @@ module zynq_top
   wire axi_amm_bridge_0_M_AVALON_READ;
   wire [31:0]axi_amm_bridge_0_M_AVALON_READDATA;
   wire axi_amm_bridge_0_M_AVALON_READDATAVALID;
-  wire [1:0]axi_amm_bridge_0_M_AVALON_RESPONSE;
   wire axi_amm_bridge_0_M_AVALON_WAITREQUEST;
   wire axi_amm_bridge_0_M_AVALON_WRITE;
   wire [31:0]axi_amm_bridge_0_M_AVALON_WRITEDATA;
-  wire axi_amm_bridge_0_M_AVALON_WRITERESPONSEVALID;
   wire [11:0]axi_bram_ctrl_0_BRAM_PORTA_ADDR;
   wire axi_bram_ctrl_0_BRAM_PORTA_CLK;
   wire [31:0]axi_bram_ctrl_0_BRAM_PORTA_DIN;
@@ -1171,9 +1165,7 @@ module zynq_top
   assign avm_pls_gen_writedata[31:0] = axi_amm_bridge_0_M_AVALON_WRITEDATA;
   assign axi_amm_bridge_0_M_AVALON_READDATA = avm_pls_gen_readdata[31:0];
   assign axi_amm_bridge_0_M_AVALON_READDATAVALID = avm_pls_gen_readdatavalid;
-  assign axi_amm_bridge_0_M_AVALON_RESPONSE = avm_pls_gen_response[1:0];
   assign axi_amm_bridge_0_M_AVALON_WAITREQUEST = avm_pls_gen_waitrequest;
-  assign axi_amm_bridge_0_M_AVALON_WRITERESPONSEVALID = avm_pls_gen_writeresponsevalid;
   assign axi_ref_clk = Net;
   assign axi_rst_n[0] = rst_ps7_0_100M_peripheral_aresetn;
   zynq_top_axi_mem_intercon_0 axi_addr_decode
@@ -1281,11 +1273,9 @@ module zynq_top
         .avm_read(axi_amm_bridge_0_M_AVALON_READ),
         .avm_readdata(axi_amm_bridge_0_M_AVALON_READDATA),
         .avm_readdatavalid(axi_amm_bridge_0_M_AVALON_READDATAVALID),
-        .avm_resp(axi_amm_bridge_0_M_AVALON_RESPONSE),
         .avm_waitrequest(axi_amm_bridge_0_M_AVALON_WAITREQUEST),
         .avm_write(axi_amm_bridge_0_M_AVALON_WRITE),
         .avm_writedata(axi_amm_bridge_0_M_AVALON_WRITEDATA),
-        .avm_writeresponsevalid(axi_amm_bridge_0_M_AVALON_WRITERESPONSEVALID),
         .s_axi_aclk(Net),
         .s_axi_araddr(axi_mem_intercon_M01_AXI_ARADDR),
         .s_axi_aresetn(rst_ps7_0_100M_peripheral_aresetn),

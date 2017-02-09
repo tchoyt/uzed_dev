@@ -1,7 +1,7 @@
 // Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2016.4 (lin64) Build 1733598 Wed Dec 14 22:35:42 MST 2016
-// Date        : Wed Feb  8 12:34:49 2017
+// Date        : Thu Feb  9 10:56:15 2017
 // Host        : thoyt-dell7510 running 64-bit Ubuntu 16.04.1 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /home/thoyt/fpga_work/uzed_dev/fpga/uzed_base_system/uzed_base_system.srcs/sources_1/bd/zynq_top/ip/zynq_top_axi_amm_bridge_0_0/zynq_top_axi_amm_bridge_0_0_sim_netlist.v
@@ -40,9 +40,7 @@ module zynq_top_axi_amm_bridge_0_0
     avm_byteenable,
     avm_writedata,
     avm_readdata,
-    avm_resp,
     avm_readdatavalid,
-    avm_writeresponsevalid,
     avm_waitrequest);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 s_axi_aclk CLK" *) input s_axi_aclk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 s_axi_aresetn RST" *) input s_axi_aresetn;
@@ -69,9 +67,7 @@ module zynq_top_axi_amm_bridge_0_0
   (* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON BYTEENABLE" *) output [3:0]avm_byteenable;
   (* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON WRITEDATA" *) output [31:0]avm_writedata;
   (* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON READDATA" *) input [31:0]avm_readdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON RESPONSE" *) input [1:0]avm_resp;
   (* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON READDATAVALID" *) input avm_readdatavalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON WRITERESPONSEVALID" *) input avm_writeresponsevalid;
   (* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON WAITREQUEST" *) input avm_waitrequest;
 
   wire [31:0]avm_address;
@@ -79,11 +75,9 @@ module zynq_top_axi_amm_bridge_0_0
   wire avm_read;
   wire [31:0]avm_readdata;
   wire avm_readdatavalid;
-  wire [1:0]avm_resp;
   wire avm_waitrequest;
   wire avm_write;
   wire [31:0]avm_writedata;
-  wire avm_writeresponsevalid;
   wire s_axi_aclk;
   wire [31:0]s_axi_araddr;
   wire s_axi_aresetn;
@@ -124,7 +118,7 @@ module zynq_top_axi_amm_bridge_0_0
   (* C_FIXED_WRITE_WAIT = "1" *) 
   (* C_HAS_FIXED_READ_LATENCY = "0" *) 
   (* C_HAS_FIXED_WAIT = "0" *) 
-  (* C_HAS_RESPONSE = "1" *) 
+  (* C_HAS_RESPONSE = "0" *) 
   (* C_HIGH1_ADDR = "64'b1111111111111111111111111111111111111111111111111111111111111111" *) 
   (* C_HIGH2_ADDR = "64'b1111111111111111111111111111111111111111111111111111111111111111" *) 
   (* C_HIGH3_ADDR = "64'b1111111111111111111111111111111111111111111111111111111111111111" *) 
@@ -146,11 +140,11 @@ module zynq_top_axi_amm_bridge_0_0
         .avm_read(avm_read),
         .avm_readdata(avm_readdata),
         .avm_readdatavalid(avm_readdatavalid),
-        .avm_resp(avm_resp),
+        .avm_resp({1'b0,1'b0}),
         .avm_waitrequest(avm_waitrequest),
         .avm_write(avm_write),
         .avm_writedata(avm_writedata),
-        .avm_writeresponsevalid(avm_writeresponsevalid),
+        .avm_writeresponsevalid(1'b0),
         .s_axi_aclk(s_axi_aclk),
         .s_axi_araddr(s_axi_araddr),
         .s_axi_arburst({1'b0,1'b0}),
@@ -188,64 +182,60 @@ endmodule
 module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
    (s_axi_rvalid,
     s_axi_bvalid,
-    s_axi_bresp,
     s_axi_rdata,
-    s_axi_rresp,
     avm_address,
     avm_byteenable,
     avm_writedata,
     avm_beginbursttransfer,
+    avm_read,
     s_axi_awready,
     s_axi_wready,
-    s_axi_arready,
-    avm_read,
     avm_write,
+    s_axi_rresp,
+    s_axi_arready,
+    s_axi_bresp,
     s_axi_aclk,
-    avm_waitrequest,
     s_axi_rready,
+    avm_waitrequest,
     s_axi_arvalid,
-    s_axi_wvalid,
+    avm_readdatavalid,
     s_axi_awvalid,
+    s_axi_wvalid,
     s_axi_wstrb,
-    s_axi_bready,
     s_axi_wdata,
     s_axi_araddr,
     s_axi_awaddr,
-    avm_resp,
-    s_axi_aresetn,
-    avm_readdatavalid,
+    s_axi_bready,
     avm_readdata,
-    avm_writeresponsevalid);
+    s_axi_aresetn);
   output s_axi_rvalid;
   output s_axi_bvalid;
-  output [1:0]s_axi_bresp;
   output [31:0]s_axi_rdata;
-  output [1:0]s_axi_rresp;
   output [31:0]avm_address;
   output [3:0]avm_byteenable;
   output [31:0]avm_writedata;
   output avm_beginbursttransfer;
+  output avm_read;
   output s_axi_awready;
   output s_axi_wready;
-  output s_axi_arready;
-  output avm_read;
   output avm_write;
+  output [0:0]s_axi_rresp;
+  output s_axi_arready;
+  output [0:0]s_axi_bresp;
   input s_axi_aclk;
-  input avm_waitrequest;
   input s_axi_rready;
+  input avm_waitrequest;
   input s_axi_arvalid;
-  input s_axi_wvalid;
+  input avm_readdatavalid;
   input s_axi_awvalid;
+  input s_axi_wvalid;
   input [3:0]s_axi_wstrb;
-  input s_axi_bready;
   input [31:0]s_axi_wdata;
   input [31:0]s_axi_araddr;
   input [31:0]s_axi_awaddr;
-  input [1:0]avm_resp;
-  input s_axi_aresetn;
-  input avm_readdatavalid;
+  input s_axi_bready;
   input [31:0]avm_readdata;
-  input avm_writeresponsevalid;
+  input s_axi_aresetn;
 
   wire \FSM_onehot_current_state[0]_i_1_n_0 ;
   wire \FSM_onehot_current_state[0]_i_2_n_0 ;
@@ -256,21 +246,20 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
   wire \FSM_onehot_current_state[3]_i_1_n_0 ;
   wire \FSM_onehot_current_state[4]_i_1_n_0 ;
   wire \FSM_onehot_current_state[5]_i_1_n_0 ;
-  wire \FSM_onehot_current_state[5]_i_2_n_0 ;
   wire \FSM_onehot_current_state[5]_i_3_n_0 ;
   wire \FSM_onehot_current_state[5]_i_4_n_0 ;
+  wire \FSM_onehot_current_state[5]_i_5_n_0 ;
   wire \FSM_onehot_current_state[6]_i_1_n_0 ;
   wire \FSM_onehot_current_state[6]_i_2_n_0 ;
   wire \FSM_onehot_current_state[7]_i_1_n_0 ;
   wire \FSM_onehot_current_state[8]_i_1_n_0 ;
-  wire \FSM_onehot_current_state[8]_i_2_n_0 ;
   wire \FSM_onehot_current_state[8]_i_3_n_0 ;
   wire \FSM_onehot_current_state[8]_i_4_n_0 ;
   (* RTL_KEEP = "yes" *) wire \FSM_onehot_current_state_reg_n_0_[0] ;
   (* RTL_KEEP = "yes" *) wire \FSM_onehot_current_state_reg_n_0_[1] ;
   (* RTL_KEEP = "yes" *) wire \FSM_onehot_current_state_reg_n_0_[2] ;
+  (* RTL_KEEP = "yes" *) wire \FSM_onehot_current_state_reg_n_0_[3] ;
   (* RTL_KEEP = "yes" *) wire \FSM_onehot_current_state_reg_n_0_[4] ;
-  (* RTL_KEEP = "yes" *) wire \FSM_onehot_current_state_reg_n_0_[5] ;
   (* RTL_KEEP = "yes" *) wire \FSM_onehot_current_state_reg_n_0_[6] ;
   (* RTL_KEEP = "yes" *) wire \FSM_onehot_current_state_reg_n_0_[7] ;
   wire [31:0]avm_address;
@@ -353,8 +342,7 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
   wire [31:0]avm_readdata;
   (* RTL_KEEP = "yes" *) wire avm_readdata_i;
   wire avm_readdatavalid;
-  wire avm_readdatavalid_i;
-  wire [1:0]avm_resp;
+  wire avm_readdatavalid_i0;
   wire avm_waitrequest;
   wire avm_write;
   wire avm_write_i_1_n_0;
@@ -393,15 +381,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
   wire \avm_writedata[7]_i_1_n_0 ;
   wire \avm_writedata[8]_i_1_n_0 ;
   wire \avm_writedata[9]_i_1_n_0 ;
-  wire avm_writeresponsevalid;
-  wire avm_writeresponsevalid_i;
   wire clear;
+  wire current_state1;
   wire current_state115_out;
+  wire current_state116_out;
   wire done_read;
   wire done_write;
   wire [8:0]p_0_in;
-  wire [31:0]p_1_in;
-  (* RTL_KEEP = "yes" *) wire p_1_in9_in;
+  (* RTL_KEEP = "yes" *) wire p_1_in;
   wire s_axi_aclk;
   wire [31:0]s_axi_araddr;
   wire s_axi_aresetn;
@@ -416,19 +403,50 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
   wire s_axi_awready_i_4_n_0;
   wire s_axi_awvalid;
   wire s_axi_bready;
-  wire [1:0]s_axi_bresp;
-  wire \s_axi_bresp[0]_i_1_n_0 ;
+  wire [0:0]s_axi_bresp;
   wire \s_axi_bresp[1]_i_1_n_0 ;
   wire \s_axi_bresp[1]_i_2_n_0 ;
   wire s_axi_bvalid;
   wire s_axi_bvalid_i_1_n_0;
   wire [31:0]s_axi_rdata;
+  wire \s_axi_rdata[0]_i_1_n_0 ;
+  wire \s_axi_rdata[10]_i_1_n_0 ;
+  wire \s_axi_rdata[11]_i_1_n_0 ;
+  wire \s_axi_rdata[12]_i_1_n_0 ;
+  wire \s_axi_rdata[13]_i_1_n_0 ;
+  wire \s_axi_rdata[14]_i_1_n_0 ;
+  wire \s_axi_rdata[15]_i_1_n_0 ;
+  wire \s_axi_rdata[16]_i_1_n_0 ;
+  wire \s_axi_rdata[17]_i_1_n_0 ;
+  wire \s_axi_rdata[18]_i_1_n_0 ;
+  wire \s_axi_rdata[19]_i_1_n_0 ;
+  wire \s_axi_rdata[1]_i_1_n_0 ;
+  wire \s_axi_rdata[20]_i_1_n_0 ;
+  wire \s_axi_rdata[21]_i_1_n_0 ;
+  wire \s_axi_rdata[22]_i_1_n_0 ;
+  wire \s_axi_rdata[23]_i_1_n_0 ;
+  wire \s_axi_rdata[24]_i_1_n_0 ;
+  wire \s_axi_rdata[25]_i_1_n_0 ;
+  wire \s_axi_rdata[26]_i_1_n_0 ;
+  wire \s_axi_rdata[27]_i_1_n_0 ;
+  wire \s_axi_rdata[28]_i_1_n_0 ;
+  wire \s_axi_rdata[29]_i_1_n_0 ;
+  wire \s_axi_rdata[2]_i_1_n_0 ;
+  wire \s_axi_rdata[30]_i_1_n_0 ;
   wire \s_axi_rdata[31]_i_1_n_0 ;
   wire \s_axi_rdata[31]_i_2_n_0 ;
+  wire \s_axi_rdata[31]_i_3_n_0 ;
+  wire \s_axi_rdata[3]_i_1_n_0 ;
+  wire \s_axi_rdata[4]_i_1_n_0 ;
+  wire \s_axi_rdata[5]_i_1_n_0 ;
+  wire \s_axi_rdata[6]_i_1_n_0 ;
+  wire \s_axi_rdata[7]_i_1_n_0 ;
+  wire \s_axi_rdata[8]_i_1_n_0 ;
+  wire \s_axi_rdata[9]_i_1_n_0 ;
   wire s_axi_rready;
-  wire [1:0]s_axi_rresp;
-  wire \s_axi_rresp[0]_i_1_n_0 ;
+  wire [0:0]s_axi_rresp;
   wire \s_axi_rresp[1]_i_1_n_0 ;
+  wire \s_axi_rresp[1]_i_2_n_0 ;
   wire s_axi_rvalid;
   wire s_axi_rvalid_i_1_n_0;
   wire [31:0]s_axi_wdata;
@@ -441,6 +459,7 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
   wire start_i_2_n_0;
   wire start_i_3_n_0;
   wire start_i_4_n_0;
+  wire start_i_6_n_0;
   wire start_reg_n_0;
   wire \tout_counter[8]_i_3_n_0 ;
   wire [8:0]tout_counter_reg__0;
@@ -458,10 +477,10 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
   LUT6 #(
     .INIT(64'h0000000000800F8F)) 
     \FSM_onehot_current_state[0]_i_2 
-       (.I0(s_axi_rready),
-        .I1(s_axi_rvalid),
+       (.I0(s_axi_rvalid),
+        .I1(s_axi_rready),
         .I2(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I3(p_1_in9_in),
+        .I3(\FSM_onehot_current_state_reg_n_0_[3] ),
         .I4(\FSM_onehot_current_state_reg_n_0_[7] ),
         .I5(\FSM_onehot_current_state_reg_n_0_[1] ),
         .O(\FSM_onehot_current_state[0]_i_2_n_0 ));
@@ -469,17 +488,17 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
     .INIT(64'hA0A0AAAA000000F3)) 
     \FSM_onehot_current_state[0]_i_3 
        (.I0(done_read),
-        .I1(\FSM_onehot_current_state_reg_n_0_[5] ),
+        .I1(p_1_in),
         .I2(done_write),
         .I3(\FSM_onehot_current_state_reg_n_0_[4] ),
-        .I4(p_1_in9_in),
+        .I4(\FSM_onehot_current_state_reg_n_0_[3] ),
         .I5(avm_readdata_i),
         .O(\FSM_onehot_current_state[0]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'h8888B888)) 
     \FSM_onehot_current_state[0]_i_4 
        (.I0(done_write),
-        .I1(p_1_in9_in),
+        .I1(\FSM_onehot_current_state_reg_n_0_[3] ),
         .I2(\FSM_onehot_current_state_reg_n_0_[6] ),
         .I3(done_read),
         .I4(\FSM_onehot_current_state_reg_n_0_[1] ),
@@ -492,54 +511,54 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I2(\FSM_onehot_current_state[6]_i_2_n_0 ),
         .I3(\FSM_onehot_current_state_reg_n_0_[1] ),
         .I4(avm_waitrequest),
-        .I5(current_state115_out),
+        .I5(current_state116_out),
         .O(\FSM_onehot_current_state[1]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'hAA00AAC0)) 
+    .INIT(32'h550055C0)) 
     \FSM_onehot_current_state[2]_i_1 
        (.I0(avm_write_i_2_n_0),
         .I1(avm_waitrequest),
         .I2(\FSM_onehot_current_state_reg_n_0_[2] ),
         .I3(\FSM_onehot_current_state_reg_n_0_[0] ),
-        .I4(current_state115_out),
+        .I4(current_state116_out),
         .O(\FSM_onehot_current_state[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000055553000)) 
+    .INIT(64'h0000550000005530)) 
     \FSM_onehot_current_state[3]_i_1 
        (.I0(avm_waitrequest),
         .I1(done_write),
-        .I2(p_1_in9_in),
-        .I3(\FSM_onehot_current_state[5]_i_2_n_0 ),
-        .I4(\FSM_onehot_current_state_reg_n_0_[2] ),
-        .I5(\FSM_onehot_current_state_reg_n_0_[0] ),
+        .I2(\FSM_onehot_current_state_reg_n_0_[3] ),
+        .I3(\FSM_onehot_current_state_reg_n_0_[2] ),
+        .I4(\FSM_onehot_current_state_reg_n_0_[0] ),
+        .I5(current_state115_out),
         .O(\FSM_onehot_current_state[3]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'h0800)) 
     \FSM_onehot_current_state[4]_i_1 
-       (.I0(current_state115_out),
-        .I1(avm_waitrequest),
+       (.I0(avm_waitrequest),
+        .I1(current_state116_out),
         .I2(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I3(\FSM_onehot_current_state_reg_n_0_[2] ),
         .O(\FSM_onehot_current_state[4]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0010001F00100010)) 
+    .INIT(64'h0040004F00400040)) 
     \FSM_onehot_current_state[5]_i_1 
        (.I0(done_write),
-        .I1(\FSM_onehot_current_state[5]_i_2_n_0 ),
-        .I2(p_1_in9_in),
+        .I1(current_state115_out),
+        .I2(\FSM_onehot_current_state_reg_n_0_[3] ),
         .I3(\FSM_onehot_current_state[5]_i_3_n_0 ),
         .I4(\FSM_onehot_current_state_reg_n_0_[1] ),
         .I5(\FSM_onehot_current_state[5]_i_4_n_0 ),
         .O(\FSM_onehot_current_state[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT4 #(
-    .INIT(16'hFFF7)) 
+  LUT5 #(
+    .INIT(32'h00000004)) 
     \FSM_onehot_current_state[5]_i_2 
        (.I0(s_axi_awready_i_4_n_0),
-        .I1(\FSM_onehot_current_state[8]_i_4_n_0 ),
-        .I2(s_axi_bvalid),
-        .I3(avm_writeresponsevalid_i),
-        .O(\FSM_onehot_current_state[5]_i_2_n_0 ));
+        .I1(\FSM_onehot_current_state[5]_i_5_n_0 ),
+        .I2(p_1_in),
+        .I3(\FSM_onehot_current_state_reg_n_0_[3] ),
+        .I4(s_axi_bvalid),
+        .O(current_state115_out));
   LUT2 #(
     .INIT(4'hE)) 
     \FSM_onehot_current_state[5]_i_3 
@@ -553,16 +572,25 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I1(\FSM_onehot_current_state_reg_n_0_[7] ),
         .I2(\FSM_onehot_current_state_reg_n_0_[6] ),
         .I3(\FSM_onehot_current_state_reg_n_0_[4] ),
-        .I4(\FSM_onehot_current_state_reg_n_0_[5] ),
+        .I4(p_1_in),
         .I5(done_write),
         .O(\FSM_onehot_current_state[5]_i_4_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT4 #(
+    .INIT(16'h0010)) 
+    \FSM_onehot_current_state[5]_i_5 
+       (.I0(tout_counter_reg__0[6]),
+        .I1(tout_counter_reg__0[3]),
+        .I2(start_reg_n_0),
+        .I3(tout_counter_reg__0[7]),
+        .O(\FSM_onehot_current_state[5]_i_5_n_0 ));
   LUT6 #(
-    .INIT(64'h1010131010101010)) 
+    .INIT(64'h1100110311001100)) 
     \FSM_onehot_current_state[6]_i_1 
        (.I0(avm_waitrequest),
         .I1(\FSM_onehot_current_state[6]_i_2_n_0 ),
-        .I2(\FSM_onehot_current_state_reg_n_0_[1] ),
-        .I3(\FSM_onehot_current_state[8]_i_2_n_0 ),
+        .I2(current_state1),
+        .I3(\FSM_onehot_current_state_reg_n_0_[1] ),
         .I4(done_read),
         .I5(\FSM_onehot_current_state_reg_n_0_[6] ),
         .O(\FSM_onehot_current_state[6]_i_1_n_0 ));
@@ -571,53 +599,53 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
     \FSM_onehot_current_state[6]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[2] ),
         .I1(\FSM_onehot_current_state_reg_n_0_[0] ),
-        .I2(p_1_in9_in),
+        .I2(\FSM_onehot_current_state_reg_n_0_[3] ),
         .O(\FSM_onehot_current_state[6]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h0000000000000080)) 
     \FSM_onehot_current_state[7]_i_1 
-       (.I0(current_state115_out),
+       (.I0(current_state116_out),
         .I1(avm_waitrequest),
         .I2(\FSM_onehot_current_state_reg_n_0_[1] ),
-        .I3(p_1_in9_in),
+        .I3(\FSM_onehot_current_state_reg_n_0_[3] ),
         .I4(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I5(\FSM_onehot_current_state_reg_n_0_[2] ),
         .O(\FSM_onehot_current_state[7]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h000000001F1F1310)) 
+    .INIT(64'h000000004F4F4540)) 
     \FSM_onehot_current_state[8]_i_1 
-       (.I0(\FSM_onehot_current_state[8]_i_2_n_0 ),
-        .I1(done_read),
+       (.I0(done_read),
+        .I1(current_state1),
         .I2(\FSM_onehot_current_state_reg_n_0_[6] ),
         .I3(avm_readdata_i),
         .I4(\FSM_onehot_current_state_reg_n_0_[7] ),
         .I5(\FSM_onehot_current_state[8]_i_3_n_0 ),
         .O(\FSM_onehot_current_state[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
-  LUT4 #(
-    .INIT(16'hFFF7)) 
+  LUT6 #(
+    .INIT(64'h0000000000000100)) 
     \FSM_onehot_current_state[8]_i_2 
        (.I0(s_axi_awready_i_4_n_0),
-        .I1(\FSM_onehot_current_state[8]_i_4_n_0 ),
-        .I2(s_axi_rvalid),
-        .I3(avm_readdatavalid_i),
-        .O(\FSM_onehot_current_state[8]_i_2_n_0 ));
+        .I1(tout_counter_reg__0[6]),
+        .I2(tout_counter_reg__0[3]),
+        .I3(start_reg_n_0),
+        .I4(tout_counter_reg__0[7]),
+        .I5(\FSM_onehot_current_state[8]_i_4_n_0 ),
+        .O(current_state1));
   LUT4 #(
     .INIT(16'hFFFE)) 
     \FSM_onehot_current_state[8]_i_3 
-       (.I0(p_1_in9_in),
+       (.I0(\FSM_onehot_current_state_reg_n_0_[3] ),
         .I1(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I2(\FSM_onehot_current_state_reg_n_0_[2] ),
         .I3(\FSM_onehot_current_state_reg_n_0_[1] ),
         .O(\FSM_onehot_current_state[8]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT4 #(
-    .INIT(16'h0001)) 
+    .INIT(16'hFEEE)) 
     \FSM_onehot_current_state[8]_i_4 
-       (.I0(tout_counter_reg__0[1]),
-        .I1(tout_counter_reg__0[0]),
-        .I2(tout_counter_reg__0[3]),
-        .I3(tout_counter_reg__0[2]),
+       (.I0(s_axi_rvalid),
+        .I1(avm_readdata_i),
+        .I2(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I3(avm_readdatavalid),
         .O(\FSM_onehot_current_state[8]_i_4_n_0 ));
   (* KEEP = "yes" *) 
   FDSE #(
@@ -653,7 +681,7 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(\FSM_onehot_current_state[3]_i_1_n_0 ),
-        .Q(p_1_in9_in),
+        .Q(\FSM_onehot_current_state_reg_n_0_[3] ),
         .R(s_axi_awready_i_1_n_0));
   (* KEEP = "yes" *) 
   FDRE #(
@@ -671,7 +699,7 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(\FSM_onehot_current_state[5]_i_1_n_0 ),
-        .Q(\FSM_onehot_current_state_reg_n_0_[5] ),
+        .Q(p_1_in),
         .R(s_axi_awready_i_1_n_0));
   (* KEEP = "yes" *) 
   FDRE #(
@@ -710,14 +738,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[0]_i_2_n_0 ),
         .O(\avm_address[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[0]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[0]),
-        .I5(s_axi_araddr[0]),
+        .I2(s_axi_araddr[0]),
+        .I3(s_axi_awaddr[0]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[0]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -729,14 +757,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[10]_i_2_n_0 ),
         .O(\avm_address[10]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[10]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[10]),
-        .I5(s_axi_araddr[10]),
+        .I2(s_axi_araddr[10]),
+        .I3(s_axi_awaddr[10]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[10]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -748,14 +776,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[11]_i_2_n_0 ),
         .O(\avm_address[11]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[11]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[11]),
-        .I5(s_axi_araddr[11]),
+        .I2(s_axi_araddr[11]),
+        .I3(s_axi_awaddr[11]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[11]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -767,14 +795,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[12]_i_2_n_0 ),
         .O(\avm_address[12]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[12]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[12]),
-        .I5(s_axi_araddr[12]),
+        .I2(s_axi_araddr[12]),
+        .I3(s_axi_awaddr[12]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[12]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -786,14 +814,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[13]_i_2_n_0 ),
         .O(\avm_address[13]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[13]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[13]),
-        .I5(s_axi_araddr[13]),
+        .I2(s_axi_araddr[13]),
+        .I3(s_axi_awaddr[13]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[13]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -805,14 +833,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[14]_i_2_n_0 ),
         .O(\avm_address[14]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[14]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[14]),
-        .I5(s_axi_araddr[14]),
+        .I2(s_axi_araddr[14]),
+        .I3(s_axi_awaddr[14]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[14]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -824,14 +852,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[15]_i_2_n_0 ),
         .O(\avm_address[15]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[15]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[15]),
-        .I5(s_axi_araddr[15]),
+        .I2(s_axi_araddr[15]),
+        .I3(s_axi_awaddr[15]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[15]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -843,14 +871,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[16]_i_2_n_0 ),
         .O(\avm_address[16]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[16]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[16]),
-        .I5(s_axi_araddr[16]),
+        .I2(s_axi_araddr[16]),
+        .I3(s_axi_awaddr[16]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[16]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -862,14 +890,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[17]_i_2_n_0 ),
         .O(\avm_address[17]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[17]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[17]),
-        .I5(s_axi_araddr[17]),
+        .I2(s_axi_araddr[17]),
+        .I3(s_axi_awaddr[17]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[17]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -881,14 +909,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[18]_i_2_n_0 ),
         .O(\avm_address[18]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[18]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[18]),
-        .I5(s_axi_araddr[18]),
+        .I2(s_axi_araddr[18]),
+        .I3(s_axi_awaddr[18]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[18]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -900,14 +928,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[19]_i_2_n_0 ),
         .O(\avm_address[19]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[19]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[19]),
-        .I5(s_axi_araddr[19]),
+        .I2(s_axi_araddr[19]),
+        .I3(s_axi_awaddr[19]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[19]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -919,14 +947,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[1]_i_2_n_0 ),
         .O(\avm_address[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[1]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[1]),
-        .I5(s_axi_araddr[1]),
+        .I2(s_axi_araddr[1]),
+        .I3(s_axi_awaddr[1]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[1]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -938,14 +966,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[20]_i_2_n_0 ),
         .O(\avm_address[20]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[20]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[20]),
-        .I5(s_axi_araddr[20]),
+        .I2(s_axi_araddr[20]),
+        .I3(s_axi_awaddr[20]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[20]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -957,14 +985,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[21]_i_2_n_0 ),
         .O(\avm_address[21]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[21]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[21]),
-        .I5(s_axi_araddr[21]),
+        .I2(s_axi_araddr[21]),
+        .I3(s_axi_awaddr[21]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[21]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -976,14 +1004,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[22]_i_2_n_0 ),
         .O(\avm_address[22]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[22]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[22]),
-        .I5(s_axi_araddr[22]),
+        .I2(s_axi_araddr[22]),
+        .I3(s_axi_awaddr[22]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[22]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -995,14 +1023,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[23]_i_2_n_0 ),
         .O(\avm_address[23]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[23]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[23]),
-        .I5(s_axi_araddr[23]),
+        .I2(s_axi_araddr[23]),
+        .I3(s_axi_awaddr[23]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[23]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1014,14 +1042,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[24]_i_2_n_0 ),
         .O(\avm_address[24]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[24]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[24]),
-        .I5(s_axi_araddr[24]),
+        .I2(s_axi_araddr[24]),
+        .I3(s_axi_awaddr[24]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[24]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1033,14 +1061,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[25]_i_2_n_0 ),
         .O(\avm_address[25]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[25]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[25]),
-        .I5(s_axi_araddr[25]),
+        .I2(s_axi_araddr[25]),
+        .I3(s_axi_awaddr[25]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[25]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1052,14 +1080,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[26]_i_2_n_0 ),
         .O(\avm_address[26]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[26]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[26]),
-        .I5(s_axi_araddr[26]),
+        .I2(s_axi_araddr[26]),
+        .I3(s_axi_awaddr[26]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[26]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1071,14 +1099,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[27]_i_2_n_0 ),
         .O(\avm_address[27]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[27]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[27]),
-        .I5(s_axi_araddr[27]),
+        .I2(s_axi_araddr[27]),
+        .I3(s_axi_awaddr[27]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[27]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1090,14 +1118,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[28]_i_2_n_0 ),
         .O(\avm_address[28]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[28]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[28]),
-        .I5(s_axi_araddr[28]),
+        .I2(s_axi_araddr[28]),
+        .I3(s_axi_awaddr[28]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[28]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1109,14 +1137,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[29]_i_2_n_0 ),
         .O(\avm_address[29]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[29]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[29]),
-        .I5(s_axi_araddr[29]),
+        .I2(s_axi_araddr[29]),
+        .I3(s_axi_awaddr[29]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[29]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1128,14 +1156,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[2]_i_2_n_0 ),
         .O(\avm_address[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[2]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[2]),
-        .I5(s_axi_araddr[2]),
+        .I2(s_axi_araddr[2]),
+        .I3(s_axi_awaddr[2]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[2]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1147,22 +1175,22 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[30]_i_2_n_0 ),
         .O(\avm_address[30]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[30]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[30]),
-        .I5(s_axi_araddr[30]),
+        .I2(s_axi_araddr[30]),
+        .I3(s_axi_awaddr[30]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[30]_i_2_n_0 ));
   LUT5 #(
-    .INIT(32'hAFEEAEEE)) 
+    .INIT(32'hAEFEAEEE)) 
     \avm_address[31]_i_1 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(\FSM_onehot_current_state_reg_n_0_[1] ),
-        .I2(current_state115_out),
-        .I3(avm_waitrequest),
+        .I2(avm_waitrequest),
+        .I3(current_state116_out),
         .I4(\FSM_onehot_current_state_reg_n_0_[2] ),
         .O(\avm_address[31]_i_1_n_0 ));
   LUT5 #(
@@ -1176,23 +1204,23 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .O(\avm_address[31]_i_2_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
-    .INIT(32'h00000002)) 
+    .INIT(32'h00000004)) 
     \avm_address[31]_i_3 
-       (.I0(s_axi_awready_i_4_n_0),
-        .I1(tout_counter_reg__0[2]),
+       (.I0(tout_counter_reg__0[7]),
+        .I1(start_reg_n_0),
         .I2(tout_counter_reg__0[3]),
-        .I3(tout_counter_reg__0[0]),
-        .I4(tout_counter_reg__0[1]),
-        .O(current_state115_out));
+        .I3(tout_counter_reg__0[6]),
+        .I4(s_axi_awready_i_4_n_0),
+        .O(current_state116_out));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[31]_i_4 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[31]),
-        .I5(s_axi_araddr[31]),
+        .I2(s_axi_araddr[31]),
+        .I3(s_axi_awaddr[31]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[31]_i_4_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1204,14 +1232,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[3]_i_2_n_0 ),
         .O(\avm_address[3]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[3]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[3]),
-        .I5(s_axi_araddr[3]),
+        .I2(s_axi_araddr[3]),
+        .I3(s_axi_awaddr[3]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[3]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1223,14 +1251,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[4]_i_2_n_0 ),
         .O(\avm_address[4]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[4]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[4]),
-        .I5(s_axi_araddr[4]),
+        .I2(s_axi_araddr[4]),
+        .I3(s_axi_awaddr[4]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[4]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1242,14 +1270,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[5]_i_2_n_0 ),
         .O(\avm_address[5]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[5]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[5]),
-        .I5(s_axi_araddr[5]),
+        .I2(s_axi_araddr[5]),
+        .I3(s_axi_awaddr[5]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[5]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1261,14 +1289,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[6]_i_2_n_0 ),
         .O(\avm_address[6]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[6]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[6]),
-        .I5(s_axi_araddr[6]),
+        .I2(s_axi_araddr[6]),
+        .I3(s_axi_awaddr[6]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[6]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1280,14 +1308,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[7]_i_2_n_0 ),
         .O(\avm_address[7]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[7]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[7]),
-        .I5(s_axi_araddr[7]),
+        .I2(s_axi_araddr[7]),
+        .I3(s_axi_awaddr[7]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[7]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1299,14 +1327,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[8]_i_2_n_0 ),
         .O(\avm_address[8]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[8]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[8]),
-        .I5(s_axi_araddr[8]),
+        .I2(s_axi_araddr[8]),
+        .I3(s_axi_awaddr[8]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[8]_i_2_n_0 ));
   LUT5 #(
     .INIT(32'hFFFFF888)) 
@@ -1318,14 +1346,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(\avm_address[9]_i_2_n_0 ),
         .O(\avm_address[9]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hA888888820000000)) 
+    .INIT(64'hA280808080808080)) 
     \avm_address[9]_i_2 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(s_axi_arvalid),
-        .I2(s_axi_wvalid),
-        .I3(s_axi_awvalid),
-        .I4(s_axi_awaddr[9]),
-        .I5(s_axi_araddr[9]),
+        .I2(s_axi_araddr[9]),
+        .I3(s_axi_awaddr[9]),
+        .I4(s_axi_awvalid),
+        .I5(s_axi_wvalid),
         .O(\avm_address[9]_i_2_n_0 ));
   FDRE \avm_address_reg[0] 
        (.C(s_axi_aclk),
@@ -1523,8 +1551,8 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
     .INIT(16'hAA80)) 
     avm_beginbursttransfer_i_1
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
-        .I1(s_axi_wvalid),
-        .I2(s_axi_awvalid),
+        .I1(s_axi_awvalid),
+        .I2(s_axi_wvalid),
         .I3(s_axi_arvalid),
         .O(avm_beginbursttransfer_i_1_n_0));
   FDRE avm_beginbursttransfer_reg
@@ -1568,8 +1596,8 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
     \avm_byteenable[3]_i_1 
        (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I1(\avm_byteenable[3]_i_3_n_0 ),
-        .I2(current_state115_out),
-        .I3(avm_waitrequest),
+        .I2(avm_waitrequest),
+        .I3(current_state116_out),
         .I4(\FSM_onehot_current_state_reg_n_0_[1] ),
         .I5(\FSM_onehot_current_state_reg_n_0_[2] ),
         .O(\avm_byteenable[3]_i_1_n_0 ));
@@ -1583,13 +1611,13 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(s_axi_wstrb[3]),
         .I5(\FSM_onehot_current_state_reg_n_0_[2] ),
         .O(\avm_byteenable[3]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
     .INIT(8'hEA)) 
     \avm_byteenable[3]_i_3 
        (.I0(s_axi_arvalid),
-        .I1(s_axi_awvalid),
-        .I2(s_axi_wvalid),
+        .I1(s_axi_wvalid),
+        .I2(s_axi_awvalid),
         .O(\avm_byteenable[3]_i_3_n_0 ));
   FDSE \avm_byteenable_reg[0] 
        (.C(s_axi_aclk),
@@ -1616,10 +1644,10 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .Q(avm_byteenable[3]),
         .S(s_axi_awready_i_1_n_0));
   LUT6 #(
-    .INIT(64'hF444F0FFF444F000)) 
+    .INIT(64'hF222F0FFF222F000)) 
     avm_read_i_1
-       (.I0(current_state115_out),
-        .I1(avm_waitrequest),
+       (.I0(avm_waitrequest),
+        .I1(current_state116_out),
         .I2(s_axi_arvalid),
         .I3(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I4(\FSM_onehot_current_state_reg_n_0_[1] ),
@@ -1632,22 +1660,22 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .Q(avm_read),
         .R(s_axi_awready_i_1_n_0));
   LUT6 #(
-    .INIT(64'hF444F0FFF444F000)) 
+    .INIT(64'h2F220FFF2F220F00)) 
     avm_write_i_1
-       (.I0(current_state115_out),
-        .I1(avm_waitrequest),
+       (.I0(avm_waitrequest),
+        .I1(current_state116_out),
         .I2(avm_write_i_2_n_0),
         .I3(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I4(\FSM_onehot_current_state_reg_n_0_[2] ),
         .I5(avm_write),
         .O(avm_write_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
-    .INIT(8'h08)) 
+    .INIT(8'hBF)) 
     avm_write_i_2
-       (.I0(s_axi_awvalid),
+       (.I0(s_axi_arvalid),
         .I1(s_axi_wvalid),
-        .I2(s_axi_arvalid),
+        .I2(s_axi_awvalid),
         .O(avm_write_i_2_n_0));
   FDRE avm_write_reg
        (.C(s_axi_aclk),
@@ -1848,14 +1876,14 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I3(\FSM_onehot_current_state_reg_n_0_[0] ),
         .O(\avm_writedata[30]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h8080AA80AA80AA80)) 
+    .INIT(64'h22F2F2F200000000)) 
     \avm_writedata[31]_i_1 
-       (.I0(s_axi_aresetn),
-        .I1(\FSM_onehot_current_state_reg_n_0_[0] ),
-        .I2(avm_write_i_2_n_0),
-        .I3(\FSM_onehot_current_state_reg_n_0_[2] ),
+       (.I0(\FSM_onehot_current_state_reg_n_0_[0] ),
+        .I1(avm_write_i_2_n_0),
+        .I2(\FSM_onehot_current_state_reg_n_0_[2] ),
+        .I3(current_state116_out),
         .I4(avm_waitrequest),
-        .I5(current_state115_out),
+        .I5(s_axi_aresetn),
         .O(\avm_writedata[31]_i_1_n_0 ));
   LUT4 #(
     .INIT(16'hF080)) 
@@ -2114,7 +2142,7 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .Q(avm_writedata[9]),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'hAAAA0003AAAA0000)) 
+    .INIT(64'h5555000355550000)) 
     s_axi_arready_i_1
        (.I0(s_axi_awready_i_3_n_0),
         .I1(\FSM_onehot_current_state_reg_n_0_[7] ),
@@ -2135,34 +2163,34 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
        (.I0(s_axi_aresetn),
         .O(s_axi_awready_i_1_n_0));
   LUT6 #(
-    .INIT(64'hAA00AA03AA00AA00)) 
+    .INIT(64'h5500550355005500)) 
     s_axi_awready_i_2
        (.I0(s_axi_awready_i_3_n_0),
-        .I1(p_1_in9_in),
+        .I1(\FSM_onehot_current_state_reg_n_0_[3] ),
         .I2(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I3(\FSM_onehot_current_state_reg_n_0_[2] ),
         .I4(\FSM_onehot_current_state_reg_n_0_[4] ),
         .I5(s_axi_awready),
         .O(s_axi_awready_i_2_n_0));
   LUT6 #(
-    .INIT(64'h00010000FFFFFFFF)) 
+    .INIT(64'hAAAAAAAAAAA8AAAA)) 
     s_axi_awready_i_3
-       (.I0(tout_counter_reg__0[1]),
-        .I1(tout_counter_reg__0[0]),
-        .I2(tout_counter_reg__0[3]),
-        .I3(tout_counter_reg__0[2]),
-        .I4(s_axi_awready_i_4_n_0),
-        .I5(avm_waitrequest),
+       (.I0(avm_waitrequest),
+        .I1(s_axi_awready_i_4_n_0),
+        .I2(tout_counter_reg__0[6]),
+        .I3(tout_counter_reg__0[3]),
+        .I4(start_reg_n_0),
+        .I5(tout_counter_reg__0[7]),
         .O(s_axi_awready_i_3_n_0));
   LUT6 #(
-    .INIT(64'h0001000000000000)) 
+    .INIT(64'hFFFFFFFFFFFFFEFF)) 
     s_axi_awready_i_4
-       (.I0(tout_counter_reg__0[4]),
-        .I1(tout_counter_reg__0[5]),
-        .I2(tout_counter_reg__0[6]),
-        .I3(tout_counter_reg__0[7]),
-        .I4(start_reg_n_0),
-        .I5(tout_counter_reg__0[8]),
+       (.I0(tout_counter_reg__0[0]),
+        .I1(tout_counter_reg__0[1]),
+        .I2(tout_counter_reg__0[4]),
+        .I3(tout_counter_reg__0[8]),
+        .I4(tout_counter_reg__0[5]),
+        .I5(tout_counter_reg__0[2]),
         .O(s_axi_awready_i_4_n_0));
   FDRE s_axi_awready_reg
        (.C(s_axi_aclk),
@@ -2171,71 +2199,41 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .Q(s_axi_awready),
         .R(s_axi_awready_i_1_n_0));
   LUT6 #(
-    .INIT(64'h202000F020200000)) 
-    \s_axi_bresp[0]_i_1 
-       (.I0(avm_resp[0]),
-        .I1(\s_axi_bresp[1]_i_2_n_0 ),
-        .I2(s_axi_aresetn),
-        .I3(done_write),
-        .I4(avm_writeresponsevalid_i),
-        .I5(s_axi_bresp[0]),
-        .O(\s_axi_bresp[0]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hE0E000F0E0E00000)) 
+    .INIT(64'h0000F7000000F400)) 
     \s_axi_bresp[1]_i_1 
-       (.I0(avm_resp[1]),
-        .I1(\s_axi_bresp[1]_i_2_n_0 ),
-        .I2(s_axi_aresetn),
-        .I3(done_write),
-        .I4(avm_writeresponsevalid_i),
-        .I5(s_axi_bresp[1]),
+       (.I0(\s_axi_bresp[1]_i_2_n_0 ),
+        .I1(\FSM_onehot_current_state_reg_n_0_[3] ),
+        .I2(p_1_in),
+        .I3(s_axi_aresetn),
+        .I4(done_write),
+        .I5(s_axi_bresp),
         .O(\s_axi_bresp[1]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h70FFFFFF70707070)) 
+  LUT3 #(
+    .INIT(8'h8F)) 
     \s_axi_bresp[1]_i_2 
        (.I0(s_axi_rready),
         .I1(s_axi_rvalid),
         .I2(avm_readdata_i),
-        .I3(s_axi_bready),
-        .I4(s_axi_bvalid),
-        .I5(\FSM_onehot_current_state_reg_n_0_[5] ),
         .O(\s_axi_bresp[1]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \s_axi_bresp[1]_i_3 
-       (.I0(s_axi_bready),
-        .I1(s_axi_bvalid),
+       (.I0(s_axi_bvalid),
+        .I1(s_axi_bready),
         .O(done_write));
-  LUT5 #(
-    .INIT(32'h0FFF0888)) 
-    \s_axi_bresp[1]_i_4 
-       (.I0(avm_writeresponsevalid),
-        .I1(p_1_in9_in),
-        .I2(s_axi_bready),
-        .I3(s_axi_bvalid),
-        .I4(\FSM_onehot_current_state_reg_n_0_[5] ),
-        .O(avm_writeresponsevalid_i));
-  FDRE \s_axi_bresp_reg[0] 
-       (.C(s_axi_aclk),
-        .CE(1'b1),
-        .D(\s_axi_bresp[0]_i_1_n_0 ),
-        .Q(s_axi_bresp[0]),
-        .R(1'b0));
   FDRE \s_axi_bresp_reg[1] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(\s_axi_bresp[1]_i_1_n_0 ),
-        .Q(s_axi_bresp[1]),
+        .Q(s_axi_bresp),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'h00EAFFEA)) 
+  LUT4 #(
+    .INIT(16'h7774)) 
     s_axi_bvalid_i_1
-       (.I0(\FSM_onehot_current_state_reg_n_0_[5] ),
-        .I1(p_1_in9_in),
-        .I2(avm_writeresponsevalid),
-        .I3(s_axi_bvalid),
-        .I4(s_axi_bready),
+       (.I0(s_axi_bready),
+        .I1(s_axi_bvalid),
+        .I2(\FSM_onehot_current_state_reg_n_0_[3] ),
+        .I3(p_1_in),
         .O(s_axi_bvalid_i_1_n_0));
   FDRE s_axi_bvalid_reg
        (.C(s_axi_aclk),
@@ -2244,592 +2242,580 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .Q(s_axi_bvalid),
         .R(s_axi_awready_i_1_n_0));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[0]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[0]),
-        .O(p_1_in[0]));
+       (.I0(avm_readdata[0]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[10]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[10]),
-        .O(p_1_in[10]));
+       (.I0(avm_readdata[10]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[10]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[11]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[11]),
-        .O(p_1_in[11]));
+       (.I0(avm_readdata[11]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[11]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[12]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[12]),
-        .O(p_1_in[12]));
+       (.I0(avm_readdata[12]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[12]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[13]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[13]),
-        .O(p_1_in[13]));
+       (.I0(avm_readdata[13]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[13]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[14]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[14]),
-        .O(p_1_in[14]));
+       (.I0(avm_readdata[14]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[14]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[15]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[15]),
-        .O(p_1_in[15]));
+       (.I0(avm_readdata[15]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[15]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[16]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[16]),
-        .O(p_1_in[16]));
+       (.I0(avm_readdata[16]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[16]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[17]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[17]),
-        .O(p_1_in[17]));
+       (.I0(avm_readdata[17]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[17]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[18]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[18]),
-        .O(p_1_in[18]));
+       (.I0(avm_readdata[18]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[18]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[19]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[19]),
-        .O(p_1_in[19]));
+       (.I0(avm_readdata[19]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[19]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[1]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[1]),
-        .O(p_1_in[1]));
+       (.I0(avm_readdata[1]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[20]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[20]),
-        .O(p_1_in[20]));
+       (.I0(avm_readdata[20]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[20]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[21]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[21]),
-        .O(p_1_in[21]));
+       (.I0(avm_readdata[21]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[21]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[22]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[22]),
-        .O(p_1_in[22]));
+       (.I0(avm_readdata[22]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[22]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[23]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[23]),
-        .O(p_1_in[23]));
+       (.I0(avm_readdata[23]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[23]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[24]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[24]),
-        .O(p_1_in[24]));
+       (.I0(avm_readdata[24]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[24]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[25]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[25]),
-        .O(p_1_in[25]));
+       (.I0(avm_readdata[25]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[25]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[26]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[26]),
-        .O(p_1_in[26]));
+       (.I0(avm_readdata[26]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[26]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[27]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[27]),
-        .O(p_1_in[27]));
+       (.I0(avm_readdata[27]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[27]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[28]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[28]),
-        .O(p_1_in[28]));
+       (.I0(avm_readdata[28]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[28]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[29]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[29]),
-        .O(p_1_in[29]));
+       (.I0(avm_readdata[29]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[29]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[2]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[2]),
-        .O(p_1_in[2]));
+       (.I0(avm_readdata[2]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[30]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[30]),
-        .O(p_1_in[30]));
+       (.I0(avm_readdata[30]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[30]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hAA2A2A2AFFFFFFFF)) 
+    .INIT(64'hF7770000FFFFFFFF)) 
     \s_axi_rdata[31]_i_1 
-       (.I0(avm_readdata_i),
+       (.I0(s_axi_rvalid),
         .I1(s_axi_rready),
-        .I2(s_axi_rvalid),
-        .I3(avm_readdatavalid),
-        .I4(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I4(avm_readdata_i),
         .I5(s_axi_aresetn),
         .O(\s_axi_rdata[31]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'hFFF8F8F8)) 
     \s_axi_rdata[31]_i_2 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
+       (.I0(s_axi_rready),
+        .I1(s_axi_rvalid),
         .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
+        .I3(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I4(avm_readdatavalid),
         .O(\s_axi_rdata[31]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[31]_i_3 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[31]),
-        .O(p_1_in[31]));
+       (.I0(avm_readdata[31]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[31]_i_3_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[3]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[3]),
-        .O(p_1_in[3]));
+       (.I0(avm_readdata[3]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[3]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[4]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[4]),
-        .O(p_1_in[4]));
+       (.I0(avm_readdata[4]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[4]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[5]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[5]),
-        .O(p_1_in[5]));
+       (.I0(avm_readdata[5]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[5]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[6]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[6]),
-        .O(p_1_in[6]));
+       (.I0(avm_readdata[6]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[6]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[7]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[7]),
-        .O(p_1_in[7]));
+       (.I0(avm_readdata[7]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[7]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[8]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[8]),
-        .O(p_1_in[8]));
+       (.I0(avm_readdata[8]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[8]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h88F8F8F800000000)) 
+    .INIT(64'h80AAAAAA80808080)) 
     \s_axi_rdata[9]_i_1 
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
-        .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
-        .I5(avm_readdata[9]),
-        .O(p_1_in[9]));
+       (.I0(avm_readdata[9]),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdatavalid),
+        .I3(s_axi_rready),
+        .I4(s_axi_rvalid),
+        .I5(avm_readdata_i),
+        .O(\s_axi_rdata[9]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[0] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[0]),
+        .D(\s_axi_rdata[0]_i_1_n_0 ),
         .Q(s_axi_rdata[0]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[10] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[10]),
+        .D(\s_axi_rdata[10]_i_1_n_0 ),
         .Q(s_axi_rdata[10]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[11] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[11]),
+        .D(\s_axi_rdata[11]_i_1_n_0 ),
         .Q(s_axi_rdata[11]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[12] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[12]),
+        .D(\s_axi_rdata[12]_i_1_n_0 ),
         .Q(s_axi_rdata[12]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[13] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[13]),
+        .D(\s_axi_rdata[13]_i_1_n_0 ),
         .Q(s_axi_rdata[13]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[14] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[14]),
+        .D(\s_axi_rdata[14]_i_1_n_0 ),
         .Q(s_axi_rdata[14]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[15] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[15]),
+        .D(\s_axi_rdata[15]_i_1_n_0 ),
         .Q(s_axi_rdata[15]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[16] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[16]),
+        .D(\s_axi_rdata[16]_i_1_n_0 ),
         .Q(s_axi_rdata[16]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[17] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[17]),
+        .D(\s_axi_rdata[17]_i_1_n_0 ),
         .Q(s_axi_rdata[17]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[18] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[18]),
+        .D(\s_axi_rdata[18]_i_1_n_0 ),
         .Q(s_axi_rdata[18]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[19] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[19]),
+        .D(\s_axi_rdata[19]_i_1_n_0 ),
         .Q(s_axi_rdata[19]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[1] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[1]),
+        .D(\s_axi_rdata[1]_i_1_n_0 ),
         .Q(s_axi_rdata[1]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[20] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[20]),
+        .D(\s_axi_rdata[20]_i_1_n_0 ),
         .Q(s_axi_rdata[20]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[21] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[21]),
+        .D(\s_axi_rdata[21]_i_1_n_0 ),
         .Q(s_axi_rdata[21]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[22] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[22]),
+        .D(\s_axi_rdata[22]_i_1_n_0 ),
         .Q(s_axi_rdata[22]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[23] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[23]),
+        .D(\s_axi_rdata[23]_i_1_n_0 ),
         .Q(s_axi_rdata[23]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[24] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[24]),
+        .D(\s_axi_rdata[24]_i_1_n_0 ),
         .Q(s_axi_rdata[24]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[25] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[25]),
+        .D(\s_axi_rdata[25]_i_1_n_0 ),
         .Q(s_axi_rdata[25]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[26] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[26]),
+        .D(\s_axi_rdata[26]_i_1_n_0 ),
         .Q(s_axi_rdata[26]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[27] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[27]),
+        .D(\s_axi_rdata[27]_i_1_n_0 ),
         .Q(s_axi_rdata[27]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[28] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[28]),
+        .D(\s_axi_rdata[28]_i_1_n_0 ),
         .Q(s_axi_rdata[28]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[29] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[29]),
+        .D(\s_axi_rdata[29]_i_1_n_0 ),
         .Q(s_axi_rdata[29]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[2] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[2]),
+        .D(\s_axi_rdata[2]_i_1_n_0 ),
         .Q(s_axi_rdata[2]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[30] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[30]),
+        .D(\s_axi_rdata[30]_i_1_n_0 ),
         .Q(s_axi_rdata[30]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[31] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[31]),
+        .D(\s_axi_rdata[31]_i_3_n_0 ),
         .Q(s_axi_rdata[31]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[3] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[3]),
+        .D(\s_axi_rdata[3]_i_1_n_0 ),
         .Q(s_axi_rdata[3]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[4] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[4]),
+        .D(\s_axi_rdata[4]_i_1_n_0 ),
         .Q(s_axi_rdata[4]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[5] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[5]),
+        .D(\s_axi_rdata[5]_i_1_n_0 ),
         .Q(s_axi_rdata[5]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[6] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[6]),
+        .D(\s_axi_rdata[6]_i_1_n_0 ),
         .Q(s_axi_rdata[6]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[7] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[7]),
+        .D(\s_axi_rdata[7]_i_1_n_0 ),
         .Q(s_axi_rdata[7]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[8] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[8]),
+        .D(\s_axi_rdata[8]_i_1_n_0 ),
         .Q(s_axi_rdata[8]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   FDRE \s_axi_rdata_reg[9] 
        (.C(s_axi_aclk),
         .CE(\s_axi_rdata[31]_i_2_n_0 ),
-        .D(p_1_in[9]),
+        .D(\s_axi_rdata[9]_i_1_n_0 ),
         .Q(s_axi_rdata[9]),
         .R(\s_axi_rdata[31]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h202000F020200000)) 
-    \s_axi_rresp[0]_i_1 
-       (.I0(avm_resp[0]),
-        .I1(\s_axi_bresp[1]_i_2_n_0 ),
-        .I2(s_axi_aresetn),
-        .I3(done_read),
-        .I4(avm_readdatavalid_i),
-        .I5(s_axi_rresp[0]),
-        .O(\s_axi_rresp[0]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'hE0E000F0E0E00000)) 
+    .INIT(64'h44F7444444F44444)) 
     \s_axi_rresp[1]_i_1 
-       (.I0(avm_resp[1]),
-        .I1(\s_axi_bresp[1]_i_2_n_0 ),
-        .I2(s_axi_aresetn),
+       (.I0(\s_axi_rresp[1]_i_2_n_0 ),
+        .I1(avm_readdatavalid_i0),
+        .I2(avm_readdata_i),
         .I3(done_read),
-        .I4(avm_readdatavalid_i),
-        .I5(s_axi_rresp[1]),
+        .I4(s_axi_aresetn),
+        .I5(s_axi_rresp),
         .O(\s_axi_rresp[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT4 #(
+    .INIT(16'hD5FF)) 
+    \s_axi_rresp[1]_i_2 
+       (.I0(s_axi_aresetn),
+        .I1(s_axi_bvalid),
+        .I2(s_axi_bready),
+        .I3(p_1_in),
+        .O(\s_axi_rresp[1]_i_2_n_0 ));
   LUT2 #(
     .INIT(4'h8)) 
-    \s_axi_rresp[1]_i_2 
-       (.I0(s_axi_rready),
-        .I1(s_axi_rvalid),
-        .O(done_read));
-  LUT5 #(
-    .INIT(32'hFF707070)) 
     \s_axi_rresp[1]_i_3 
-       (.I0(s_axi_rready),
-        .I1(s_axi_rvalid),
-        .I2(avm_readdata_i),
-        .I3(avm_readdatavalid),
-        .I4(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .O(avm_readdatavalid_i));
-  FDRE \s_axi_rresp_reg[0] 
-       (.C(s_axi_aclk),
-        .CE(1'b1),
-        .D(\s_axi_rresp[0]_i_1_n_0 ),
-        .Q(s_axi_rresp[0]),
-        .R(1'b0));
+       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I1(avm_readdatavalid),
+        .O(avm_readdatavalid_i0));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \s_axi_rresp[1]_i_4 
+       (.I0(s_axi_rvalid),
+        .I1(s_axi_rready),
+        .O(done_read));
   FDRE \s_axi_rresp_reg[1] 
        (.C(s_axi_aclk),
         .CE(1'b1),
         .D(\s_axi_rresp[1]_i_1_n_0 ),
-        .Q(s_axi_rresp[1]),
+        .Q(s_axi_rresp),
         .R(1'b0));
   LUT5 #(
-    .INIT(32'h88F8FFF8)) 
+    .INIT(32'hFF747474)) 
     s_axi_rvalid_i_1
-       (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
-        .I1(avm_readdatavalid),
+       (.I0(s_axi_rready),
+        .I1(s_axi_rvalid),
         .I2(avm_readdata_i),
-        .I3(s_axi_rvalid),
-        .I4(s_axi_rready),
+        .I3(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I4(avm_readdatavalid),
         .O(s_axi_rvalid_i_1_n_0));
   FDRE s_axi_rvalid_reg
        (.C(s_axi_aclk),
@@ -2838,10 +2824,10 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .Q(s_axi_rvalid),
         .R(s_axi_awready_i_1_n_0));
   LUT6 #(
-    .INIT(64'hAA00AA03AA00AA00)) 
+    .INIT(64'h5500550355005500)) 
     s_axi_wready_i_1
        (.I0(s_axi_awready_i_3_n_0),
-        .I1(p_1_in9_in),
+        .I1(\FSM_onehot_current_state_reg_n_0_[3] ),
         .I2(\FSM_onehot_current_state_reg_n_0_[0] ),
         .I3(\FSM_onehot_current_state_reg_n_0_[2] ),
         .I4(\FSM_onehot_current_state_reg_n_0_[4] ),
@@ -2854,7 +2840,7 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .Q(s_axi_wready),
         .R(s_axi_awready_i_1_n_0));
   LUT6 #(
-    .INIT(64'hFDFCFFFFFDFC0000)) 
+    .INIT(64'hFEFCFFFFFEFC0000)) 
     start_i_1
        (.I0(s_axi_awready_i_3_n_0),
         .I1(start_i_2_n_0),
@@ -2863,24 +2849,21 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
         .I4(start),
         .I5(start_reg_n_0),
         .O(start_i_1_n_0));
-  LUT6 #(
-    .INIT(64'h7777477700000000)) 
+  LUT3 #(
+    .INIT(8'h70)) 
     start_i_2
-       (.I0(s_axi_bready),
-        .I1(s_axi_bvalid),
-        .I2(s_axi_awready_i_4_n_0),
-        .I3(\FSM_onehot_current_state[8]_i_4_n_0 ),
-        .I4(avm_writeresponsevalid_i),
-        .I5(p_1_in9_in),
+       (.I0(s_axi_bvalid),
+        .I1(s_axi_bready),
+        .I2(\FSM_onehot_current_state_reg_n_0_[3] ),
         .O(start_i_2_n_0));
   LUT6 #(
-    .INIT(64'h7777477700000000)) 
+    .INIT(64'h00FBFFFB00000000)) 
     start_i_3
-       (.I0(s_axi_rready),
-        .I1(s_axi_rvalid),
-        .I2(s_axi_awready_i_4_n_0),
-        .I3(\FSM_onehot_current_state[8]_i_4_n_0 ),
-        .I4(avm_readdatavalid_i),
+       (.I0(s_axi_awready_i_4_n_0),
+        .I1(\FSM_onehot_current_state[5]_i_5_n_0 ),
+        .I2(start_i_6_n_0),
+        .I3(s_axi_rvalid),
+        .I4(s_axi_rready),
         .I5(\FSM_onehot_current_state_reg_n_0_[6] ),
         .O(start_i_3_n_0));
   LUT2 #(
@@ -2894,11 +2877,18 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
     start_i_5
        (.I0(\FSM_onehot_current_state_reg_n_0_[6] ),
         .I1(avm_readdata_i),
-        .I2(s_axi_rvalid),
-        .I3(s_axi_rready),
+        .I2(s_axi_rready),
+        .I3(s_axi_rvalid),
         .I4(\FSM_onehot_current_state_reg_n_0_[1] ),
         .I5(\FSM_onehot_current_state[6]_i_2_n_0 ),
         .O(start));
+  LUT3 #(
+    .INIT(8'hF8)) 
+    start_i_6
+       (.I0(avm_readdatavalid),
+        .I1(\FSM_onehot_current_state_reg_n_0_[6] ),
+        .I2(avm_readdata_i),
+        .O(start_i_6_n_0));
   FDRE start_reg
        (.C(s_axi_aclk),
         .CE(1'b1),
@@ -2910,87 +2900,91 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite
     \tout_counter[0]_i_1 
        (.I0(tout_counter_reg__0[0]),
         .O(p_0_in[0]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \tout_counter[1]_i_1 
-       (.I0(tout_counter_reg__0[0]),
-        .I1(tout_counter_reg__0[1]),
+       (.I0(tout_counter_reg__0[1]),
+        .I1(tout_counter_reg__0[0]),
         .O(p_0_in[1]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
-    .INIT(8'h78)) 
+    .INIT(8'h6A)) 
     \tout_counter[2]_i_1 
-       (.I0(tout_counter_reg__0[0]),
+       (.I0(tout_counter_reg__0[2]),
         .I1(tout_counter_reg__0[1]),
-        .I2(tout_counter_reg__0[2]),
+        .I2(tout_counter_reg__0[0]),
         .O(p_0_in[2]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \tout_counter[3]_i_1 
-       (.I0(tout_counter_reg__0[1]),
-        .I1(tout_counter_reg__0[0]),
+       (.I0(tout_counter_reg__0[0]),
+        .I1(tout_counter_reg__0[1]),
         .I2(tout_counter_reg__0[2]),
         .I3(tout_counter_reg__0[3]),
         .O(p_0_in[3]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
-    .INIT(32'h7FFF8000)) 
+    .INIT(32'h6AAAAAAA)) 
     \tout_counter[4]_i_1 
-       (.I0(tout_counter_reg__0[3]),
-        .I1(tout_counter_reg__0[2]),
-        .I2(tout_counter_reg__0[0]),
-        .I3(tout_counter_reg__0[1]),
-        .I4(tout_counter_reg__0[4]),
+       (.I0(tout_counter_reg__0[4]),
+        .I1(tout_counter_reg__0[0]),
+        .I2(tout_counter_reg__0[1]),
+        .I3(tout_counter_reg__0[2]),
+        .I4(tout_counter_reg__0[3]),
         .O(p_0_in[4]));
   LUT6 #(
-    .INIT(64'h7FFFFFFF80000000)) 
+    .INIT(64'h6AAAAAAAAAAAAAAA)) 
     \tout_counter[5]_i_1 
-       (.I0(tout_counter_reg__0[1]),
-        .I1(tout_counter_reg__0[0]),
+       (.I0(tout_counter_reg__0[5]),
+        .I1(tout_counter_reg__0[3]),
         .I2(tout_counter_reg__0[2]),
-        .I3(tout_counter_reg__0[3]),
-        .I4(tout_counter_reg__0[4]),
-        .I5(tout_counter_reg__0[5]),
+        .I3(tout_counter_reg__0[1]),
+        .I4(tout_counter_reg__0[0]),
+        .I5(tout_counter_reg__0[4]),
         .O(p_0_in[5]));
-  LUT2 #(
-    .INIT(4'h9)) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT4 #(
+    .INIT(16'h6AAA)) 
     \tout_counter[6]_i_1 
-       (.I0(\tout_counter[8]_i_3_n_0 ),
-        .I1(tout_counter_reg__0[6]),
+       (.I0(tout_counter_reg__0[6]),
+        .I1(tout_counter_reg__0[4]),
+        .I2(\tout_counter[8]_i_3_n_0 ),
+        .I3(tout_counter_reg__0[5]),
         .O(p_0_in[6]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT3 #(
-    .INIT(8'hB4)) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h6AAAAAAA)) 
     \tout_counter[7]_i_1 
-       (.I0(\tout_counter[8]_i_3_n_0 ),
-        .I1(tout_counter_reg__0[6]),
-        .I2(tout_counter_reg__0[7]),
+       (.I0(tout_counter_reg__0[7]),
+        .I1(tout_counter_reg__0[5]),
+        .I2(\tout_counter[8]_i_3_n_0 ),
+        .I3(tout_counter_reg__0[4]),
+        .I4(tout_counter_reg__0[6]),
         .O(p_0_in[7]));
   LUT1 #(
     .INIT(2'h1)) 
     \tout_counter[8]_i_1 
        (.I0(start_reg_n_0),
         .O(clear));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT4 #(
-    .INIT(16'hF708)) 
-    \tout_counter[8]_i_2 
-       (.I0(tout_counter_reg__0[7]),
-        .I1(tout_counter_reg__0[6]),
-        .I2(\tout_counter[8]_i_3_n_0 ),
-        .I3(tout_counter_reg__0[8]),
-        .O(p_0_in[8]));
   LUT6 #(
-    .INIT(64'h7FFFFFFFFFFFFFFF)) 
+    .INIT(64'h6AAAAAAAAAAAAAAA)) 
+    \tout_counter[8]_i_2 
+       (.I0(tout_counter_reg__0[8]),
+        .I1(tout_counter_reg__0[6]),
+        .I2(tout_counter_reg__0[4]),
+        .I3(\tout_counter[8]_i_3_n_0 ),
+        .I4(tout_counter_reg__0[5]),
+        .I5(tout_counter_reg__0[7]),
+        .O(p_0_in[8]));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT4 #(
+    .INIT(16'h8000)) 
     \tout_counter[8]_i_3 
-       (.I0(tout_counter_reg__0[1]),
-        .I1(tout_counter_reg__0[0]),
-        .I2(tout_counter_reg__0[2]),
-        .I3(tout_counter_reg__0[3]),
-        .I4(tout_counter_reg__0[4]),
-        .I5(tout_counter_reg__0[5]),
+       (.I0(tout_counter_reg__0[3]),
+        .I1(tout_counter_reg__0[2]),
+        .I2(tout_counter_reg__0[1]),
+        .I3(tout_counter_reg__0[0]),
         .O(\tout_counter[8]_i_3_n_0 ));
   FDSE \tout_counter_reg[0] 
        (.C(s_axi_aclk),
@@ -3053,7 +3047,7 @@ endmodule
 (* C_BASE3_ADDR = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) (* C_BASE4_ADDR = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) (* C_BURST_LENGTH = "4" *) 
 (* C_DPHASE_TIMEOUT = "256" *) (* C_FAMILY = "zynq" *) (* C_FIXED_READ_WAIT = "1" *) 
 (* C_FIXED_WRITE_WAIT = "1" *) (* C_HAS_FIXED_READ_LATENCY = "0" *) (* C_HAS_FIXED_WAIT = "0" *) 
-(* C_HAS_RESPONSE = "1" *) (* C_HIGH1_ADDR = "64'b1111111111111111111111111111111111111111111111111111111111111111" *) (* C_HIGH2_ADDR = "64'b1111111111111111111111111111111111111111111111111111111111111111" *) 
+(* C_HAS_RESPONSE = "0" *) (* C_HIGH1_ADDR = "64'b1111111111111111111111111111111111111111111111111111111111111111" *) (* C_HIGH2_ADDR = "64'b1111111111111111111111111111111111111111111111111111111111111111" *) 
 (* C_HIGH3_ADDR = "64'b1111111111111111111111111111111111111111111111111111111111111111" *) (* C_HIGH4_ADDR = "64'b1111111111111111111111111111111111111111111111111111111111111111" *) (* C_NUM_ADDRESS_RANGES = "0" *) 
 (* C_NUM_OUTSTANDING = "2" *) (* C_PROTOCOL = "0" *) (* C_READ_LATENCY = "1" *) 
 (* C_S_AXI_ADDR_WIDTH = "32" *) (* C_S_AXI_DATA_WIDTH = "32" *) (* C_S_AXI_ID_WIDTH = "4" *) 
@@ -3154,11 +3148,9 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_top
   wire avm_read;
   wire [31:0]avm_readdata;
   wire avm_readdatavalid;
-  wire [1:0]avm_resp;
   wire avm_waitrequest;
   wire avm_write;
   wire [31:0]avm_writedata;
-  wire avm_writeresponsevalid;
   wire s_axi_aclk;
   wire [31:0]s_axi_araddr;
   wire s_axi_aresetn;
@@ -3168,11 +3160,11 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_top
   wire s_axi_awready;
   wire s_axi_awvalid;
   wire s_axi_bready;
-  wire [1:0]s_axi_bresp;
+  wire [1:1]\^s_axi_bresp ;
   wire s_axi_bvalid;
   wire [31:0]s_axi_rdata;
   wire s_axi_rready;
-  wire [1:0]s_axi_rresp;
+  wire [1:1]\^s_axi_rresp ;
   wire s_axi_rvalid;
   wire [31:0]s_axi_wdata;
   wire s_axi_wready;
@@ -3184,11 +3176,15 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_top
   assign s_axi_bid[2] = \<const0> ;
   assign s_axi_bid[1] = \<const0> ;
   assign s_axi_bid[0] = \<const0> ;
+  assign s_axi_bresp[1] = \^s_axi_bresp [1];
+  assign s_axi_bresp[0] = \<const0> ;
   assign s_axi_rid[3] = \<const0> ;
   assign s_axi_rid[2] = \<const0> ;
   assign s_axi_rid[1] = \<const0> ;
   assign s_axi_rid[0] = \<const0> ;
   assign s_axi_rlast = \<const0> ;
+  assign s_axi_rresp[1] = \^s_axi_rresp [1];
+  assign s_axi_rresp[0] = \<const0> ;
   zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_lite \AXI_LITE.I_AVA_MASTER_LITE 
        (.avm_address(avm_address),
         .avm_beginbursttransfer(avm_beginbursttransfer),
@@ -3196,11 +3192,9 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_top
         .avm_read(avm_read),
         .avm_readdata(avm_readdata),
         .avm_readdatavalid(avm_readdatavalid),
-        .avm_resp(avm_resp),
         .avm_waitrequest(avm_waitrequest),
         .avm_write(avm_write),
         .avm_writedata(avm_writedata),
-        .avm_writeresponsevalid(avm_writeresponsevalid),
         .s_axi_aclk(s_axi_aclk),
         .s_axi_araddr(s_axi_araddr),
         .s_axi_aresetn(s_axi_aresetn),
@@ -3210,11 +3204,11 @@ module zynq_top_axi_amm_bridge_0_0_axi_amm_bridge_v1_0_1_top
         .s_axi_awready(s_axi_awready),
         .s_axi_awvalid(s_axi_awvalid),
         .s_axi_bready(s_axi_bready),
-        .s_axi_bresp(s_axi_bresp),
+        .s_axi_bresp(\^s_axi_bresp ),
         .s_axi_bvalid(s_axi_bvalid),
         .s_axi_rdata(s_axi_rdata),
         .s_axi_rready(s_axi_rready),
-        .s_axi_rresp(s_axi_rresp),
+        .s_axi_rresp(\^s_axi_rresp ),
         .s_axi_rvalid(s_axi_rvalid),
         .s_axi_wdata(s_axi_wdata),
         .s_axi_wready(s_axi_wready),

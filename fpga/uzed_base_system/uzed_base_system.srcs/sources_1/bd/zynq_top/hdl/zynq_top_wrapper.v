@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1733598 Wed Dec 14 22:35:42 MST 2016
-//Date        : Thu Feb  9 10:07:45 2017
+//Date        : Thu Feb  9 10:55:41 2017
 //Host        : thoyt-dell7510 running 64-bit Ubuntu 16.04.1 LTS
 //Command     : generate_target zynq_top_wrapper.bd
 //Design      : zynq_top_wrapper
@@ -15,11 +15,9 @@ module zynq_top_wrapper
     avm_pls_gen_read,
     avm_pls_gen_readdata,
     avm_pls_gen_readdatavalid,
-    avm_pls_gen_response,
     avm_pls_gen_waitrequest,
     avm_pls_gen_write,
     avm_pls_gen_writedata,
-    avm_pls_gen_writeresponsevalid,
     axi_ref_clk,
     axi_rst_n,
     zynq_ddr_addr,
@@ -48,11 +46,9 @@ module zynq_top_wrapper
   output avm_pls_gen_read;
   input [31:0]avm_pls_gen_readdata;
   input avm_pls_gen_readdatavalid;
-  input [1:0]avm_pls_gen_response;
   input avm_pls_gen_waitrequest;
   output avm_pls_gen_write;
   output [31:0]avm_pls_gen_writedata;
-  input avm_pls_gen_writeresponsevalid;
   output axi_ref_clk;
   output [0:0]axi_rst_n;
   inout [14:0]zynq_ddr_addr;
@@ -82,11 +78,9 @@ module zynq_top_wrapper
   wire avm_pls_gen_read;
   wire [31:0]avm_pls_gen_readdata;
   wire avm_pls_gen_readdatavalid;
-  wire [1:0]avm_pls_gen_response;
   wire avm_pls_gen_waitrequest;
   wire avm_pls_gen_write;
   wire [31:0]avm_pls_gen_writedata;
-  wire avm_pls_gen_writeresponsevalid;
   wire axi_ref_clk;
   wire [0:0]axi_rst_n;
   wire [14:0]zynq_ddr_addr;
@@ -117,11 +111,9 @@ module zynq_top_wrapper
         .avm_pls_gen_read(avm_pls_gen_read),
         .avm_pls_gen_readdata(avm_pls_gen_readdata),
         .avm_pls_gen_readdatavalid(avm_pls_gen_readdatavalid),
-        .avm_pls_gen_response(avm_pls_gen_response),
         .avm_pls_gen_waitrequest(avm_pls_gen_waitrequest),
         .avm_pls_gen_write(avm_pls_gen_write),
         .avm_pls_gen_writedata(avm_pls_gen_writedata),
-        .avm_pls_gen_writeresponsevalid(avm_pls_gen_writeresponsevalid),
         .axi_ref_clk(axi_ref_clk),
         .axi_rst_n(axi_rst_n),
         .zynq_ddr_addr(zynq_ddr_addr),

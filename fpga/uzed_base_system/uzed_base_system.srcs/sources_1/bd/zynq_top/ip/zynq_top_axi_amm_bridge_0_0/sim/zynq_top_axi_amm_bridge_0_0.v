@@ -79,9 +79,7 @@ module zynq_top_axi_amm_bridge_0_0 (
   avm_byteenable,
   avm_writedata,
   avm_readdata,
-  avm_resp,
   avm_readdatavalid,
-  avm_writeresponsevalid,
   avm_waitrequest
 );
 
@@ -135,19 +133,15 @@ output wire [3 : 0] avm_byteenable;
 output wire [31 : 0] avm_writedata;
 (* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON READDATA" *)
 input wire [31 : 0] avm_readdata;
-(* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON RESPONSE" *)
-input wire [1 : 0] avm_resp;
 (* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON READDATAVALID" *)
 input wire avm_readdatavalid;
-(* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON WRITERESPONSEVALID" *)
-input wire avm_writeresponsevalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON WAITREQUEST" *)
 input wire avm_waitrequest;
 
   axi_amm_bridge_v1_0_1_top #(
     .C_ADDRESS_MODE(0),
     .C_HAS_FIXED_WAIT(0),
-    .C_HAS_RESPONSE(1),
+    .C_HAS_RESPONSE(0),
     .C_FIXED_WRITE_WAIT(1),
     .C_FIXED_READ_WAIT(1),
     .C_HAS_FIXED_READ_LATENCY(0),
@@ -210,11 +204,11 @@ input wire avm_waitrequest;
     .avm_byteenable(avm_byteenable),
     .avm_writedata(avm_writedata),
     .avm_readdata(avm_readdata),
-    .avm_resp(avm_resp),
+    .avm_resp(2'D0),
     .avm_readdatavalid(avm_readdatavalid),
     .avm_burstcount(),
     .avm_beginbursttransfer(),
-    .avm_writeresponsevalid(avm_writeresponsevalid),
+    .avm_writeresponsevalid(1'D0),
     .avm_waitrequest(avm_waitrequest)
   );
 endmodule

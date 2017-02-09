@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "axi_amm_bridge_v1_0_1_top,Vivado 2016.4" *)
 (* CHECK_LICENSE_TYPE = "zynq_top_axi_amm_bridge_0_0,axi_amm_bridge_v1_0_1_top,{}" *)
-(* CORE_GENERATION_INFO = "zynq_top_axi_amm_bridge_0_0,axi_amm_bridge_v1_0_1_top,{x_ipProduct=Vivado 2016.4,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_amm_bridge,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_ADDRESS_MODE=0,C_HAS_FIXED_WAIT=0,C_HAS_RESPONSE=1,C_FIXED_WRITE_WAIT=1,C_FIXED_READ_WAIT=1,C_HAS_FIXED_READ_LATENCY=0,C_READ_LATENCY=1,C_S_AXI_DATA_WIDTH=32,C_S_AXI_ID_WIDTH=4,C_S_AXI_ADDR_WIDTH=32,C_USE_WSTRB=1,C_AVM_BURST_WIDTH=1,C_AXI_LOCK_WIDTH=1,C_BURST_LENGTH=4,C_DPHASE_\
+(* CORE_GENERATION_INFO = "zynq_top_axi_amm_bridge_0_0,axi_amm_bridge_v1_0_1_top,{x_ipProduct=Vivado 2016.4,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_amm_bridge,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_ADDRESS_MODE=0,C_HAS_FIXED_WAIT=0,C_HAS_RESPONSE=0,C_FIXED_WRITE_WAIT=1,C_FIXED_READ_WAIT=1,C_HAS_FIXED_READ_LATENCY=0,C_READ_LATENCY=1,C_S_AXI_DATA_WIDTH=32,C_S_AXI_ID_WIDTH=4,C_S_AXI_ADDR_WIDTH=32,C_USE_WSTRB=1,C_AVM_BURST_WIDTH=1,C_AXI_LOCK_WIDTH=1,C_BURST_LENGTH=4,C_DPHASE_\
 TIMEOUT=256,C_NUM_ADDRESS_RANGES=0,C_NUM_OUTSTANDING=2,C_PROTOCOL=0,C_BASE1_ADDR=0x0000000000000000,C_BASE2_ADDR=0x0000000000000000,C_BASE3_ADDR=0x0000000000000000,C_BASE4_ADDR=0x0000000000000000,C_HIGH1_ADDR=0xFFFFFFFFFFFFFFFF,C_HIGH2_ADDR=0xFFFFFFFFFFFFFFFF,C_HIGH3_ADDR=0xFFFFFFFFFFFFFFFF,C_HIGH4_ADDR=0xFFFFFFFFFFFFFFFF,C_FAMILY=zynq}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module zynq_top_axi_amm_bridge_0_0 (
@@ -81,9 +81,7 @@ module zynq_top_axi_amm_bridge_0_0 (
   avm_byteenable,
   avm_writedata,
   avm_readdata,
-  avm_resp,
   avm_readdatavalid,
-  avm_writeresponsevalid,
   avm_waitrequest
 );
 
@@ -137,19 +135,15 @@ output wire [3 : 0] avm_byteenable;
 output wire [31 : 0] avm_writedata;
 (* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON READDATA" *)
 input wire [31 : 0] avm_readdata;
-(* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON RESPONSE" *)
-input wire [1 : 0] avm_resp;
 (* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON READDATAVALID" *)
 input wire avm_readdatavalid;
-(* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON WRITERESPONSEVALID" *)
-input wire avm_writeresponsevalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:avalon:1.0 M_AVALON WAITREQUEST" *)
 input wire avm_waitrequest;
 
   axi_amm_bridge_v1_0_1_top #(
     .C_ADDRESS_MODE(0),
     .C_HAS_FIXED_WAIT(0),
-    .C_HAS_RESPONSE(1),
+    .C_HAS_RESPONSE(0),
     .C_FIXED_WRITE_WAIT(1),
     .C_FIXED_READ_WAIT(1),
     .C_HAS_FIXED_READ_LATENCY(0),
@@ -212,11 +206,11 @@ input wire avm_waitrequest;
     .avm_byteenable(avm_byteenable),
     .avm_writedata(avm_writedata),
     .avm_readdata(avm_readdata),
-    .avm_resp(avm_resp),
+    .avm_resp(2'D0),
     .avm_readdatavalid(avm_readdatavalid),
     .avm_burstcount(),
     .avm_beginbursttransfer(),
-    .avm_writeresponsevalid(avm_writeresponsevalid),
+    .avm_writeresponsevalid(1'D0),
     .avm_waitrequest(avm_waitrequest)
   );
 endmodule

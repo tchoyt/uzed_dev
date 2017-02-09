@@ -170,6 +170,10 @@ CONFIG.NUM_MI {2} \
 
   # Create instance: axi_amm_pls_gen, and set properties
   set axi_amm_pls_gen [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_amm_bridge:1.0 axi_amm_pls_gen ]
+  set_property -dict [ list \
+CONFIG.C_HAS_RESPONSE {0} \
+CONFIG.C_USE_BYTEENABLE {1} \
+ ] $axi_amm_pls_gen
 
   # Create instance: axi_bram_ctrl, and set properties
   set axi_bram_ctrl [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 axi_bram_ctrl ]
@@ -1293,29 +1297,29 @@ CONFIG.PCW_WDT_WDT_IO.VALUE_SRC {DEFAULT} \
   regenerate_bd_layout -layout_string {
    guistr: "# # String gsaved with Nlview 6.6.5b  2016-09-06 bk=1.3687 VDI=39 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
-preplace port axi_ref_clk -pg 1 -y 720 -defaultsOSRD
+preplace port axi_ref_clk -pg 1 -y 650 -defaultsOSRD
 preplace port avm_pls_gen -pg 1 -y 210 -defaultsOSRD
 preplace port zynq_fixed_io -pg 1 -y 530 -defaultsOSRD
 preplace port zynq_ddr -pg 1 -y 510 -defaultsOSRD
-preplace portBus axi_rst_n -pg 1 -y 460 -defaultsOSRD
+preplace portBus axi_rst_n -pg 1 -y 410 -defaultsOSRD
 preplace inst zynq_rst_sync -pg 1 -lvl 2 -y 370 -defaultsOSRD
-preplace inst zynq_ps -pg 1 -lvl 2 -y 590 -defaultsOSRD
 preplace inst axi_amm_pls_gen -pg 1 -lvl 2 -y 210 -defaultsOSRD
-preplace inst axi_addr_decode -pg 1 -lvl 1 -y 180 -defaultsOSRD
+preplace inst axi_addr_decode -pg 1 -lvl 1 -y 290 -defaultsOSRD
+preplace inst zynq_ps -pg 1 -lvl 2 -y 590 -defaultsOSRD
 preplace inst zynq_blk_mem -pg 1 -lvl 3 -y 70 -defaultsOSRD
 preplace inst axi_bram_ctrl -pg 1 -lvl 2 -y 70 -defaultsOSRD
 preplace netloc processing_system7_0_DDR 1 2 2 NJ 510 NJ
-preplace netloc axi_mem_intercon_M01_AXI 1 1 1 N
-preplace netloc processing_system7_0_M_AXI_GP0 1 0 3 20 40 340J 140 780
+preplace netloc axi_mem_intercon_M01_AXI 1 1 1 350
+preplace netloc processing_system7_0_M_AXI_GP0 1 0 3 20 140 NJ 140 770
 preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 2 1 NJ
-preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 0 4 40 460 360 460 790 460 NJ
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 2 370 730 770
-preplace netloc axi_mem_intercon_M00_AXI 1 1 1 330
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 0 4 30 460 340 460 780 460 1000J
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 2 350 730 760
+preplace netloc axi_mem_intercon_M00_AXI 1 1 1 310
 preplace netloc processing_system7_0_FIXED_IO 1 2 2 NJ 530 NJ
 preplace netloc axi_amm_bridge_0_M_AVALON 1 2 2 NJ 210 NJ
-preplace netloc Net 1 0 4 20 720 350 720 790 720 NJ
-preplace netloc rst_ps7_0_100M_interconnect_aresetn 1 0 3 30 320 370J 280 770
-levelinfo -pg 1 0 190 570 910 1040 -top 0 -bot 740
+preplace netloc Net 1 0 4 20 720 330 720 780 720 1000J
+preplace netloc rst_ps7_0_100M_interconnect_aresetn 1 0 3 30 150 320J 280 760
+levelinfo -pg 1 0 170 560 890 1020 -top 0 -bot 740
 ",
 }
 
