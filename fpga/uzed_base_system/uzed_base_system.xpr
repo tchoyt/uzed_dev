@@ -58,32 +58,32 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_auto_pc_1/zynq_top_auto_pc_1.xci"/>
-        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="zynq_top.bmm"/>
-        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_rst_ps7_0_100M_0/zynq_top_rst_ps7_0_100M_0.xci">
-          <Proxy FileSetName="zynq_top_rst_ps7_0_100M_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_axi_mem_intercon_0/zynq_top_axi_mem_intercon_0.xci"/>
-        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_blk_mem_gen_0_1/zynq_top_blk_mem_gen_0_1.xci">
-          <Proxy FileSetName="zynq_top_blk_mem_gen_0_1"/>
-        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="hdl/zynq_top.v"/>
         <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_axi_bram_ctrl_0_0/zynq_top_axi_bram_ctrl_0_0.xci">
           <Proxy FileSetName="zynq_top_axi_bram_ctrl_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="hdl/zynq_top.v"/>
+        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_blk_mem_gen_0_1/zynq_top_blk_mem_gen_0_1.xci">
+          <Proxy FileSetName="zynq_top_blk_mem_gen_0_1"/>
+        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_processing_system7_0_0/zynq_top_processing_system7_0_0.xci">
           <Proxy FileSetName="zynq_top_processing_system7_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_axi_mem_intercon_0/zynq_top_axi_mem_intercon_0.xci"/>
+        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_axi_amm_bridge_0_0/zynq_top_axi_amm_bridge_0_0.xci">
+          <Proxy FileSetName="zynq_top_axi_amm_bridge_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_rst_ps7_0_100M_0/zynq_top_rst_ps7_0_100M_0.xci">
+          <Proxy FileSetName="zynq_top_rst_ps7_0_100M_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_xbar_0/zynq_top_xbar_0.xci">
           <Proxy FileSetName="zynq_top_xbar_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_axi_amm_bridge_0_0/zynq_top_axi_amm_bridge_0_0.xci">
-          <Proxy FileSetName="zynq_top_axi_amm_bridge_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_auto_pc_0/zynq_top_auto_pc_0.xci"/>
+        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="zynq_top_ooc.xdc"/>
+        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="zynq_top.bmm"/>
         <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="hw_handoff/zynq_top_bd.tcl"/>
         <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="hw_handoff/zynq_top.hwh"/>
-        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="zynq_top_ooc.xdc"/>
+        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_auto_pc_1/zynq_top_auto_pc_1.xci"/>
+        <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="ip/zynq_top_auto_pc_0/zynq_top_auto_pc_0.xci"/>
         <CompFileExtendedInfo CompFileName="zynq_top.bd" FileRelPathName="hdl/zynq_top.hwdef"/>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/zynq_top/hdl/zynq_top_wrapper.v">
@@ -218,9 +218,7 @@
     </Run>
     <Run Id="zynq_top_xbar_0_synth_1" Type="Ft3:Synth" SrcSet="zynq_top_xbar_0" Part="xc7z010clg400-1" ConstrsSet="zynq_top_xbar_0" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/zynq_top_xbar_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -228,9 +226,7 @@
     </Run>
     <Run Id="zynq_top_axi_amm_bridge_0_0_synth_1" Type="Ft3:Synth" SrcSet="zynq_top_axi_amm_bridge_0_0" Part="xc7z010clg400-1" ConstrsSet="zynq_top_axi_amm_bridge_0_0" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/zynq_top_axi_amm_bridge_0_0_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -313,9 +309,7 @@
     </Run>
     <Run Id="zynq_top_xbar_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z010clg400-1" ConstrsSet="zynq_top_xbar_0" Description="Default settings for Implementation." SynthRun="zynq_top_xbar_0_synth_1" IncludeInArchive="false">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -330,9 +324,7 @@
     </Run>
     <Run Id="zynq_top_axi_amm_bridge_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z010clg400-1" ConstrsSet="zynq_top_axi_amm_bridge_0_0" Description="Default settings for Implementation." SynthRun="zynq_top_axi_amm_bridge_0_0_synth_1" IncludeInArchive="false">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

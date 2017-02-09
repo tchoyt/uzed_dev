@@ -2,12 +2,12 @@
 <Root MajorVersion="0" MinorVersion="33">
   <CompositeFile CompositeFileTopName="zynq_top" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1486575767"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1486575767"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1486575767"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1486652867"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1486652867"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1486652867"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip/zynq_top_processing_system7_0_0/zynq_top_processing_system7_0_0.xci" Type="IP">
-        <Instance HierarchyPath="processing_system7_0"/>
+        <Instance HierarchyPath="zynq_ps"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -22,7 +22,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/zynq_top_axi_bram_ctrl_0_0/zynq_top_axi_bram_ctrl_0_0.xci" Type="IP">
-        <Instance HierarchyPath="axi_bram_ctrl_0"/>
+        <Instance HierarchyPath="axi_bram_ctrl"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -30,7 +30,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/zynq_top_blk_mem_gen_0_1/zynq_top_blk_mem_gen_0_1.xci" Type="IP">
-        <Instance HierarchyPath="blk_mem_gen_0"/>
+        <Instance HierarchyPath="zynq_blk_mem"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -38,7 +38,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/zynq_top_axi_mem_intercon_0/zynq_top_axi_mem_intercon_0.xci" Type="IP">
-        <Instance HierarchyPath="axi_mem_intercon"/>
+        <Instance HierarchyPath="axi_addr_decode"/>
         <Properties IsEditable="false" IsVisible="false" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -46,7 +46,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/zynq_top_rst_ps7_0_100M_0/zynq_top_rst_ps7_0_100M_0.xci" Type="IP">
-        <Instance HierarchyPath="rst_ps7_0_100M"/>
+        <Instance HierarchyPath="zynq_rst_sync"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -54,7 +54,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/zynq_top_axi_amm_bridge_0_0/zynq_top_axi_amm_bridge_0_0.xci" Type="IP">
-        <Instance HierarchyPath="axi_amm_bridge_0"/>
+        <Instance HierarchyPath="axi_amm_pls_gen"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -62,7 +62,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/zynq_top_xbar_0/zynq_top_xbar_0.xci" Type="IP">
-        <Instance HierarchyPath="axi_mem_intercon/xbar"/>
+        <Instance HierarchyPath="axi_addr_decode/xbar"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -70,7 +70,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/zynq_top_auto_pc_0/zynq_top_auto_pc_0.xci" Type="IP">
-        <Instance HierarchyPath="axi_mem_intercon/m01_couplers/auto_pc"/>
+        <Instance HierarchyPath="axi_addr_decode/m01_couplers/auto_pc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -78,7 +78,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/zynq_top_auto_pc_1/zynq_top_auto_pc_1.xci" Type="IP">
-        <Instance HierarchyPath="axi_mem_intercon/s00_couplers/auto_pc"/>
+        <Instance HierarchyPath="axi_addr_decode/s00_couplers/auto_pc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

@@ -1,27 +1,29 @@
 {
    guistr: "# # String gsaved with Nlview 6.6.5b  2016-09-06 bk=1.3687 VDI=39 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -y 290 -defaultsOSRD
-preplace port M_AVALON -pg 1 -y 220 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -y 310 -defaultsOSRD
-preplace inst axi_amm_bridge_0 -pg 1 -lvl 3 -y 220 -defaultsOSRD
-preplace inst blk_mem_gen_0 -pg 1 -lvl 4 -y 100 -defaultsOSRD
-preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -y 170 -defaultsOSRD
-preplace inst axi_mem_intercon -pg 1 -lvl 2 -y 130 -defaultsOSRD
-preplace inst axi_bram_ctrl_0 -pg 1 -lvl 3 -y 100 -defaultsOSRD
-preplace inst processing_system7_0 -pg 1 -lvl 1 -y 370 -defaultsOSRD
-preplace netloc axi_mem_intercon_M01_AXI 1 2 1 750
-preplace netloc processing_system7_0_DDR 1 1 4 NJ 290 NJ 290 NJ 290 NJ
-preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 460
-preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 3 1 NJ
-preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 2 470 270 770
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 2 30 80 430
-preplace netloc axi_mem_intercon_M00_AXI 1 2 1 750
-preplace netloc processing_system7_0_FIXED_IO 1 1 4 NJ 310 NJ 310 NJ 310 NJ
-preplace netloc axi_amm_bridge_0_M_AVALON 1 3 2 NJ 220 NJ
-preplace netloc Net 1 0 3 20 70 450 280 760
-preplace netloc rst_ps7_0_100M_interconnect_aresetn 1 1 1 440
-levelinfo -pg 1 0 230 610 900 1140 1270 -top 0 -bot 500
+preplace port axi_ref_clk -pg 1 -y 650 -defaultsOSRD
+preplace port avm_pls_gen -pg 1 -y 210 -defaultsOSRD
+preplace port zynq_fixed_io -pg 1 -y 530 -defaultsOSRD
+preplace port zynq_ddr -pg 1 -y 510 -defaultsOSRD
+preplace portBus axi_rst_n -pg 1 -y 410 -defaultsOSRD
+preplace inst zynq_rst_sync -pg 1 -lvl 2 -y 370 -defaultsOSRD
+preplace inst axi_amm_pls_gen -pg 1 -lvl 2 -y 210 -defaultsOSRD
+preplace inst axi_addr_decode -pg 1 -lvl 1 -y 290 -defaultsOSRD
+preplace inst zynq_ps -pg 1 -lvl 2 -y 590 -defaultsOSRD
+preplace inst zynq_blk_mem -pg 1 -lvl 3 -y 70 -defaultsOSRD
+preplace inst axi_bram_ctrl -pg 1 -lvl 2 -y 70 -defaultsOSRD
+preplace netloc processing_system7_0_DDR 1 2 2 NJ 510 NJ
+preplace netloc axi_mem_intercon_M01_AXI 1 1 1 350
+preplace netloc processing_system7_0_M_AXI_GP0 1 0 3 20 140 NJ 140 770
+preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 2 1 NJ
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 0 4 30 460 340 460 780 460 1000J
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 2 350 730 760
+preplace netloc axi_mem_intercon_M00_AXI 1 1 1 310
+preplace netloc processing_system7_0_FIXED_IO 1 2 2 NJ 530 NJ
+preplace netloc axi_amm_bridge_0_M_AVALON 1 2 2 NJ 210 NJ
+preplace netloc Net 1 0 4 20 720 330 720 780 720 1000J
+preplace netloc rst_ps7_0_100M_interconnect_aresetn 1 0 3 30 150 320J 280 760
+levelinfo -pg 1 0 170 560 890 1020 -top 0 -bot 740
 ",
 }
 {

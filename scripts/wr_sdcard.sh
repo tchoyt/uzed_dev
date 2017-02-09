@@ -54,7 +54,7 @@ function cp_boot()
 	echo "-----------------------------"	
 	mkdir ${BOOT_MOUNT_DIR}
 	sudo mount ${SD_DEV}p1 ${BOOT_MOUNT_DIR}
-	sudo cp -R ${BOOT_INSTALL_DIR}/. ${BOOT_MOUNT_DIR}/
+	cp -a ${BOOT_INSTALL_DIR}/. ${BOOT_MOUNT_DIR}/
 	sync
 	sudo umount ${BOOT_MOUNT_DIR}
 	rm -fr ${BOOT_MOUNT_DIR}
