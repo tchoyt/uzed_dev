@@ -1,6 +1,8 @@
 fpga/*/*.cache/
 fpga/*/*.runs/
 fpga/*/*.ip_user_files/
+fpga/*/*.hw
+fpga/*/*.ioplanning
 software/device-tree-xlnx/
 software/dtc/
 software/fsbl/BOOT.bin
