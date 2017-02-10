@@ -31,6 +31,7 @@ module uzed_top (
 
 /* Interfaces */
 avalon_mm #(.A_WIDTH(32),.D_WIDTH(32)) pulse_gen_av ();     // Pulse Generator Avalon MM
+axi_lite  #(.A_WIDTH(32),.D_WIDTH(32)) reg_test_axi ();     // AXI Register block
 
 /* REG/WIRE declarations */
 wire axi_ref_clk, axi_rst_n;
@@ -39,16 +40,38 @@ wire axi_ref_clk, axi_rst_n;
 
 /* Zynq Top Level - Zynq PS + AXI/AMM Address Decode */                                                
 zynq_top_wrapper zynq_ps_axi_decode(
-    .avm_pls_gen_address          ( pulse_gen_av.address        ),
-    .avm_pls_gen_byteenable       ( pulse_gen_av.byteenable     ),
-    .avm_pls_gen_read             ( pulse_gen_av.read           ),
-    .avm_pls_gen_readdata         ( pulse_gen_av.readdata       ),
-    .avm_pls_gen_readdatavalid    ( pulse_gen_av.readdatavalid  ),
-    .avm_pls_gen_waitrequest      ( pulse_gen_av.waitrequest    ),
-    .avm_pls_gen_write            ( pulse_gen_av.write          ),
-    .avm_pls_gen_writedata        ( pulse_gen_av.writedata      ),
+    // AXI-Avalon Interface
+    .m_avl_reg_address            ( pulse_gen_av.address        ),
+    .m_avl_reg_byteenable         ( pulse_gen_av.byteenable     ),
+    .m_avl_reg_read               ( pulse_gen_av.read           ),
+    .m_avl_reg_readdata           ( pulse_gen_av.readdata       ),
+    .m_avl_reg_readdatavalid      ( pulse_gen_av.readdatavalid  ),
+    .m_avl_reg_waitrequest        ( pulse_gen_av.waitrequest    ),
+    .m_avl_reg_write              ( pulse_gen_av.write          ),
+    .m_avl_reg_writedata          ( pulse_gen_av.writedata      ),
+    // AXI-Lite Interface
     .axi_ref_clk                  ( axi_ref_clk                 ),
     .axi_rst_n                    ( axi_rst_n                   ),
+    .m_axi_reg_araddr             ( reg_test_axi.araddr         ),
+    .m_axi_reg_arprot             ( reg_test_axi.arprot         ),
+    .m_axi_reg_arready            ( reg_test_axi.arready        ),
+    .m_axi_reg_arvalid            ( reg_test_axi.arvalid        ),
+    .m_axi_reg_awaddr             ( reg_test_axi.awaddr         ),
+    .m_axi_reg_awprot             ( reg_test_axi.awprot         ),
+    .m_axi_reg_awready            ( reg_test_axi.awready        ),
+    .m_axi_reg_awvalid            ( reg_test_axi.awvalid        ),
+    .m_axi_reg_bready             ( reg_test_axi.bready         ),
+    .m_axi_reg_bresp              ( reg_test_axi.bresp          ),
+    .m_axi_reg_bvalid             ( reg_test_axi.bvalid         ),
+    .m_axi_reg_rdata              ( reg_test_axi.rvalid         ),
+    .m_axi_reg_rready             ( reg_test_axi.rready         ),
+    .m_axi_reg_rresp              ( reg_test_axi.rresp          ),
+    .m_axi_reg_rvalid             ( reg_test_axi.rvalid         ),
+    .m_axi_reg_wdata              ( reg_test_axi.wdata          ),
+    .m_axi_reg_wready             ( reg_test_axi.wready         ),
+    .m_axi_reg_wstrb              ( reg_test_axi.wstrb          ),
+    .m_axi_reg_wvalid             ( reg_test_axi.wvalid         ),    
+    // PS Hard Interfaces
     .zynq_ddr_addr                ( zynq_ddr_addr               ),
     .zynq_ddr_ba                  ( zynq_ddr_ba                 ),
     .zynq_ddr_cas_n               ( zynq_ddr_cas_n              ),

@@ -154,32 +154,56 @@ proc create_root_design { parentCell } {
 
 
   # Create interface ports
-  set avm_pls_gen [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:avalon_rtl:1.0 avm_pls_gen ]
+  set m_avl_reg [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:avalon_rtl:1.0 m_avl_reg ]
+  set m_axi_reg [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:aximm_rtl:1.0 m_axi_reg ]
+  set_property -dict [ list \
+CONFIG.ADDR_WIDTH {32} \
+CONFIG.DATA_WIDTH {32} \
+CONFIG.HAS_BURST {0} \
+CONFIG.HAS_CACHE {0} \
+CONFIG.HAS_LOCK {0} \
+CONFIG.HAS_QOS {0} \
+CONFIG.HAS_REGION {0} \
+CONFIG.PROTOCOL {AXI4LITE} \
+ ] $m_axi_reg
   set zynq_ddr [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:ddrx_rtl:1.0 zynq_ddr ]
   set zynq_fixed_io [ create_bd_intf_port -mode Master -vlnv xilinx.com:display_processing_system7:fixedio_rtl:1.0 zynq_fixed_io ]
 
   # Create ports
   set axi_ref_clk [ create_bd_port -dir O -type clk axi_ref_clk ]
+  set_property -dict [ list \
+CONFIG.ASSOCIATED_BUSIF {m_axi_reg} \
+CONFIG.ASSOCIATED_RESET {axi_rst_n} \
+ ] $axi_ref_clk
   set axi_rst_n [ create_bd_port -dir O -from 0 -to 0 -type rst axi_rst_n ]
 
   # Create instance: axi_addr_decode, and set properties
   set axi_addr_decode [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_addr_decode ]
   set_property -dict [ list \
-CONFIG.NUM_MI {2} \
+CONFIG.M02_HAS_REGSLICE {0} \
+CONFIG.NUM_MI {3} \
  ] $axi_addr_decode
 
-  # Create instance: axi_amm_pls_gen, and set properties
-  set axi_amm_pls_gen [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_amm_bridge:1.0 axi_amm_pls_gen ]
+  # Create instance: axi_amm_reg, and set properties
+  set axi_amm_reg [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_amm_bridge:1.0 axi_amm_reg ]
   set_property -dict [ list \
 CONFIG.C_HAS_RESPONSE {0} \
 CONFIG.C_USE_BYTEENABLE {1} \
- ] $axi_amm_pls_gen
+ ] $axi_amm_reg
 
   # Create instance: axi_bram_ctrl, and set properties
   set axi_bram_ctrl [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 axi_bram_ctrl ]
   set_property -dict [ list \
 CONFIG.SINGLE_PORT_BRAM {1} \
  ] $axi_bram_ctrl
+
+  # Create instance: axi_reg_fifo, and set properties
+  set axi_reg_fifo [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_data_fifo:2.1 axi_reg_fifo ]
+  set_property -dict [ list \
+CONFIG.PROTOCOL {AXI4LITE} \
+CONFIG.READ_FIFO_DEPTH {32} \
+CONFIG.WRITE_FIFO_DEPTH {32} \
+ ] $axi_reg_fifo
 
   # Create instance: zynq_blk_mem, and set properties
   set zynq_blk_mem [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.3 zynq_blk_mem ]
@@ -1275,51 +1299,57 @@ CONFIG.PCW_WDT_WDT_IO.VALUE_SRC {DEFAULT} \
   set zynq_rst_sync [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 zynq_rst_sync ]
 
   # Create interface connections
-  connect_bd_intf_net -intf_net axi_amm_bridge_0_M_AVALON [get_bd_intf_ports avm_pls_gen] [get_bd_intf_pins axi_amm_pls_gen/M_AVALON]
+  connect_bd_intf_net -intf_net axi_addr_decode_M02_AXI [get_bd_intf_pins axi_addr_decode/M02_AXI] [get_bd_intf_pins axi_reg_fifo/S_AXI]
+  connect_bd_intf_net -intf_net axi_amm_bridge_0_M_AVALON [get_bd_intf_ports m_avl_reg] [get_bd_intf_pins axi_amm_reg/M_AVALON]
   connect_bd_intf_net -intf_net axi_bram_ctrl_0_BRAM_PORTA [get_bd_intf_pins axi_bram_ctrl/BRAM_PORTA] [get_bd_intf_pins zynq_blk_mem/BRAM_PORTA]
+  connect_bd_intf_net -intf_net axi_data_fifo_0_M_AXI [get_bd_intf_ports m_axi_reg] [get_bd_intf_pins axi_reg_fifo/M_AXI]
   connect_bd_intf_net -intf_net axi_mem_intercon_M00_AXI [get_bd_intf_pins axi_addr_decode/M00_AXI] [get_bd_intf_pins axi_bram_ctrl/S_AXI]
-  connect_bd_intf_net -intf_net axi_mem_intercon_M01_AXI [get_bd_intf_pins axi_addr_decode/M01_AXI] [get_bd_intf_pins axi_amm_pls_gen/S_AXI_LITE]
+  connect_bd_intf_net -intf_net axi_mem_intercon_M01_AXI [get_bd_intf_pins axi_addr_decode/M01_AXI] [get_bd_intf_pins axi_amm_reg/S_AXI_LITE]
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports zynq_ddr] [get_bd_intf_pins zynq_ps/DDR]
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports zynq_fixed_io] [get_bd_intf_pins zynq_ps/FIXED_IO]
   connect_bd_intf_net -intf_net processing_system7_0_M_AXI_GP0 [get_bd_intf_pins axi_addr_decode/S00_AXI] [get_bd_intf_pins zynq_ps/M_AXI_GP0]
 
   # Create port connections
-  connect_bd_net -net Net [get_bd_ports axi_ref_clk] [get_bd_pins axi_addr_decode/ACLK] [get_bd_pins axi_addr_decode/M00_ACLK] [get_bd_pins axi_addr_decode/M01_ACLK] [get_bd_pins axi_addr_decode/S00_ACLK] [get_bd_pins axi_amm_pls_gen/s_axi_aclk] [get_bd_pins axi_bram_ctrl/s_axi_aclk] [get_bd_pins zynq_ps/FCLK_CLK0] [get_bd_pins zynq_ps/M_AXI_GP0_ACLK] [get_bd_pins zynq_rst_sync/slowest_sync_clk]
+  connect_bd_net -net Net [get_bd_ports axi_ref_clk] [get_bd_pins axi_addr_decode/ACLK] [get_bd_pins axi_addr_decode/M00_ACLK] [get_bd_pins axi_addr_decode/M01_ACLK] [get_bd_pins axi_addr_decode/M02_ACLK] [get_bd_pins axi_addr_decode/S00_ACLK] [get_bd_pins axi_amm_reg/s_axi_aclk] [get_bd_pins axi_bram_ctrl/s_axi_aclk] [get_bd_pins axi_reg_fifo/aclk] [get_bd_pins zynq_ps/FCLK_CLK0] [get_bd_pins zynq_ps/M_AXI_GP0_ACLK] [get_bd_pins zynq_rst_sync/slowest_sync_clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins zynq_ps/FCLK_RESET0_N] [get_bd_pins zynq_rst_sync/ext_reset_in]
   connect_bd_net -net rst_ps7_0_100M_interconnect_aresetn [get_bd_pins axi_addr_decode/ARESETN] [get_bd_pins zynq_rst_sync/interconnect_aresetn]
-  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_ports axi_rst_n] [get_bd_pins axi_addr_decode/M00_ARESETN] [get_bd_pins axi_addr_decode/M01_ARESETN] [get_bd_pins axi_addr_decode/S00_ARESETN] [get_bd_pins axi_amm_pls_gen/s_axi_aresetn] [get_bd_pins axi_bram_ctrl/s_axi_aresetn] [get_bd_pins zynq_rst_sync/peripheral_aresetn]
+  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_ports axi_rst_n] [get_bd_pins axi_addr_decode/M00_ARESETN] [get_bd_pins axi_addr_decode/M01_ARESETN] [get_bd_pins axi_addr_decode/M02_ARESETN] [get_bd_pins axi_addr_decode/S00_ARESETN] [get_bd_pins axi_amm_reg/s_axi_aresetn] [get_bd_pins axi_bram_ctrl/s_axi_aresetn] [get_bd_pins axi_reg_fifo/aresetn] [get_bd_pins zynq_rst_sync/peripheral_aresetn]
 
   # Create address segments
-  create_bd_addr_seg -range 0x00001000 -offset 0x40001000 [get_bd_addr_spaces zynq_ps/Data] [get_bd_addr_segs axi_amm_pls_gen/S_AXI_LITE/Reg] SEG_axi_amm_bridge_0_Reg
+  create_bd_addr_seg -range 0x00001000 -offset 0x40001000 [get_bd_addr_spaces zynq_ps/Data] [get_bd_addr_segs axi_amm_reg/S_AXI_LITE/Reg] SEG_axi_amm_bridge_0_Reg
   create_bd_addr_seg -range 0x00001000 -offset 0x40000000 [get_bd_addr_spaces zynq_ps/Data] [get_bd_addr_segs axi_bram_ctrl/S_AXI/Mem0] SEG_axi_bram_ctrl_0_Mem0
+  create_bd_addr_seg -range 0x00001000 -offset 0x40002000 [get_bd_addr_spaces zynq_ps/Data] [get_bd_addr_segs m_axi_reg/Reg] SEG_m_axi_reg_Reg
 
   # Perform GUI Layout
   regenerate_bd_layout -layout_string {
    guistr: "# # String gsaved with Nlview 6.6.5b  2016-09-06 bk=1.3687 VDI=39 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
-preplace port axi_ref_clk -pg 1 -y 650 -defaultsOSRD
-preplace port avm_pls_gen -pg 1 -y 210 -defaultsOSRD
-preplace port zynq_fixed_io -pg 1 -y 530 -defaultsOSRD
-preplace port zynq_ddr -pg 1 -y 510 -defaultsOSRD
-preplace portBus axi_rst_n -pg 1 -y 410 -defaultsOSRD
-preplace inst zynq_rst_sync -pg 1 -lvl 2 -y 370 -defaultsOSRD
-preplace inst axi_amm_pls_gen -pg 1 -lvl 2 -y 210 -defaultsOSRD
-preplace inst axi_addr_decode -pg 1 -lvl 1 -y 290 -defaultsOSRD
-preplace inst zynq_ps -pg 1 -lvl 2 -y 590 -defaultsOSRD
-preplace inst zynq_blk_mem -pg 1 -lvl 3 -y 70 -defaultsOSRD
-preplace inst axi_bram_ctrl -pg 1 -lvl 2 -y 70 -defaultsOSRD
-preplace netloc processing_system7_0_DDR 1 2 2 NJ 510 NJ
-preplace netloc axi_mem_intercon_M01_AXI 1 1 1 350
-preplace netloc processing_system7_0_M_AXI_GP0 1 0 3 20 140 NJ 140 770
+preplace port m_avl_reg -pg 1 -y 670 -defaultsOSRD
+preplace port axi_ref_clk -pg 1 -y 200 -defaultsOSRD
+preplace port m_axi_reg -pg 1 -y 280 -defaultsOSRD
+preplace port zynq_fixed_io -pg 1 -y 80 -defaultsOSRD
+preplace port zynq_ddr -pg 1 -y 60 -defaultsOSRD
+preplace portBus axi_rst_n -pg 1 -y 480 -defaultsOSRD
+preplace inst zynq_rst_sync -pg 1 -lvl 2 -y 380 -defaultsOSRD
+preplace inst axi_addr_decode -pg 1 -lvl 1 -y 450 -defaultsOSRD
+preplace inst zynq_ps -pg 1 -lvl 2 -y 140 -defaultsOSRD
+preplace inst zynq_blk_mem -pg 1 -lvl 3 -y 550 -defaultsOSRD
+preplace inst axi_bram_ctrl -pg 1 -lvl 2 -y 550 -defaultsOSRD
+preplace inst axi_data_fifo_0 -pg 1 -lvl 3 -y 360 -defaultsOSRD
+preplace inst axi_amm_reg -pg 1 -lvl 2 -y 670 -defaultsOSRD
+preplace netloc processing_system7_0_DDR 1 2 2 NJ 60 NJ
+preplace netloc axi_mem_intercon_M01_AXI 1 1 1 460
+preplace netloc axi_addr_decode_M02_AXI 1 1 2 N 470 930
+preplace netloc processing_system7_0_M_AXI_GP0 1 0 3 -20J 10 NJ 10 930
 preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 2 1 NJ
-preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 0 4 30 460 340 460 780 460 1000J
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 2 350 730 760
-preplace netloc axi_mem_intercon_M00_AXI 1 1 1 310
-preplace netloc processing_system7_0_FIXED_IO 1 2 2 NJ 530 NJ
-preplace netloc axi_amm_bridge_0_M_AVALON 1 2 2 NJ 210 NJ
-preplace netloc Net 1 0 4 20 720 330 720 780 720 1000J
-preplace netloc rst_ps7_0_100M_interconnect_aresetn 1 0 3 30 150 320J 280 760
-levelinfo -pg 1 0 170 560 890 1020 -top 0 -bot 740
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 0 4 -10 620 480 480 920 480 NJ
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 2 490 280 920
+preplace netloc axi_mem_intercon_M00_AXI 1 1 1 490
+preplace netloc processing_system7_0_FIXED_IO 1 2 2 NJ 80 NJ
+preplace netloc axi_amm_bridge_0_M_AVALON 1 2 2 NJ 670 NJ
+preplace netloc Net 1 0 4 -30 270 470 270 930 270 1150J
+preplace netloc rst_ps7_0_100M_interconnect_aresetn 1 0 3 -10J 290 NJ 290 920
+levelinfo -pg 1 -50 320 720 1040 1170 -top -80 -bot 740
 ",
 }
 
