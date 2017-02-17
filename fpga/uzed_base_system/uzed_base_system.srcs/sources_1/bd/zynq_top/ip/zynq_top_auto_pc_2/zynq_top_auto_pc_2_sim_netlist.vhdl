@@ -1,11 +1,11 @@
 -- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2016.4 (lin64) Build 1733598 Wed Dec 14 22:35:42 MST 2016
--- Date        : Fri Feb 10 14:19:52 2017
+-- Date        : Fri Feb 17 10:24:57 2017
 -- Host        : thoyt-dell7510 running 64-bit Ubuntu 16.04.2 LTS
--- Command     : write_vhdl -force -mode funcsim -rename_top zynq_top_auto_pc_2 -prefix
---               zynq_top_auto_pc_2_ zynq_top_auto_pc_1_sim_netlist.vhdl
--- Design      : zynq_top_auto_pc_1
+-- Command     : write_vhdl -force -mode funcsim
+--               /home/thoyt/fpga_work/uzed_dev/fpga/uzed_base_system/uzed_base_system.srcs/sources_1/bd/zynq_top/ip/zynq_top_auto_pc_2/zynq_top_auto_pc_2_sim_netlist.vhdl
+-- Design      : zynq_top_auto_pc_2
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xc7z010clg400-1
@@ -143,6 +143,8 @@ entity zynq_top_auto_pc_2_axi_protocol_converter_v2_1_11_axi_protocol_converter 
   attribute C_TRANSLATION_MODE of zynq_top_auto_pc_2_axi_protocol_converter_v2_1_11_axi_protocol_converter : entity is 2;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of zynq_top_auto_pc_2_axi_protocol_converter_v2_1_11_axi_protocol_converter : entity is "yes";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_2_axi_protocol_converter_v2_1_11_axi_protocol_converter : entity is "axi_protocol_converter_v2_1_11_axi_protocol_converter";
   attribute P_AXI3 : integer;
   attribute P_AXI3 of zynq_top_auto_pc_2_axi_protocol_converter_v2_1_11_axi_protocol_converter : entity is 1;
   attribute P_AXI4 : integer;
@@ -414,7 +416,7 @@ entity zynq_top_auto_pc_2 is
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of zynq_top_auto_pc_2 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of zynq_top_auto_pc_2 : entity is "zynq_top_auto_pc_1,axi_protocol_converter_v2_1_11_axi_protocol_converter,{}";
+  attribute CHECK_LICENSE_TYPE of zynq_top_auto_pc_2 : entity is "zynq_top_auto_pc_2,axi_protocol_converter_v2_1_11_axi_protocol_converter,{}";
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of zynq_top_auto_pc_2 : entity is "yes";
   attribute X_CORE_INFO : string;

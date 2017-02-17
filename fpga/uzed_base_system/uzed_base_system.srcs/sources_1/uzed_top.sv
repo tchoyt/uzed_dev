@@ -31,7 +31,7 @@ module uzed_top (
 
 /* Interfaces */
 avalon_mm #(.A_WIDTH(32),.D_WIDTH(32)) pulse_gen_av ();     // Pulse Generator Avalon MM
-axi_lite  #(.A_WIDTH(32),.D_WIDTH(32)) reg_test_axi ();     // AXI Register block
+axi4_lite #(.A_WIDTH(32),.D_WIDTH(32)) pulse_gen_axi ();    // AXI Register block
 
 /* REG/WIRE declarations */
 wire axi_ref_clk, axi_rst_n;
@@ -52,25 +52,25 @@ zynq_top_wrapper zynq_ps_axi_decode(
     // AXI-Lite Interface
     .axi_ref_clk                  ( axi_ref_clk                 ),
     .axi_rst_n                    ( axi_rst_n                   ),
-    .m_axi_reg_araddr             ( reg_test_axi.araddr         ),
-    .m_axi_reg_arprot             ( reg_test_axi.arprot         ),
-    .m_axi_reg_arready            ( reg_test_axi.arready        ),
-    .m_axi_reg_arvalid            ( reg_test_axi.arvalid        ),
-    .m_axi_reg_awaddr             ( reg_test_axi.awaddr         ),
-    .m_axi_reg_awprot             ( reg_test_axi.awprot         ),
-    .m_axi_reg_awready            ( reg_test_axi.awready        ),
-    .m_axi_reg_awvalid            ( reg_test_axi.awvalid        ),
-    .m_axi_reg_bready             ( reg_test_axi.bready         ),
-    .m_axi_reg_bresp              ( reg_test_axi.bresp          ),
-    .m_axi_reg_bvalid             ( reg_test_axi.bvalid         ),
-    .m_axi_reg_rdata              ( reg_test_axi.rvalid         ),
-    .m_axi_reg_rready             ( reg_test_axi.rready         ),
-    .m_axi_reg_rresp              ( reg_test_axi.rresp          ),
-    .m_axi_reg_rvalid             ( reg_test_axi.rvalid         ),
-    .m_axi_reg_wdata              ( reg_test_axi.wdata          ),
-    .m_axi_reg_wready             ( reg_test_axi.wready         ),
-    .m_axi_reg_wstrb              ( reg_test_axi.wstrb          ),
-    .m_axi_reg_wvalid             ( reg_test_axi.wvalid         ),    
+    .m_axi_reg_araddr             ( pulse_gen_axi.araddr        ),
+    .m_axi_reg_arprot             ( pulse_gen_axi.arprot        ),
+    .m_axi_reg_arready            ( pulse_gen_axi.arready       ),
+    .m_axi_reg_arvalid            ( pulse_gen_axi.arvalid       ),
+    .m_axi_reg_awaddr             ( pulse_gen_axi.awaddr        ),
+    .m_axi_reg_awprot             ( pulse_gen_axi.awprot        ),
+    .m_axi_reg_awready            ( pulse_gen_axi.awready       ),
+    .m_axi_reg_awvalid            ( pulse_gen_axi.awvalid       ),
+    .m_axi_reg_bready             ( pulse_gen_axi.bready        ),
+    .m_axi_reg_bresp              ( pulse_gen_axi.bresp         ),
+    .m_axi_reg_bvalid             ( pulse_gen_axi.bvalid        ),
+    .m_axi_reg_rdata              ( pulse_gen_axi.rdata         ),
+    .m_axi_reg_rready             ( pulse_gen_axi.rready        ),
+    .m_axi_reg_rresp              ( pulse_gen_axi.rresp         ),
+    .m_axi_reg_rvalid             ( pulse_gen_axi.rvalid        ),
+    .m_axi_reg_wdata              ( pulse_gen_axi.wdata         ),
+    .m_axi_reg_wready             ( pulse_gen_axi.wready        ),
+    .m_axi_reg_wstrb              ( pulse_gen_axi.wstrb         ),
+    .m_axi_reg_wvalid             ( pulse_gen_axi.wvalid        ),    
     // PS Hard Interfaces
     .zynq_ddr_addr                ( zynq_ddr_addr               ),
     .zynq_ddr_ba                  ( zynq_ddr_ba                 ),
@@ -100,6 +100,7 @@ pulse_gen pulse_gen_vcc (
    .clk        ( axi_ref_clk            ), //
    .rst_n      ( axi_rst_n              ), //
    .reg_av     ( pulse_gen_av.Slave     ), // Bxx - Register/Control Avalon bus (A=6, D=32,  BC=1)  
+   .reg_axi    ( pulse_gen_axi.Slave    ),
    .ext_trig   ( 1'b0                   ), // I1  - External Pulse Generator Trigger 
    .pulse_out  ( pulse_gen_out          )  // O1  - Output of the pulse generator
 );

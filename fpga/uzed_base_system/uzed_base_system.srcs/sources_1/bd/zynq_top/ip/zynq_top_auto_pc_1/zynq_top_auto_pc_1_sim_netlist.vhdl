@@ -1,11 +1,11 @@
 -- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2016.4 (lin64) Build 1733598 Wed Dec 14 22:35:42 MST 2016
--- Date        : Fri Feb 10 14:20:21 2017
+-- Date        : Fri Feb 17 10:25:03 2017
 -- Host        : thoyt-dell7510 running 64-bit Ubuntu 16.04.2 LTS
--- Command     : write_vhdl -force -mode funcsim -rename_top zynq_top_auto_pc_1 -prefix
---               zynq_top_auto_pc_1_ zynq_top_auto_pc_0_sim_netlist.vhdl
--- Design      : zynq_top_auto_pc_0
+-- Command     : write_vhdl -force -mode funcsim
+--               /home/thoyt/fpga_work/uzed_dev/fpga/uzed_base_system/uzed_base_system.srcs/sources_1/bd/zynq_top/ip/zynq_top_auto_pc_1/zynq_top_auto_pc_1_sim_netlist.vhdl
+-- Design      : zynq_top_auto_pc_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xc7z010clg400-1
@@ -39,6 +39,8 @@ entity zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_incr_cmd is
     \state_reg[1]\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \state_reg[0]_rep\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_incr_cmd : entity is "axi_protocol_converter_v2_1_11_b2s_incr_cmd";
 end zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_incr_cmd;
 
 architecture STRUCTURE of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_incr_cmd is
@@ -1240,6 +1242,8 @@ entity zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_rd_cmd_fsm is
     sel_first_reg_4 : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_rd_cmd_fsm : entity is "axi_protocol_converter_v2_1_11_b2s_rd_cmd_fsm";
 end zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_rd_cmd_fsm;
 
 architecture STRUCTURE of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_rd_cmd_fsm is
@@ -1561,6 +1565,8 @@ entity zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_simple_fifo is
     \in\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_simple_fifo : entity is "axi_protocol_converter_v2_1_11_b2s_simple_fifo";
 end zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_simple_fifo;
 
 architecture STRUCTURE of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_simple_fifo is
@@ -3980,6 +3986,8 @@ entity zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_wr_cmd_fsm is
     \sel_first__0\ : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_wr_cmd_fsm : entity is "axi_protocol_converter_v2_1_11_b2s_wr_cmd_fsm";
 end zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_wr_cmd_fsm;
 
 architecture STRUCTURE of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_wr_cmd_fsm is
@@ -4391,6 +4399,8 @@ entity zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_wrap_cmd is
     \wrap_second_len_r_reg[3]_2\ : in STD_LOGIC_VECTOR ( 2 downto 0 );
     \m_payload_i_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_wrap_cmd : entity is "axi_protocol_converter_v2_1_11_b2s_wrap_cmd";
 end zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_wrap_cmd;
 
 architecture STRUCTURE of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_wrap_cmd is
@@ -6393,6 +6403,8 @@ entity zynq_top_auto_pc_1_axi_register_slice_v2_1_11_axic_register_slice is
     \axaddr_incr_reg[3]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \state_reg[1]_rep_1\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_register_slice_v2_1_11_axic_register_slice : entity is "axi_register_slice_v2_1_11_axic_register_slice";
 end zynq_top_auto_pc_1_axi_register_slice_v2_1_11_axic_register_slice;
 
 architecture STRUCTURE of zynq_top_auto_pc_1_axi_register_slice_v2_1_11_axic_register_slice is
@@ -13233,6 +13245,8 @@ entity zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_b_channel is
     \in\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     m_axi_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_b_channel : entity is "axi_protocol_converter_v2_1_11_b2s_b_channel";
 end zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_b_channel;
 
 architecture STRUCTURE of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_b_channel is
@@ -13567,6 +13581,8 @@ entity zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_cmd_translator is
     \state_reg[1]\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \state_reg[0]_rep_0\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_cmd_translator : entity is "axi_protocol_converter_v2_1_11_b2s_cmd_translator";
 end zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_cmd_translator;
 
 architecture STRUCTURE of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_cmd_translator is
@@ -13857,6 +13873,8 @@ entity zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_r_channel is
     areset_d1 : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 11 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_r_channel : entity is "axi_protocol_converter_v2_1_11_b2s_r_channel";
 end zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_r_channel;
 
 architecture STRUCTURE of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_r_channel is
@@ -14099,6 +14117,8 @@ entity zynq_top_auto_pc_1_axi_register_slice_v2_1_11_axi_register_slice is
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     \state_reg[1]_rep_3\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_register_slice_v2_1_11_axi_register_slice : entity is "axi_register_slice_v2_1_11_axi_register_slice";
 end zynq_top_auto_pc_1_axi_register_slice_v2_1_11_axi_register_slice;
 
 architecture STRUCTURE of zynq_top_auto_pc_1_axi_register_slice_v2_1_11_axi_register_slice is
@@ -14263,6 +14283,8 @@ entity zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_ar_channel is
     \wrap_second_len_r_reg[3]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \m_payload_i_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_ar_channel : entity is "axi_protocol_converter_v2_1_11_b2s_ar_channel";
 end zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_ar_channel;
 
 architecture STRUCTURE of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_ar_channel is
@@ -14539,6 +14561,8 @@ entity zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_aw_channel is
     \m_payload_i_reg[38]\ : in STD_LOGIC;
     D : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_aw_channel : entity is "axi_protocol_converter_v2_1_11_b2s_aw_channel";
 end zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_aw_channel;
 
 architecture STRUCTURE of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s_aw_channel is
@@ -14877,6 +14901,8 @@ entity zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s is
     s_axi_arvalid : in STD_LOGIC;
     aresetn : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s : entity is "axi_protocol_converter_v2_1_11_b2s";
 end zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s;
 
 architecture STRUCTURE of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_b2s is
@@ -15455,6 +15481,8 @@ entity zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_axi_protocol_converter 
   attribute C_TRANSLATION_MODE of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_axi_protocol_converter : entity is 2;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_axi_protocol_converter : entity is "yes";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_axi_protocol_converter : entity is "axi_protocol_converter_v2_1_11_axi_protocol_converter";
   attribute P_AXI3 : integer;
   attribute P_AXI3 of zynq_top_auto_pc_1_axi_protocol_converter_v2_1_11_axi_protocol_converter : entity is 1;
   attribute P_AXI4 : integer;
@@ -15712,7 +15740,7 @@ entity zynq_top_auto_pc_1 is
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of zynq_top_auto_pc_1 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of zynq_top_auto_pc_1 : entity is "zynq_top_auto_pc_0,axi_protocol_converter_v2_1_11_axi_protocol_converter,{}";
+  attribute CHECK_LICENSE_TYPE of zynq_top_auto_pc_1 : entity is "zynq_top_auto_pc_1,axi_protocol_converter_v2_1_11_axi_protocol_converter,{}";
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of zynq_top_auto_pc_1 : entity is "yes";
   attribute X_CORE_INFO : string;

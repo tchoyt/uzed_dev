@@ -1,6 +1,6 @@
 /* Generic AXI4-Lite Interface */
 
-interface axi_lite 
+interface axi4_lite 
    #(
       A_WIDTH     = 32, // Width of the address bus
       D_WIDTH     = 32  // Width of the data bus
