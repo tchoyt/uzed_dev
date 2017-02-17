@@ -2,8 +2,7 @@
 module pulse_gen (
    input  wire       clk,        // I1  - System Clock
    input  wire       rst_n,      // I1  - Active-low system clock synchronized reset
-   avalon_mm.Slave   reg_av,     // Register/Control Avalon bus (A=6, D=32,  BC=1)
-   axi4_lite.Slave   reg_axi, 
+   axi4_lite.Slave   reg_axi,    // Bxx - Register/control interface
    input  wire       ext_trig,   // I1  - External Pulse Generator Trigger
    output wire       pulse_out   
 );      
@@ -22,17 +21,34 @@ wire [MULT_WIDTH-1:0] pulse_gen_delay_mult, pulse_gen_pos_mult, pulse_gen_neg_mu
 /* Continuous Assignments */
 
 /* Pulse Generator Register Block */                                                
-pulse_gen_regs pulse_gen_registers (
+pulse_gen_regs #( 
+   .REG_WIDTH     ( $size(reg_axi.wdata)  ),
+   .W_ADDR_WIDTH  ( $size(reg_axi.awaddr) ), 
+   .R_ADDR_WIDTH  ( $size(reg_axi.araddr) ),
+   .REG_ADDR_MSB  ( 11 ),
+   .REG_ADDR_LSB  ( 2  ))
+pulse_gen_registers (
    .clk                    ( clk                      ), // I1  - System clock
-   .reset_n                ( rst_n                    ), // I1  - Active-low system clock synchronized reset
-   .read                   ( reg_av.read              ), // I1  -
-   .write                  ( reg_av.write             ), // I1  -
-   .address                ( reg_av.address[5:2]      ), // I4  -
-   .byteenable             ( reg_av.byteenable        ), // I4  -
-   .writedata              ( reg_av.writedata         ), // I32 -
-   .readdata               ( reg_av.readdata          ), // O32 -
-   .readdatavalid          ( reg_av.readdatavalid     ), // O1  -
-   .waitrequest            ( reg_av.waitrequest       ), // O1  - 
+   .rst_n                  ( rst_n                    ), // I1  - Active-low system clock synchronized reset
+   .reg_axi_araddr         ( reg_axi.araddr           ), // Read Address
+   .reg_axi_arprot         ( reg_axi.arprot           ), // Normal, secure data attributes
+   .reg_axi_arready        ( reg_axi.arready          ), // Read address channel ready
+   .reg_axi_arvalid        ( reg_axi.arvalid          ), // Read address valid              
+   .reg_axi_awaddr         ( reg_axi.awaddr           ), // Write Address
+   .reg_axi_awprot         ( reg_axi.awprot           ), // Normal, secure data attributes
+   .reg_axi_awready        ( reg_axi.awready          ), // Write address channel ready
+   .reg_axi_awvalid        ( reg_axi.awvalid          ), // Write address valid
+   .reg_axi_bready         ( reg_axi.bready           ), // Write response channel ready
+   .reg_axi_bresp          ( reg_axi.bresp            ), // Write response
+   .reg_axi_bvalid         ( reg_axi.bvalid           ), // Write response valid
+   .reg_axi_rdata          ( reg_axi.rdata            ), // Read data
+   .reg_axi_rready         ( reg_axi.rready           ), // Read data channel ready
+   .reg_axi_rresp          ( reg_axi.rresp            ), // Read response
+   .reg_axi_rvalid         ( reg_axi.rvalid           ), // Read data valid
+   .reg_axi_wdata          ( reg_axi.wdata            ), // Write data
+   .reg_axi_wready         ( reg_axi.wready           ), // Write data channel ready
+   .reg_axi_wstrb          ( reg_axi.wstrb            ), // Write strobe
+   .reg_axi_wvalid         ( reg_axi.wvalid           ), // Write data valid         
    .version_major          ( 16'h1234                 ), // I16 - 
    .version_minor          ( 16'h5678                 ), // I16 -
    .ctrl_enable            ( pulse_gen_en             ), // O1  - Enable Pulse Gen Output - One-Shot or Continuous
@@ -48,52 +64,6 @@ pulse_gen_regs pulse_gen_registers (
    .status_pll_lock        ( pll_lock                 ), // I1  - PLL lock status
    .status_pll_unlock_cnt  ( pll_unlock_cnt           ), // I4  - PLL unlock counter
    .debug_test_reg         (                          )  // O32 - 
-);
-
-/* Pulse Generator Register Block - AXI Interface*/                                                
-pulse_gen_axiregs #( 
-   .REG_WIDTH     ( $size(reg_axi.wdata)  ),
-   .W_ADDR_WIDTH  ( $size(reg_axi.awaddr) ), 
-   .R_ADDR_WIDTH  ( $size(reg_axi.araddr) ),
-   .REG_ADDR_MSB  ( 11 ),
-   .REG_ADDR_LSB  ( 2  ))
-pulse_gen_axiregisters (
-   .clk                    ( clk                 ), // I1  - System clock
-   .rst_n                  ( rst_n               ), // I1  - Active-low system clock synchronized reset
-   .reg_axi_araddr         ( reg_axi.araddr      ), // Read Address
-   .reg_axi_arprot         ( reg_axi.arprot      ), // Normal, secure data attributes
-   .reg_axi_arready        ( reg_axi.arready     ), // Read address channel ready
-   .reg_axi_arvalid        ( reg_axi.arvalid     ), // Read address valid              
-   .reg_axi_awaddr         ( reg_axi.awaddr      ), // Write Address
-   .reg_axi_awprot         ( reg_axi.awprot      ), // Normal, secure data attributes
-   .reg_axi_awready        ( reg_axi.awready     ), // Write address channel ready
-   .reg_axi_awvalid        ( reg_axi.awvalid     ), // Write address valid
-   .reg_axi_bready         ( reg_axi.bready      ), // Write response channel ready
-   .reg_axi_bresp          ( reg_axi.bresp       ), // Write response
-   .reg_axi_bvalid         ( reg_axi.bvalid      ), // Write response valid
-   .reg_axi_rdata          ( reg_axi.rdata       ), // Read data
-   .reg_axi_rready         ( reg_axi.rready      ), // Read data channel ready
-   .reg_axi_rresp          ( reg_axi.rresp       ), // Read response
-   .reg_axi_rvalid         ( reg_axi.rvalid      ), // Read data valid
-   .reg_axi_wdata          ( reg_axi.wdata       ), // Write data
-   .reg_axi_wready         ( reg_axi.wready      ), // Write data channel ready
-   .reg_axi_wstrb          ( reg_axi.wstrb       ), // Write strobe
-   .reg_axi_wvalid         ( reg_axi.wvalid      ), // Write data valid         
-   .version_major          ( 16'h1234            ), // I16 - 
-   .version_minor          ( 16'h5678            ), // I16 -
-   .ctrl_enable            (                     ), // O1  - Enable Pulse Gen Output - One-Shot or Continuous
-   .ctrl_enable_pls        (                     ), // O1  - 
-   .ctrl_rst               (                     ), // O1  - Pulse Gen PLL Reset - Active high
-   .pulse_pos_width        (                     ), // Ox  - Pulse Positive Width
-   .pulse_neg_width        (                     ), // Ox  - Pulse Negative Width
-   .pulse_delay_width      (                     ), // Ox  - Pulse Initial Delay
-   .pulse_repeat           (                     ), // Ox  - Number of Pulse interations
-   .mult_init              (                     ), // Ox  - Multiply factor for Pulse Initial Delay
-   .mult_pos               (                     ), // Ox  - Multiply factor for Pulse Positive PW
-   .mult_neg               (                     ), // Ox  - Multiply factor for Pulse Negative PW
-   .status_pll_lock        ( 1'b1                ), // I1  - PLL lock status
-   .status_pll_unlock_cnt  ( 4'hA                ), // I4  - PLL unlock counter
-   .debug_test_reg         (                     )  // O32 - 
 );
 
 /* Pulse Generator PLL */

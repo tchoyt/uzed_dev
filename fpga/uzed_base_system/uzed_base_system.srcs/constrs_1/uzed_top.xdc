@@ -1,5 +1,10 @@
 # Board Level Timing Contraints
 
+# Tool Properties
+#============================================================
+set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]
+
+
 # Create Base Clocks
 # Clock frequencies in MHz - 1 / Clock Freq(MHz) * 1000 = Clock Period(ns)
 #============================================================

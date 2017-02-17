@@ -1,7 +1,7 @@
 //Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2016.4 (lin64) Build 1733598 Wed Dec 14 22:35:42 MST 2016
-//Date        : Fri Feb 10 14:37:02 2017
+//Date        : Fri Feb 17 13:41:07 2017
 //Host        : thoyt-dell7510 running 64-bit Ubuntu 16.04.2 LTS
 //Command     : generate_target zynq_top_wrapper.bd
 //Design      : zynq_top_wrapper
@@ -12,14 +12,6 @@
 module zynq_top_wrapper
    (axi_ref_clk,
     axi_rst_n,
-    m_avl_reg_address,
-    m_avl_reg_byteenable,
-    m_avl_reg_read,
-    m_avl_reg_readdata,
-    m_avl_reg_readdatavalid,
-    m_avl_reg_waitrequest,
-    m_avl_reg_write,
-    m_avl_reg_writedata,
     m_axi_reg_araddr,
     m_axi_reg_arprot,
     m_axi_reg_arready,
@@ -62,14 +54,6 @@ module zynq_top_wrapper
     zynq_fixed_io_ps_srstb);
   output axi_ref_clk;
   output [0:0]axi_rst_n;
-  output [31:0]m_avl_reg_address;
-  output [3:0]m_avl_reg_byteenable;
-  output m_avl_reg_read;
-  input [31:0]m_avl_reg_readdata;
-  input m_avl_reg_readdatavalid;
-  input m_avl_reg_waitrequest;
-  output m_avl_reg_write;
-  output [31:0]m_avl_reg_writedata;
   output [31:0]m_axi_reg_araddr;
   output [2:0]m_axi_reg_arprot;
   input m_axi_reg_arready;
@@ -113,14 +97,6 @@ module zynq_top_wrapper
 
   wire axi_ref_clk;
   wire [0:0]axi_rst_n;
-  wire [31:0]m_avl_reg_address;
-  wire [3:0]m_avl_reg_byteenable;
-  wire m_avl_reg_read;
-  wire [31:0]m_avl_reg_readdata;
-  wire m_avl_reg_readdatavalid;
-  wire m_avl_reg_waitrequest;
-  wire m_avl_reg_write;
-  wire [31:0]m_avl_reg_writedata;
   wire [31:0]m_axi_reg_araddr;
   wire [2:0]m_axi_reg_arprot;
   wire m_axi_reg_arready;
@@ -165,14 +141,6 @@ module zynq_top_wrapper
   zynq_top zynq_top_i
        (.axi_ref_clk(axi_ref_clk),
         .axi_rst_n(axi_rst_n),
-        .m_avl_reg_address(m_avl_reg_address),
-        .m_avl_reg_byteenable(m_avl_reg_byteenable),
-        .m_avl_reg_read(m_avl_reg_read),
-        .m_avl_reg_readdata(m_avl_reg_readdata),
-        .m_avl_reg_readdatavalid(m_avl_reg_readdatavalid),
-        .m_avl_reg_waitrequest(m_avl_reg_waitrequest),
-        .m_avl_reg_write(m_avl_reg_write),
-        .m_avl_reg_writedata(m_avl_reg_writedata),
         .m_axi_reg_araddr(m_axi_reg_araddr),
         .m_axi_reg_arprot(m_axi_reg_arprot),
         .m_axi_reg_arready(m_axi_reg_arready),

@@ -23,9 +23,9 @@ set_max_delay  -from [get_cells {pulse_gen_vcc/pulse_gen_clk_reset_sync/rff1_reg
 #============================================================
 # Pulse Generator Contraints
 # These registers are static, so can be latched safely
-set_false_path -from [get_cells {pulse_gen_vcc/pulse_gen_registers/ctrl_reg*}]
-set_false_path -from [get_cells {pulse_gen_vcc/pulse_gen_registers/pulse_reg*}]
-set_false_path -from [get_cells {pulse_gen_vcc/pulse_gen_registers/mult_reg*}]
+set_false_path -from [get_cells {pulse_gen_vcc/pulse_gen_registers/Q_reg[ctrl_reg][*]}]							    
+set_false_path -from [get_cells {pulse_gen_vcc/pulse_gen_registers/Q_reg[pulse_reg][*]}]
+set_false_path -from [get_cells {pulse_gen_vcc/pulse_gen_registers/Q_reg[mult_reg][*]}]
 # These nets need to be properly constrainted
 set_false_path -to   [get_cells {pulse_gen_vcc/pll_lock_reg_reg[0]}]
 set_max_delay  -from [get_cells {pulse_gen_vcc/pll_lock_reg_reg[0]}] -to [get_cells {pulse_gen_vcc/pll_lock_reg_reg[0]}] $AXI_REF_CLK_CONST

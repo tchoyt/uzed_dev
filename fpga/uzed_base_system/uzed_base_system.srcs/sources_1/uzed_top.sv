@@ -30,7 +30,6 @@ module uzed_top (
 );      
 
 /* Interfaces */
-avalon_mm #(.A_WIDTH(32),.D_WIDTH(32)) pulse_gen_av ();     // Pulse Generator Avalon MM
 axi4_lite #(.A_WIDTH(32),.D_WIDTH(32)) pulse_gen_axi ();    // AXI Register block
 
 /* REG/WIRE declarations */
@@ -40,15 +39,6 @@ wire axi_ref_clk, axi_rst_n;
 
 /* Zynq Top Level - Zynq PS + AXI/AMM Address Decode */                                                
 zynq_top_wrapper zynq_ps_axi_decode(
-    // AXI-Avalon Interface
-    .m_avl_reg_address            ( pulse_gen_av.address        ),
-    .m_avl_reg_byteenable         ( pulse_gen_av.byteenable     ),
-    .m_avl_reg_read               ( pulse_gen_av.read           ),
-    .m_avl_reg_readdata           ( pulse_gen_av.readdata       ),
-    .m_avl_reg_readdatavalid      ( pulse_gen_av.readdatavalid  ),
-    .m_avl_reg_waitrequest        ( pulse_gen_av.waitrequest    ),
-    .m_avl_reg_write              ( pulse_gen_av.write          ),
-    .m_avl_reg_writedata          ( pulse_gen_av.writedata      ),
     // AXI-Lite Interface
     .axi_ref_clk                  ( axi_ref_clk                 ),
     .axi_rst_n                    ( axi_rst_n                   ),
@@ -99,8 +89,7 @@ zynq_top_wrapper zynq_ps_axi_decode(
 pulse_gen pulse_gen_vcc (
    .clk        ( axi_ref_clk            ), //
    .rst_n      ( axi_rst_n              ), //
-   .reg_av     ( pulse_gen_av.Slave     ), // Bxx - Register/Control Avalon bus (A=6, D=32,  BC=1)  
-   .reg_axi    ( pulse_gen_axi.Slave    ),
+   .reg_axi    ( pulse_gen_axi.Slave    ), // Bxx - Register interface
    .ext_trig   ( 1'b0                   ), // I1  - External Pulse Generator Trigger 
    .pulse_out  ( pulse_gen_out          )  // O1  - Output of the pulse generator
 );

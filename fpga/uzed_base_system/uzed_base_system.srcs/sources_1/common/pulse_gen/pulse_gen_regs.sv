@@ -13,7 +13,7 @@
 
 */
 
-module pulse_gen_axiregs #(   
+module pulse_gen_regs #(   
    parameter REG_WIDTH     = 32,
    parameter W_ADDR_WIDTH  = 32,
    parameter R_ADDR_WIDTH  = 32,
