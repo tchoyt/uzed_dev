@@ -65,9 +65,8 @@ typedef enum reg [2:0] {IDLE           = 3'h0,
                         WR_ADDR_CH     = 3'h1,
                         WR_DATA_CH1    = 3'h2,
                         WR_DATA_CH2    = 3'h3,
-                        WR_RESP_CH     = 3'h4,
-                        RD_ADDR_CH     = 3'h5,
-                        RD_DATA_CH     = 3'h6                        
+                        RD_ADDR_CH     = 3'h4,
+                        RD_DATA_CH     = 3'h5                        
                         } fsm_state;
 typedef struct {
    fsm_state           state; 
@@ -171,12 +170,12 @@ always @ ( * ) begin
          end
       end
       // If write data is still valid and write response channel is still ready 
-      // write the registers and write response channel 
+      // write the registers and write response channel, then return to idle
       WR_DATA_CH2:
       begin
          if ( reg_axi_wvalid & reg_axi_bready ) begin
             D.axi_bvalid = 1'b1;
-            D.state = WR_RESP_CH;
+            D.state = IDLE;
             // Write address decoding
             case ( Q.axi_awaddr[REG_ADDR_MSB:REG_ADDR_LSB] )
                'd1:
@@ -201,11 +200,6 @@ always @ ( * ) begin
                end
             endcase
          end
-      end
-      // Return to idle
-      WR_RESP_CH:
-      begin
-         D.state = IDLE;
       end
       // If read address is valid latch the read address
       RD_ADDR_CH:
