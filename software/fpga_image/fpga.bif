@@ -1,0 +1,4 @@
+fpgaimage : 
+{
+ 	uzed_top.bit       
+}

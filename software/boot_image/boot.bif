@@ -1,4 +1,4 @@
-image : {
+sdimage : {
 	[bootloader]uzed_fsbl.elf
     u-boot.elf
 	[load=0x2a00000]devicetree.dtb
