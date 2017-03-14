@@ -3,7 +3,8 @@
 # Copy rootfs
 function cp_rootfs()
 {
-	sudo unsquashfs -f -d ${ROOTFS_INSTALL_DIR} ../software/ubuntu-server-16042-arm.squashfs
+	# sudo unsquashfs -f -d ${ROOTFS_INSTALL_DIR} ../software/ubuntu-cloud-1604-arm.squashfs
+	sudo tar xfvp ../software/*-*-*-armhf-*/armhf-rootfs-*.tar -C ${ROOTFS_INSTALL_DIR}/.
 }
 
 # Update kernel modules
@@ -31,11 +32,12 @@ auto lo
 iface lo inet loopback
   
 auto eth0
-iface eth0 inet static
-   address ${BOARD_IP_ADDR}
-   netmask 255.255.0.0
-   gateway 172.20.0.90
-   dns-nameserver 172.20.0.90' > ${ROOTFS_INSTALL_DIR}/etc/network/interfaces"
+iface eth0 inet dhcp
+# iface eth0 inet static
+#    address ${BOARD_IP_ADDR}
+#    netmask 255.255.0.0
+#    gateway 172.20.0.90
+#    dns-nameserver 172.20.0.90' > ${ROOTFS_INSTALL_DIR}/etc/network/interfaces"
 }
 
 # Write /etc/hosts, /etc/hostname

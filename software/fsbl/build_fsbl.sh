@@ -6,5 +6,5 @@ function build_fsbl() {
 }
 
 function clean_fsbl() {
-	rm -fr hsi* psu_init* abcd_top.hdf build/
+	rm -fr hsi* ps7_init* uzed_top.hdf build/
 }

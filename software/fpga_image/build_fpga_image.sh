@@ -11,6 +11,6 @@ function clean_fpgaimg() {
 function build_fpgaimg() {
 	clean_fpgaimg
 	cp_fpgabit
-	bootgen -image fpga.bif -arch zynqmp -process_bitstream bin -w on 
+	bootgen -image fpga.bif -arch zynq -process_bitstream bin -w on 
 	mv uzed_top.bit.bin uzed_top.bin
 }

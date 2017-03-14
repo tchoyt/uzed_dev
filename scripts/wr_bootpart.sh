@@ -15,8 +15,7 @@ function cp_kernel()
 # Copy device tree binaries
 function cp_dtb()
 {
-	cp -v ../software/device_tree/system.dtb ${BOOT_INSTALL_DIR}/.
-	# cp -v $INSTALL_DTBS_PATH/xilinx/zynqmp-zcu102.dtb system.dtb
+	cp -v $INSTALL_DTBS_PATH/zynq-zed.dtb ${BOOT_INSTALL_DIR}/devicetree.dtb
 }
 
 # Define variables
