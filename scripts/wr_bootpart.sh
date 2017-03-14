@@ -3,27 +3,26 @@
 # Copy boot image
 function cp_boot_image()
 {
-	cd ${FSBL_DIR}
-	./build_boot_image.sh
-	cd -
-	cp -v ${FSBL_DIR}/BOOT.bin ${BOOT_INSTALL_DIR}/.
+	cp -v ../software/boot_image/BOOT.bin ${BOOT_INSTALL_DIR}/.
 }
 
-# Copy zImage and set uname in /boot/uEnv.txt
+# Copy kernel image
 function cp_kernel()
 {
-	cp -v ${FSBL_DIR}/uImage.bin ${BOOT_INSTALL_DIR}/uImage
+	cp -v $BUILD_KERNEL_DIR/arch/arm/boot/uImage ${BOOT_INSTALL_DIR}/.
 }
 
 # Copy device tree binaries
 function cp_dtb()
 {
-	cp -rv ${FSBL_DIR}/devicetree.dtb ${BOOT_INSTALL_DIR}/.
+	cp -v ../software/device_tree/system.dtb ${BOOT_INSTALL_DIR}/.
+	# cp -v $INSTALL_DTBS_PATH/xilinx/zynqmp-zcu102.dtb system.dtb
 }
 
 # Define variables
 BOOT_INSTALL_DIR=./boot_part
-FSBL_DIR=../software/fsbl
+BUILD_KERNEL_DIR=/tmp/xilinx_socfpga_kernel
+INSTALL_DTBS_PATH=${BUILD_KERNEL_DIR}/deploy/dtbs
 
 # Install boot partitions
 mkdir ${BOOT_INSTALL_DIR}

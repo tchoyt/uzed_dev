@@ -28,8 +28,8 @@ function format_sdcard()
 	echo "-----------------------------"
 	echo "Formatting the SD Card"
 	echo "-----------------------------"	
-	sudo mkfs.vfat -F 16 -n BOOT ${SD_DEV}p1
-	sudo mkfs.ext4 -L rootfs ${SD_DEV}p2
+	sudo mkfs.vfat -F 32 -n BOOT ${SD_DEV}p1
+	sudo mkfs.ext3 -L rootfs ${SD_DEV}p2
 }
 
 # Copy rootFS
@@ -54,7 +54,7 @@ function cp_boot()
 	echo "-----------------------------"	
 	mkdir ${BOOT_MOUNT_DIR}
 	sudo mount ${SD_DEV}p1 ${BOOT_MOUNT_DIR}
-	cp -a ${BOOT_INSTALL_DIR}/. ${BOOT_MOUNT_DIR}/
+	sudo cp -rv ${BOOT_INSTALL_DIR}/. ${BOOT_MOUNT_DIR}/
 	sync
 	sudo umount ${BOOT_MOUNT_DIR}
 	rm -fr ${BOOT_MOUNT_DIR}
@@ -88,6 +88,14 @@ then
 	echo -e "Syntax: wr_sdcard.sh --dev <SD Card Device>\n"
    	lsblk
    	exit
+fi
+
+# Check to see if SD_DEV is mounted
+if mount | grep $SD_DEV > /dev/null
+then
+	echo -e "ERROR: Need to un-mount $SD_DEV\n"
+	lsblk
+	exit
 fi
 
 # Partition a new SD card

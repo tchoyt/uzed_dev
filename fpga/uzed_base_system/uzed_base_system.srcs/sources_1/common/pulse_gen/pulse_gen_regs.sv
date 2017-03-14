@@ -145,7 +145,7 @@ always @ ( * ) begin
             D.axi_awready = 1'b1;
             D.state = WR_ADDR_CH;
          end
-         // Ready operation
+         // Read operation
          // indicate the read address channel is ready
          if ( reg_axi_arvalid ) begin
             D.axi_arready = 1'b1;
