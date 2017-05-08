@@ -24,6 +24,7 @@ BUILD_KERNEL_DIR=/tmp/xilinx_socfpga_kernel
 INSTALL_DTBS_PATH=${BUILD_KERNEL_DIR}/deploy/dtbs
 
 # Install boot partitions
+rm -fr ${BOOT_INSTALL_DIR}
 mkdir ${BOOT_INSTALL_DIR}
 cp_boot_image
 cp_kernel

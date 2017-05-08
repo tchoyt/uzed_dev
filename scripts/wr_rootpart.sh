@@ -1,14 +1,17 @@
 #!/bin/bash
 
 # Copy rootfs
+# Wget the rootfs tarball from eewiki if not present
 function cp_rootfs()
 {
 	if [ -e ./*-*-*-armhf-*/armhf-rootfs-*.tar ]
 	then
+		sudo tar xfvp ./*-*-*-armhf-*/armhf-rootfs-*.tar -C ${ROOTFS_INSTALL_DIR}/.
+	else
 		wget -c https://rcn-ee.com/rootfs/eewiki/minfs/${ROOTFS_TARBALL}
 		tar xf ${ROOTFS_TARBALL}
-	else
 		sudo tar xfvp ./*-*-*-armhf-*/armhf-rootfs-*.tar -C ${ROOTFS_INSTALL_DIR}/.
+	fi
 }
 
 # Update kernel modules
@@ -72,6 +75,7 @@ INSTALL_MOD_PATH=/tmp/xilinx_socfpga_kernel/deploy/modules
 ROOTFS_TARBALL=ubuntu-16.04.2-minimal-armhf-2017-03-02.tar.xz
 
 # Install and configure rootFS
+sudo rm -fr ${ROOTFS_INSTALL_DIR}
 mkdir ${ROOTFS_INSTALL_DIR}
 cp_rootfs
 cp_modules

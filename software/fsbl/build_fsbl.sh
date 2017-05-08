@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function build_fsbl() {
-	cp ../../fpga/uzed_base_system/uzed_base_system.sdk/uzed_top.hdf .
+	cp ../../fpga/uzed_base/uzed_base.sdk/uzed_top.hdf .
 	hsi -source build_fsbl.tcl
 }
 
