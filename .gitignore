@@ -3,12 +3,7 @@ fpga/*/*.runs/
 fpga/*/*.ip_user_files/
 fpga/*/*.hw
 fpga/*/*.ioplanning
-software/device-tree-xlnx/
-software/dtc/
 software/fsbl/BOOT.bin
 software/fsbl/devicetree.dtb
-software/fsbl/u-boot.elf
-software/fsbl/uImage.bin
-software/linux-xlnx/
-software/u-boot-xlnx/
-software/ubuntu-16.04.2-minimal-*
+software/fsbl/u-boot.elfn
+scripts/ubuntu-16.04.2-minimal-*

@@ -3,8 +3,12 @@
 # Copy rootfs
 function cp_rootfs()
 {
-	# sudo unsquashfs -f -d ${ROOTFS_INSTALL_DIR} ../software/ubuntu-cloud-1604-arm.squashfs
-	sudo tar xfvp ../software/*-*-*-armhf-*/armhf-rootfs-*.tar -C ${ROOTFS_INSTALL_DIR}/.
+	if [ -e ./*-*-*-armhf-*/armhf-rootfs-*.tar ]
+	then
+		wget -c https://rcn-ee.com/rootfs/eewiki/minfs/${ROOTFS_TARBALL}
+		tar xf ${ROOTFS_TARBALL}
+	else
+		sudo tar xfvp ./*-*-*-armhf-*/armhf-rootfs-*.tar -C ${ROOTFS_INSTALL_DIR}/.
 }
 
 # Update kernel modules
@@ -18,7 +22,6 @@ function cp_modules()
 function cp_apps()
 {
 	sudo cp -v ../software/axi_gp0_rw/axi_gp0_rw ${ROOTFS_INSTALL_DIR}/usr/local/bin/.
-	# sudo cp -v abcd.py ${ROOTFS_INSTALL_DIR}/home/abcd/.
 }
 
 # Write /etc/network/interfaces
@@ -66,6 +69,7 @@ BOARD_HOSTNAME=zynq_uzed
 BOARD_IP_ADDR=172.20.2.28
 ROOTFS_INSTALL_DIR=./rootfs_part
 INSTALL_MOD_PATH=/tmp/xilinx_socfpga_kernel/deploy/modules
+ROOTFS_TARBALL=ubuntu-16.04.2-minimal-armhf-2017-03-02.tar.xz
 
 # Install and configure rootFS
 mkdir ${ROOTFS_INSTALL_DIR}
