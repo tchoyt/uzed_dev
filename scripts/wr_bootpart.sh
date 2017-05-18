@@ -12,16 +12,15 @@ function cp_kernel()
 	cp -v $BUILD_KERNEL_DIR/arch/arm/boot/uImage ${BOOT_INSTALL_DIR}/.
 }
 
-# Copy device tree binaries
+# Copy device tree
 function cp_dtb()
 {
-	cp -v $INSTALL_DTBS_PATH/zynq-zed.dtb ${BOOT_INSTALL_DIR}/devicetree.dtb
+	cp -v ../software/device_tree/devicetree.dtb ${BOOT_INSTALL_DIR}/.
 }
 
 # Define variables
 BOOT_INSTALL_DIR=./boot_part
 BUILD_KERNEL_DIR=/tmp/xilinx_socfpga_kernel
-INSTALL_DTBS_PATH=${BUILD_KERNEL_DIR}/deploy/dtbs
 
 # Install boot partitions
 rm -fr ${BOOT_INSTALL_DIR}

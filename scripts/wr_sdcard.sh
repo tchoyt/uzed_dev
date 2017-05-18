@@ -29,7 +29,7 @@ function format_sdcard()
 	echo "Formatting the SD Card"
 	echo "-----------------------------"	
 	sudo mkfs.vfat -F 32 -n BOOT ${SD_DEV}p1
-	sudo mkfs.ext3 -L rootfs ${SD_DEV}p2
+	sudo mkfs.ext4 -L rootfs ${SD_DEV}p2
 }
 
 # Copy rootFS

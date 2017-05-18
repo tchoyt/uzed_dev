@@ -72,7 +72,7 @@ BOARD_HOSTNAME=zynq_uzed
 BOARD_IP_ADDR=172.20.2.28
 ROOTFS_INSTALL_DIR=./rootfs_part
 INSTALL_MOD_PATH=/tmp/xilinx_socfpga_kernel/deploy/modules
-ROOTFS_TARBALL=ubuntu-16.04.2-minimal-armhf-2017-03-02.tar.xz
+ROOTFS_TARBALL=ubuntu-16.04.2-minimal-armhf-2017-05-11.tar.xz
 
 # Install and configure rootFS
 sudo rm -fr ${ROOTFS_INSTALL_DIR}

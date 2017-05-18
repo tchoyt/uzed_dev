@@ -1,7 +1,7 @@
 # Clean the Vivado project
 set VIVADO_PROJ [get_projects ]
 
-# Reset ZynqMP block design
+# Reset Zynq block design
 reset_target all [get_files  $VIVADO_PROJ.srcs/sources_1/bd/zynq_top/zynq_top.bd]
 delete_ip_run [get_files -of_objects [get_fileset sources_1] $VIVADO_PROJ.srcs/sources_1/bd/zynq_top/zynq_top.bd]
 

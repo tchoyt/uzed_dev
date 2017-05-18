@@ -4,12 +4,7 @@ HERE=$(pwd)
 FPGA_PROJ=uzed_base
 
 # Specify Vivado installation path
-if [ "$1" == "" ] 
-then
-	VIVADO_INSTALL_PATH=~/bin/xilinx/Vivado/2017.1
-else
-	VIVADO_INSTALL_PATH=$1
-fi
+VIVADO_INSTALL_PATH=~/bin/xilinx/Vivado/2017.1
 
 # Setup environment variables
 export CROSS_COMPILE=arm-linux-gnueabihf-
