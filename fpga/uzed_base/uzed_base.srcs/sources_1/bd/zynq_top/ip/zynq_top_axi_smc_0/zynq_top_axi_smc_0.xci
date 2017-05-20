@@ -15,7 +15,7 @@
 					spirit:version="1.0"/>
 			<spirit:configurableElementValues>
 				<spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CLK.ACLK.ASSOCIATED_BUSIF">M00_AXI:S00_AXI</spirit:configurableElementValue>
-				<spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CLK.ACLK.ASSOCIATED_CLKEN">m_sc_aclken</spirit:configurableElementValue>
+				<spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CLK.ACLK.ASSOCIATED_CLKEN">s_sc_aclken</spirit:configurableElementValue>
 				<spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CLK.ACLK.ASSOCIATED_RESET"/>
 				<spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CLK.ACLK.CLK_DOMAIN">zynq_top_processing_system7_0_0_FCLK_CLK0</spirit:configurableElementValue>
 				<spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.CLK.ACLK.FREQ_HZ">100000000</spirit:configurableElementValue>
@@ -88,7 +88,7 @@
 				<spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.NUM_MI">1</spirit:configurableElementValue>
 				<spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.NUM_SI">1</spirit:configurableElementValue>
 				<spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.ARCHITECTURE">zynq</spirit:configurableElementValue>
-				<spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.BOARD">em.avnet.com:microzed_7010:part0:1.1</spirit:configurableElementValue>
+				<spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.BOARD"/>
 				<spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.DEVICE">xc7z010</spirit:configurableElementValue>
 				<spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.PACKAGE">clg400</spirit:configurableElementValue>
 				<spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.PREFHDL">VERILOG</spirit:configurableElementValue>

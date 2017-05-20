@@ -82,7 +82,7 @@
 				<spirit:parameter>
 					<spirit:name>ASSOCIATED_CLKEN</spirit:name>
 					<spirit:value spirit:resolve="generated"
-							spirit:id="BUSIFPARAM_VALUE.CLK.ACLK.ASSOCIATED_CLKEN">m_sc_aclken</spirit:value>
+							spirit:id="BUSIFPARAM_VALUE.CLK.ACLK.ASSOCIATED_CLKEN">s_sc_aclken</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
 							<xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -1349,7 +1349,7 @@
 				<spirit:parameters>
 					<spirit:parameter>
 						<spirit:name>GENtimestamp</spirit:name>
-						<spirit:value>Mon May 08 15:26:31 UTC 2017</spirit:value>
+						<spirit:value>Sat May 20 21:43:34 UTC 2017</spirit:value>
 					</spirit:parameter>
 					<spirit:parameter>
 						<spirit:name>outputProductCRC</spirit:name>

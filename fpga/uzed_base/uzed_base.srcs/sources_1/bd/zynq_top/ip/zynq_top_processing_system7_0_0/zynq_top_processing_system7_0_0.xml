@@ -29046,10 +29046,6 @@
 			<spirit:enumeration>MIO 42</spirit:enumeration>
 		</spirit:choice>
 		<spirit:choice>
-			<spirit:name>choice_list_13f07802</spirit:name>
-			<spirit:enumeration>DISABLED</spirit:enumeration>
-		</spirit:choice>
-		<spirit:choice>
 			<spirit:name>choice_list_1622b516</spirit:name>
 			<spirit:enumeration>MIO 28 .. 39</spirit:enumeration>
 		</spirit:choice>
@@ -29097,6 +29093,14 @@
 		<spirit:choice>
 			<spirit:name>choice_list_319636fe</spirit:name>
 			<spirit:enumeration>0xE0104fff</spirit:enumeration>
+		</spirit:choice>
+		<spirit:choice>
+			<spirit:name>choice_list_31d1d296</spirit:name>
+			<spirit:enumeration>&lt;Select></spirit:enumeration>
+			<spirit:enumeration>DISABLED</spirit:enumeration>
+			<spirit:enumeration>CPU0 DBG_ACK</spirit:enumeration>
+			<spirit:enumeration>CPU1 DBG_ACK</spirit:enumeration>
+			<spirit:enumeration>BOTH</spirit:enumeration>
 		</spirit:choice>
 		<spirit:choice>
 			<spirit:name>choice_list_32c7371b</spirit:name>
@@ -29587,6 +29591,14 @@
 		<spirit:choice>
 			<spirit:name>choice_list_83842e96</spirit:name>
 			<spirit:enumeration>0xE0009FFF</spirit:enumeration>
+		</spirit:choice>
+		<spirit:choice>
+			<spirit:name>choice_list_85a6bbc3</spirit:name>
+			<spirit:enumeration>&lt;Select></spirit:enumeration>
+			<spirit:enumeration>DISABLED</spirit:enumeration>
+			<spirit:enumeration>CPU0 DBG_REQ</spirit:enumeration>
+			<spirit:enumeration>CPU1 DBG_REQ</spirit:enumeration>
+			<spirit:enumeration>BOTH</spirit:enumeration>
 		</spirit:choice>
 		<spirit:choice>
 			<spirit:name>choice_list_86458347</spirit:name>
@@ -33582,8 +33594,8 @@
 			<spirit:name>PCW_FTM_CTI_IN0</spirit:name>
 			<spirit:value spirit:resolve="user"
 					spirit:id="PARAM_VALUE.PCW_FTM_CTI_IN0"
-					spirit:choiceRef="choice_list_13f07802"
-					spirit:order="48102">DISABLED</spirit:value>
+					spirit:choiceRef="choice_list_85a6bbc3"
+					spirit:order="48102">&lt;Select></spirit:value>
 			<spirit:vendorExtensions>
 				<xilinx:parameterInfo>
 					<xilinx:enablement>
@@ -33598,8 +33610,8 @@
 			<spirit:name>PCW_FTM_CTI_IN1</spirit:name>
 			<spirit:value spirit:resolve="user"
 					spirit:id="PARAM_VALUE.PCW_FTM_CTI_IN1"
-					spirit:choiceRef="choice_list_13f07802"
-					spirit:order="48103">DISABLED</spirit:value>
+					spirit:choiceRef="choice_list_85a6bbc3"
+					spirit:order="48103">&lt;Select></spirit:value>
 			<spirit:vendorExtensions>
 				<xilinx:parameterInfo>
 					<xilinx:enablement>
@@ -33614,8 +33626,8 @@
 			<spirit:name>PCW_FTM_CTI_IN2</spirit:name>
 			<spirit:value spirit:resolve="user"
 					spirit:id="PARAM_VALUE.PCW_FTM_CTI_IN2"
-					spirit:choiceRef="choice_list_13f07802"
-					spirit:order="48104">DISABLED</spirit:value>
+					spirit:choiceRef="choice_list_85a6bbc3"
+					spirit:order="48104">&lt;Select></spirit:value>
 			<spirit:vendorExtensions>
 				<xilinx:parameterInfo>
 					<xilinx:enablement>
@@ -33630,8 +33642,8 @@
 			<spirit:name>PCW_FTM_CTI_IN3</spirit:name>
 			<spirit:value spirit:resolve="user"
 					spirit:id="PARAM_VALUE.PCW_FTM_CTI_IN3"
-					spirit:choiceRef="choice_list_13f07802"
-					spirit:order="48105">DISABLED</spirit:value>
+					spirit:choiceRef="choice_list_85a6bbc3"
+					spirit:order="48105">&lt;Select></spirit:value>
 			<spirit:vendorExtensions>
 				<xilinx:parameterInfo>
 					<xilinx:enablement>
@@ -33646,8 +33658,8 @@
 			<spirit:name>PCW_FTM_CTI_OUT0</spirit:name>
 			<spirit:value spirit:resolve="user"
 					spirit:id="PARAM_VALUE.PCW_FTM_CTI_OUT0"
-					spirit:choiceRef="choice_list_13f07802"
-					spirit:order="48106">DISABLED</spirit:value>
+					spirit:choiceRef="choice_list_31d1d296"
+					spirit:order="48106">&lt;Select></spirit:value>
 			<spirit:vendorExtensions>
 				<xilinx:parameterInfo>
 					<xilinx:enablement>
@@ -33662,8 +33674,8 @@
 			<spirit:name>PCW_FTM_CTI_OUT1</spirit:name>
 			<spirit:value spirit:resolve="user"
 					spirit:id="PARAM_VALUE.PCW_FTM_CTI_OUT1"
-					spirit:choiceRef="choice_list_13f07802"
-					spirit:order="48107">DISABLED</spirit:value>
+					spirit:choiceRef="choice_list_31d1d296"
+					spirit:order="48107">&lt;Select></spirit:value>
 			<spirit:vendorExtensions>
 				<xilinx:parameterInfo>
 					<xilinx:enablement>
@@ -33678,8 +33690,8 @@
 			<spirit:name>PCW_FTM_CTI_OUT2</spirit:name>
 			<spirit:value spirit:resolve="user"
 					spirit:id="PARAM_VALUE.PCW_FTM_CTI_OUT2"
-					spirit:choiceRef="choice_list_13f07802"
-					spirit:order="48108">DISABLED</spirit:value>
+					spirit:choiceRef="choice_list_31d1d296"
+					spirit:order="48108">&lt;Select></spirit:value>
 			<spirit:vendorExtensions>
 				<xilinx:parameterInfo>
 					<xilinx:enablement>
@@ -33694,8 +33706,8 @@
 			<spirit:name>PCW_FTM_CTI_OUT3</spirit:name>
 			<spirit:value spirit:resolve="user"
 					spirit:id="PARAM_VALUE.PCW_FTM_CTI_OUT3"
-					spirit:choiceRef="choice_list_13f07802"
-					spirit:order="48109">DISABLED</spirit:value>
+					spirit:choiceRef="choice_list_31d1d296"
+					spirit:order="48109">&lt;Select></spirit:value>
 			<spirit:vendorExtensions>
 				<xilinx:parameterInfo>
 					<xilinx:enablement>
@@ -34234,7 +34246,7 @@
 					<xilinx:enablement>
 						<xilinx:isEnabled xilinx:resolve="dependent"
 								xilinx:id="PARAM_ENABLEMENT.PCW_S_AXI_HP0_DATA_WIDTH"
-								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP0)) = 1) ">true</xilinx:isEnabled>
+								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP0)) = 1) ">false</xilinx:isEnabled>
 					</xilinx:enablement>
 				</xilinx:parameterInfo>
 			</spirit:vendorExtensions>
@@ -34270,7 +34282,7 @@
 					<xilinx:enablement>
 						<xilinx:isEnabled xilinx:resolve="dependent"
 								xilinx:id="PARAM_ENABLEMENT.PCW_S_AXI_HP1_DATA_WIDTH"
-								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP1)) = 1) ">true</xilinx:isEnabled>
+								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP1)) = 1) ">false</xilinx:isEnabled>
 					</xilinx:enablement>
 				</xilinx:parameterInfo>
 			</spirit:vendorExtensions>
@@ -34306,7 +34318,7 @@
 					<xilinx:enablement>
 						<xilinx:isEnabled xilinx:resolve="dependent"
 								xilinx:id="PARAM_ENABLEMENT.PCW_S_AXI_HP2_DATA_WIDTH"
-								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP2)) = 1) ">true</xilinx:isEnabled>
+								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP2)) = 1) ">false</xilinx:isEnabled>
 					</xilinx:enablement>
 				</xilinx:parameterInfo>
 			</spirit:vendorExtensions>
@@ -34342,7 +34354,7 @@
 					<xilinx:enablement>
 						<xilinx:isEnabled xilinx:resolve="dependent"
 								xilinx:id="PARAM_ENABLEMENT.PCW_S_AXI_HP3_DATA_WIDTH"
-								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP3)) = 1) ">true</xilinx:isEnabled>
+								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP3)) = 1) ">false</xilinx:isEnabled>
 					</xilinx:enablement>
 				</xilinx:parameterInfo>
 			</spirit:vendorExtensions>
@@ -35368,7 +35380,7 @@
 					<xilinx:enablement>
 						<xilinx:isEnabled xilinx:resolve="dependent"
 								xilinx:id="PARAM_ENABLEMENT.PCW_IRQ_F2P_MODE"
-								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_IRQ_F2P_INTR)) = 1) ">true</xilinx:isEnabled>
+								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_IRQ_F2P_INTR)) = 1) ">false</xilinx:isEnabled>
 					</xilinx:enablement>
 				</xilinx:parameterInfo>
 			</spirit:vendorExtensions>
@@ -40487,15 +40499,29 @@
 						xilinx:valueSource="default_prop"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_GP0_ACLK.FREQ_HZ"
 						xilinx:valueSource="user_prop"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_ACT_ENET0_PERIPHERAL_FREQMHZ"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_ACT_FPGA0_PERIPHERAL_FREQMHZ"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_ACT_QSPI_PERIPHERAL_FREQMHZ"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_ACT_SDIO_PERIPHERAL_FREQMHZ"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_ACT_UART_PERIPHERAL_FREQMHZ"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_APU_CLK_RATIO_ENABLE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_APU_PERIPHERAL_FREQMHZ"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_CLK0_FREQ"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_CPU_PERIPHERAL_CLKSRC"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_CRYSTAL_PERIPHERAL_FREQMHZ"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_DDR_PERIPHERAL_CLKSRC"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_DDR_RAM_HIGHADDR"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_ENET0_ENET0_IO"
 						xilinx:valueSource="user"/>
@@ -40505,11 +40531,17 @@
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_ENET0_PERIPHERAL_CLKSRC"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_ENET0_PERIPHERAL_DIVISOR0"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_ENET0_PERIPHERAL_ENABLE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_ENET0_PERIPHERAL_FREQMHZ"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_ENET0_RESET_ENABLE"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_ENET_RESET_ENABLE"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_ENET_RESET_SELECT"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_EN_CLK0_PORT"
 						xilinx:valueSource="user"/>
@@ -40521,6 +40553,14 @@
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_EN_DDR"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_EN_EMIO_TTC0"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_EN_ENET0"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_EN_GPIO"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_EN_QSPI"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_EN_RST0_PORT"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_EN_RST1_PORT"
@@ -40529,7 +40569,19 @@
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_EN_RST3_PORT"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_EN_SDIO0"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_EN_TTC0"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_EN_UART1"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_EN_USB0"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_FCLK0_PERIPHERAL_CLKSRC"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_FCLK0_PERIPHERAL_DIVISOR0"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_FCLK0_PERIPHERAL_DIVISOR1"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_FCLK1_PERIPHERAL_CLKSRC"
 						xilinx:valueSource="user"/>
@@ -40557,229 +40609,475 @@
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_GPIO_MIO_GPIO_ENABLE"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_GPIO_MIO_GPIO_IO"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_GPIO_PERIPHERAL_ENABLE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_I2C_RESET_ENABLE"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_IOPLL_CTRL_FBDIV"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_IO_IO_PLL_FREQMHZ"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_0_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_0_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_0_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_0_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_10_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_10_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_10_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_10_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_11_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_11_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_11_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_11_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_12_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_12_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_12_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_12_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_13_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_13_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_13_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_13_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_14_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_14_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_14_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_14_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_15_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_15_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_15_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_15_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_16_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_16_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_16_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_16_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_17_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_17_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_17_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_17_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_18_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_18_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_18_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_18_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_19_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_19_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_19_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_19_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_1_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_1_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_1_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_1_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_20_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_20_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_20_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_20_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_21_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_21_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_21_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_21_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_22_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_22_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_22_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_22_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_23_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_23_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_23_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_23_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_24_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_24_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_24_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_24_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_25_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_25_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_25_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_25_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_26_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_26_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_26_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_26_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_27_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_27_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_27_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_27_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_28_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_28_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_28_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_28_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_29_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_29_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_29_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_29_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_2_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_2_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_2_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_2_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_30_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_30_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_30_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_30_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_31_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_31_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_31_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_31_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_32_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_32_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_32_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_32_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_33_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_33_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_33_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_33_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_34_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_34_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_34_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_34_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_35_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_35_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_35_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_35_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_36_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_36_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_36_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_36_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_37_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_37_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_37_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_37_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_38_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_38_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_38_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_38_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_39_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_39_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_39_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_39_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_3_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_3_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_3_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_3_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_40_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_40_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_40_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_40_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_41_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_41_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_41_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_41_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_42_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_42_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_42_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_42_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_43_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_43_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_43_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_43_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_44_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_44_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_44_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_44_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_45_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_45_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_45_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_45_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_46_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_46_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_46_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_46_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_47_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_47_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_47_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_47_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_48_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_48_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_48_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_48_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_49_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_49_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_49_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_49_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_4_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_4_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_4_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_4_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_50_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_50_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_50_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_50_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_51_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_51_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_51_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_51_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_52_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_52_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_52_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_52_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_53_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_53_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_53_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_53_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_5_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_5_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_5_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_5_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_6_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_6_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_6_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_6_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_7_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_7_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_7_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_7_SLEW"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_8_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_8_IOTYPE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_8_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_8_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_9_DIRECTION"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_9_IOTYPE"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_9_PULLUP"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_9_SLEW"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_TREE_PERIPHERALS"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_MIO_TREE_SIGNALS"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_M_AXI_GP0_FREQMHZ"
 						xilinx:valueSource="propagated"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_PACKAGE_DDR_BOARD_DELAY0"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_PACKAGE_DDR_BOARD_DELAY1"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_PACKAGE_DDR_BOARD_DELAY2"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_PACKAGE_DDR_BOARD_DELAY3"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_PACKAGE_DDR_DQS_TO_CLK_DELAY_0"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_PACKAGE_DDR_DQS_TO_CLK_DELAY_1"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_PACKAGE_DDR_DQS_TO_CLK_DELAY_2"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_PACKAGE_DDR_DQS_TO_CLK_DELAY_3"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_PACKAGE_NAME"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_PCAP_PERIPHERAL_DIVISOR0"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_PERIPHERAL_BOARD_PRESET"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_PRESET_BANK0_VOLTAGE"
 						xilinx:valueSource="user"/>
@@ -40795,9 +41093,13 @@
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_QSPI_PERIPHERAL_CLKSRC"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_QSPI_PERIPHERAL_DIVISOR0"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_QSPI_PERIPHERAL_ENABLE"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_QSPI_PERIPHERAL_FREQMHZ"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_QSPI_QSPI_IO"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_SD0_GRP_CD_ENABLE"
 						xilinx:valueSource="user"/>
@@ -40813,7 +41115,11 @@
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_SDIO_PERIPHERAL_CLKSRC"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_SDIO_PERIPHERAL_DIVISOR0"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_SDIO_PERIPHERAL_FREQMHZ"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_SDIO_PERIPHERAL_VALID"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_TTC0_CLK0_PERIPHERAL_CLKSRC"
 						xilinx:valueSource="user"/>
@@ -40837,7 +41143,11 @@
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_UART_PERIPHERAL_CLKSRC"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_UART_PERIPHERAL_DIVISOR0"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_UART_PERIPHERAL_FREQMHZ"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_UART_PERIPHERAL_VALID"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_UIPARAM_ACT_DDR_FREQ_MHZ"
 						xilinx:valueSource="user"/>
@@ -40895,6 +41205,8 @@
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_UIPARAM_DDR_PARTNO"
 						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_UIPARAM_DDR_ROW_ADDR_COUNT"
+						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_UIPARAM_DDR_SPEED_BIN"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_UIPARAM_DDR_TRAIN_DATA_EYE"
@@ -40920,6 +41232,10 @@
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_USB0_RESET_IO"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_USB0_USB0_IO"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_USB_RESET_ENABLE"
+						xilinx:valueSource="user"/>
+				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_USB_RESET_SELECT"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PCW_USE_M_AXI_GP0"
 						xilinx:valueSource="user"/>

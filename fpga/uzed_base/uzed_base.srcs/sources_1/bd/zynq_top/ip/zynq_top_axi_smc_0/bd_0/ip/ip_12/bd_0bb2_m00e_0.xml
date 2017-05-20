@@ -3685,7 +3685,7 @@
 				<spirit:value spirit:format="bitString"
 						spirit:resolve="generated"
 						spirit:id="MODELPARAM_VALUE.C_SSC_ROUTE_ARRAY"
-						spirit:bitStringLength="2">0b10</spirit:value>
+						spirit:bitStringLength="2">0b01</spirit:value>
 			</spirit:modelParameter>
 			<spirit:modelParameter spirit:dataType="long">
 				<spirit:name>C_RDATA_WIDTH</spirit:name>
@@ -4183,7 +4183,7 @@
 			<spirit:value spirit:format="bitString"
 					spirit:resolve="user"
 					spirit:id="PARAM_VALUE.SSC000_ROUTE"
-					spirit:bitStringLength="1">0b0</spirit:value>
+					spirit:bitStringLength="1">0b1</spirit:value>
 		</spirit:parameter>
 		<spirit:parameter>
 			<spirit:name>SSC001_ROUTE</spirit:name>
@@ -4191,7 +4191,7 @@
 			<spirit:value spirit:format="bitString"
 					spirit:resolve="user"
 					spirit:id="PARAM_VALUE.SSC001_ROUTE"
-					spirit:bitStringLength="1">0b1</spirit:value>
+					spirit:bitStringLength="1">0b0</spirit:value>
 		</spirit:parameter>
 		<spirit:parameter>
 			<spirit:name>SSC002_ROUTE</spirit:name>
