@@ -1,5 +1,6 @@
 {
-   guistr: "# # String gsaved with Nlview 6.6.8  2016-12-21 bk=1.3817 VDI=40 GEI=35 GUI=JA:1.6
+   ExpandedHierarchyInLayout: "",
+   guistr: "# # String gsaved with Nlview 6.6.11  2017-06-12 bk=1.3860 VDI=40 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
 preplace port DDR -pg 1 -y 220 -defaultsOSRD
 preplace port FIXED_IO -pg 1 -y 240 -defaultsOSRD

@@ -1,11 +1,8 @@
 //Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2017.1 (lin64) Build 1846317 Fri Apr 14 18:54:47 MDT 2017
-//Date        : Sat May 20 14:44:14 2017
-//Host        : ubuntu running 64-bit Ubuntu 16.04.2 LTS
-//Command     : generate_target bd_0bb2_wrapper.bd
-//Design      : bd_0bb2_wrapper
-//Purpose     : IP block netlist
+//Command: generate_target bd_0bb2_wrapper.bd
+//Design : bd_0bb2_wrapper
+//Purpose: IP block netlist
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 

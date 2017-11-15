@@ -25,26 +25,9 @@ function clean_all()
 	# FPGA
 	cd fpga/uzed_base
 	clean_fpga
-	cd ../../
-	# FSBL
-	cd software/fsbl
-	clean_fsbl
-	# DTC
-	cd ../dtc
-	make clean
-	# Device tree
-	cd ../device_tree
-	rm -fr devicetree.dt*
-	# Peek/Poke
-	cd ../axi_gp0_rw
-	make clean
-	# Kernel
-	cd ../linux-xlnx
-	rm -fr /tmp/xilinx_socfpga_kernel/
-	make mrproper
-	# uBoot
-	cd ../u-boot-xlnx
-	make clean
+	# Kernel, uBoot, device tree, FSBL
+	cd ../../software/petalinux_build/
+	clean_petalinux
 	# Boot image
 	cd ../boot_image
 	clean_bootimg
@@ -60,27 +43,9 @@ function build_all()
 	# FPGA
 	cd fpga/uzed_base
 	build_fpga
-	cd ../..
-	# FSBL
-	cd ../fsbl
-	build_fsbl
-	# DTC
-	cd ../dtc
-	make
-	# Device tree
-	cd ../device_tree
-	./build_dtb.sh uzed_20171.dts
-	# Peek/Poke
-	cd ../axi_hpm0_rw
-	make
-	# Kernel
-	cd ../linux-xlnx
-	configkernel
-	makekernel
-	# uBoot
-	cd ../u-boot-xlnx
-	configuboot
-	makeuboot
+	# Kernel, uBoot, device tree, FSBL
+	cd ../../software/petalinux_build/
+	build_petalinux
 	# Boot image
 	cd ../boot_image
 	build_bootimg

@@ -6,22 +6,15 @@ function cp_rootfs()
 {
 	if [ -e ./*-*-*-armhf-*/armhf-rootfs-*.tar ]
 	then
-		sudo tar xfvp ./*-*-*-armhf-*/armhf-rootfs-*.tar -C ${ROOTFS_INSTALL_DIR}/.
+		sudo tar xf ./*-*-*-armhf-*/armhf-rootfs-*.tar -C ${ROOTFS_INSTALL_DIR}/.
 	else
 		wget -c https://rcn-ee.com/rootfs/eewiki/minfs/${ROOTFS_TARBALL}
 		tar xf ${ROOTFS_TARBALL}
-		sudo tar xfvp ./*-*-*-armhf-*/armhf-rootfs-*.tar -C ${ROOTFS_INSTALL_DIR}/.
+		sudo tar xf ./*-*-*-armhf-*/armhf-rootfs-*.tar -C ${ROOTFS_INSTALL_DIR}/.
 	fi
 }
 
-# Update kernel modules
-function cp_modules()
-{
-	sudo rm -fr ${ROOTFS_INSTALL_DIR}/lib/modules/
-	sudo cp -rv ${INSTALL_MOD_PATH}/lib ${ROOTFS_INSTALL_DIR}/.
-}
-
-# Copy SoCFPGA applications
+# Copy Python libraries
 function cp_apps()
 {
 	sudo cp -v ../software/axi_gp0_rw/axi_gp0_rw ${ROOTFS_INSTALL_DIR}/usr/local/bin/.
@@ -72,13 +65,12 @@ BOARD_HOSTNAME=zynq_uzed
 BOARD_IP_ADDR=172.20.2.28
 ROOTFS_INSTALL_DIR=./rootfs_part
 INSTALL_MOD_PATH=/tmp/xilinx_socfpga_kernel/deploy/modules
-ROOTFS_TARBALL=ubuntu-16.04.2-minimal-armhf-2017-05-11.tar.xz
+ROOTFS_TARBALL=ubuntu-16.04.3-minimal-armhf-2017-10-07.tar.xz
 
 # Install and configure rootFS
 sudo rm -fr ${ROOTFS_INSTALL_DIR}
 mkdir ${ROOTFS_INSTALL_DIR}
 cp_rootfs
-cp_modules
 cp_apps
 wr_ethinterface
 wr_hostname

@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Copy FPGA image
+function cp_fpga_image()
+{
+	cp -v ../fpga/$FPGA_PROJ/$FPGA_PROJ.runs/impl_1/$FPGA_IMG.bit ${BOOT_INSTALL_DIR}/.
+}
+
 # Copy boot image
 function cp_boot_image()
 {
@@ -9,22 +15,24 @@ function cp_boot_image()
 # Copy kernel image
 function cp_kernel()
 {
-	cp -v $BUILD_KERNEL_DIR/arch/arm/boot/uImage ${BOOT_INSTALL_DIR}/.
+	cp -v ../software/petalinux_build/images/linux/zImage ${BOOT_INSTALL_DIR}/.
 }
 
 # Copy device tree
 function cp_dtb()
 {
-	cp -v ../software/device_tree/devicetree.dtb ${BOOT_INSTALL_DIR}/.
+	cp -v ../software/petalinux_build/images/linux/system.dtb ${BOOT_INSTALL_DIR}/.
 }
 
 # Define variables
+FPGA_PROJ=uzed_base
+FPGA_IMG=uzed_top
 BOOT_INSTALL_DIR=./boot_part
-BUILD_KERNEL_DIR=/tmp/xilinx_socfpga_kernel
 
 # Install boot partitions
 rm -fr ${BOOT_INSTALL_DIR}
 mkdir ${BOOT_INSTALL_DIR}
+cp_fpga_image
 cp_boot_image
 cp_kernel
 cp_dtb

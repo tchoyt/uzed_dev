@@ -1,8 +1,8 @@
 //Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2017.1 (lin64) Build 1846317 Fri Apr 14 18:54:47 MDT 2017
-//Date        : Sat May 20 14:43:56 2017
-//Host        : ubuntu running 64-bit Ubuntu 16.04.2 LTS
+//Tool Version: Vivado v.2017.3.1 (lin64) Build 2035080 Fri Oct 20 14:20:00 MDT 2017
+//Date        : Tue Nov 14 15:13:09 2017
+//Host        : tchoytdell7510 running 64-bit Ubuntu 16.04.3 LTS
 //Command     : generate_target zynq_top_wrapper.bd
 //Design      : zynq_top_wrapper
 //Purpose     : IP block netlist

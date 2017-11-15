@@ -364,7 +364,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>DATA_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.DATA_WIDTH">32</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -384,7 +385,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>FREQ_HZ</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.FREQ_HZ">100000000</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -394,7 +396,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>ID_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.ID_WIDTH">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -404,7 +407,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>ADDR_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.ADDR_WIDTH">32</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -414,7 +418,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>AWUSER_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.AWUSER_WIDTH">1024</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -424,7 +429,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>ARUSER_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.ARUSER_WIDTH">1024</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -434,7 +440,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>WUSER_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.WUSER_WIDTH">1024</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -444,7 +451,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>RUSER_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.RUSER_WIDTH">1024</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -454,7 +462,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>BUSER_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.BUSER_WIDTH">1024</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -474,7 +483,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_BURST</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.HAS_BURST">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -484,7 +494,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_LOCK</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.HAS_LOCK">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -494,7 +505,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_PROT</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.HAS_PROT">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -504,7 +516,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_CACHE</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.HAS_CACHE">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -514,7 +527,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_QOS</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.HAS_QOS">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -524,7 +538,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_REGION</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.HAS_REGION">0</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -534,7 +549,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_WSTRB</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.HAS_WSTRB">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -544,7 +560,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_BRESP</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.HAS_BRESP">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -554,7 +571,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_RRESP</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.HAS_RRESP">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -564,7 +582,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>SUPPORTS_NARROW_BURST</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.SUPPORTS_NARROW_BURST">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -574,7 +593,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>NUM_READ_OUTSTANDING</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.NUM_READ_OUTSTANDING">2</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -584,7 +604,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>NUM_WRITE_OUTSTANDING</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_OUTSTANDING">2</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -594,7 +615,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>MAX_BURST_LENGTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.MAX_BURST_LENGTH">256</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -604,7 +626,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>PHASE</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="float"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.PHASE">0.000</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -624,7 +647,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>NUM_READ_THREADS</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.NUM_READ_THREADS">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -634,7 +658,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>NUM_WRITE_THREADS</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_THREADS">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -644,7 +669,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>RUSER_BITS_PER_BYTE</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.RUSER_BITS_PER_BYTE">0</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -654,7 +680,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>WUSER_BITS_PER_BYTE</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.S_AXI.WUSER_BITS_PER_BYTE">0</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -686,6 +713,18 @@
 					</spirit:physicalPort>
 				</spirit:portMap>
 			</spirit:portMaps>
+			<spirit:parameters>
+				<spirit:parameter>
+					<spirit:name>POLARITY</spirit:name>
+					<spirit:value spirit:resolve="generated"
+							spirit:id="BUSIFPARAM_VALUE.ACLKEN.POLARITY">ACTIVE_LOW</spirit:value>
+					<spirit:vendorExtensions>
+						<xilinx:parameterInfo>
+							<xilinx:parameterUsage>none</xilinx:parameterUsage>
+						</xilinx:parameterInfo>
+					</spirit:vendorExtensions>
+				</spirit:parameter>
+			</spirit:parameters>
 			<spirit:vendorExtensions>
 				<xilinx:busInterfaceInfo>
 					<xilinx:enablement>
@@ -1017,7 +1056,8 @@
 			<spirit:parameters>
 				<spirit:parameter>
 					<spirit:name>DATA_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.DATA_WIDTH">32</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1037,7 +1077,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>FREQ_HZ</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.FREQ_HZ">100000000</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1047,7 +1088,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>ID_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.ID_WIDTH">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1057,7 +1099,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>ADDR_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.ADDR_WIDTH">32</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1067,7 +1110,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>AWUSER_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.AWUSER_WIDTH">1024</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1077,7 +1121,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>ARUSER_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.ARUSER_WIDTH">1024</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1087,7 +1132,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>WUSER_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.WUSER_WIDTH">1024</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1097,7 +1143,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>RUSER_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.RUSER_WIDTH">1024</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1107,7 +1154,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>BUSER_WIDTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.BUSER_WIDTH">1024</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1127,7 +1175,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_BURST</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.HAS_BURST">0</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1137,7 +1186,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_LOCK</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.HAS_LOCK">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1147,7 +1197,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_PROT</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.HAS_PROT">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1157,7 +1208,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_CACHE</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.HAS_CACHE">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1167,7 +1219,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_QOS</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.HAS_QOS">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1177,7 +1230,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_REGION</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.HAS_REGION">0</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1187,7 +1241,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_WSTRB</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.HAS_WSTRB">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1197,7 +1252,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_BRESP</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.HAS_BRESP">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1207,7 +1263,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>HAS_RRESP</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.HAS_RRESP">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1217,7 +1274,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>SUPPORTS_NARROW_BURST</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.SUPPORTS_NARROW_BURST">0</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1227,7 +1285,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>NUM_READ_OUTSTANDING</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.NUM_READ_OUTSTANDING">2</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1237,7 +1296,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>NUM_WRITE_OUTSTANDING</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.NUM_WRITE_OUTSTANDING">2</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1247,7 +1307,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>MAX_BURST_LENGTH</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.MAX_BURST_LENGTH">256</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1257,7 +1318,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>PHASE</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="float"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.PHASE">0.000</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1277,7 +1339,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>NUM_READ_THREADS</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.NUM_READ_THREADS">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1287,7 +1350,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>NUM_WRITE_THREADS</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.NUM_WRITE_THREADS">1</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1297,7 +1361,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>RUSER_BITS_PER_BYTE</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.RUSER_BITS_PER_BYTE">0</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1307,7 +1372,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>WUSER_BITS_PER_BYTE</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="long"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.M_AXI.WUSER_BITS_PER_BYTE">0</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -1353,7 +1419,8 @@
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>PHASE</spirit:name>
-					<spirit:value spirit:resolve="generated"
+					<spirit:value spirit:format="float"
+							spirit:resolve="generated"
 							spirit:id="BUSIFPARAM_VALUE.CLK.PHASE">0.000</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
@@ -3864,6 +3931,16 @@
 						spirit:rangeType="long">0</spirit:value>
 			</spirit:modelParameter>
 			<spirit:modelParameter spirit:dataType="long">
+				<spirit:name>C_SINGLE_ISSUING</spirit:name>
+				<spirit:displayName>C_SINGLE_ISSUING</spirit:displayName>
+				<spirit:value spirit:format="long"
+						spirit:resolve="generated"
+						spirit:id="MODELPARAM_VALUE.C_SINGLE_ISSUING"
+						spirit:minimum="0"
+						spirit:maximum="1"
+						spirit:rangeType="long">0</spirit:value>
+			</spirit:modelParameter>
+			<spirit:modelParameter spirit:dataType="long">
 				<spirit:name>C_READ_ACCEPTANCE</spirit:name>
 				<spirit:displayName>C_READ_ACCEPTANCE</spirit:displayName>
 				<spirit:value spirit:format="long"
@@ -4168,6 +4245,17 @@
 					spirit:resolve="user"
 					spirit:id="PARAM_VALUE.HAS_ACLKEN"
 					spirit:order="26"
+					spirit:minimum="0"
+					spirit:maximum="1"
+					spirit:rangeType="long">0</spirit:value>
+		</spirit:parameter>
+		<spirit:parameter>
+			<spirit:name>SINGLE_ISSUING</spirit:name>
+			<spirit:displayName>SINGLE_ISSUING</spirit:displayName>
+			<spirit:value spirit:format="long"
+					spirit:resolve="user"
+					spirit:id="PARAM_VALUE.SINGLE_ISSUING"
+					spirit:order="27"
 					spirit:minimum="0"
 					spirit:maximum="1"
 					spirit:rangeType="long">0</spirit:value>
@@ -11094,34 +11182,137 @@
 	<spirit:vendorExtensions>
 		<xilinx:coreExtensions>
 			<xilinx:displayName>SC SI_CONVERTER</xilinx:displayName>
-			<xilinx:coreRevision>4</xilinx:coreRevision>
+			<xilinx:xpmLibraries>
+				<xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
+				<xilinx:xpmLibrary>XPM_FIFO</xilinx:xpmLibrary>
+			</xilinx:xpmLibraries>
+			<xilinx:coreRevision>5</xilinx:coreRevision>
 			<xilinx:configElementInfos>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.ASSOCIATED_BUSIF"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.ASSOCIATED_RESET"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN"
-						xilinx:valueSource="default_prop"/>
+						xilinx:valueSource="default_prop"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.FREQ_HZ"
-						xilinx:valueSource="user_prop"/>
+						xilinx:valueSource="user_prop"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.PHASE"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.ADDR_WIDTH"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.ARUSER_WIDTH"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.AWUSER_WIDTH"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.BUSER_WIDTH"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.CLK_DOMAIN"
-						xilinx:valueSource="default_prop"/>
+						xilinx:valueSource="default_prop"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.DATA_WIDTH"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.FREQ_HZ"
-						xilinx:valueSource="user_prop"/>
+						xilinx:valueSource="user_prop"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.HAS_BRESP"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.HAS_BURST"
-						xilinx:valueSource="constant"/>
+						xilinx:valueSource="constant"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.HAS_CACHE"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.HAS_LOCK"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.HAS_PROT"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.HAS_QOS"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.HAS_REGION"
-						xilinx:valueSource="constant"/>
+						xilinx:valueSource="constant"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.HAS_RRESP"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.HAS_WSTRB"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.ID_WIDTH"
-						xilinx:valueSource="propagated"/>
+						xilinx:valueSource="propagated"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.MAX_BURST_LENGTH"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.NUM_READ_OUTSTANDING"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.NUM_WRITE_OUTSTANDING"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.PROTOCOL"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.READ_WRITE_MODE"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.RUSER_WIDTH"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.SUPPORTS_NARROW_BURST"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI.WUSER_WIDTH"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.RST.POLARITY"
-						xilinx:valueSource="constant_prop"/>
+						xilinx:valueSource="constant_prop"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.ADDR_WIDTH"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.ARUSER_WIDTH"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.AWUSER_WIDTH"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.BUSER_WIDTH"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.CLK_DOMAIN"
-						xilinx:valueSource="default_prop"/>
+						xilinx:valueSource="default_prop"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.DATA_WIDTH"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.FREQ_HZ"
-						xilinx:valueSource="user_prop"/>
+						xilinx:valueSource="user_prop"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_BRESP"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_BURST"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_CACHE"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_LOCK"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_PROT"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_QOS"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_REGION"
-						xilinx:valueSource="constant"/>
+						xilinx:valueSource="constant"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_RRESP"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.HAS_WSTRB"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.ID_WIDTH"
-						xilinx:valueSource="propagated"/>
+						xilinx:valueSource="propagated"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.MAX_BURST_LENGTH"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_READ_OUTSTANDING"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.NUM_WRITE_OUTSTANDING"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.PROTOCOL"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.READ_WRITE_MODE"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.RUSER_WIDTH"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.SUPPORTS_NARROW_BURST"
-						xilinx:valueSource="default_prop"/>
+						xilinx:valueSource="default_prop"
+						xilinx:valuePermission="bd"/>
+				<xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.S_AXI.WUSER_WIDTH"
+						xilinx:valuePermission="bd"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ADDR_WIDTH"
 						xilinx:valueSource="user"/>
 				<xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.HAS_BURST"
@@ -11173,17 +11364,17 @@
 			</xilinx:configElementInfos>
 		</xilinx:coreExtensions>
 		<xilinx:packagingInfo>
-			<xilinx:xilinxVersion>2017.1</xilinx:xilinxVersion>
+			<xilinx:xilinxVersion>2017.3.1</xilinx:xilinxVersion>
 			<xilinx:checksum xilinx:scope="busInterfaces"
-					xilinx:value="a55967d7"/>
+					xilinx:value="e6194652"/>
 			<xilinx:checksum xilinx:scope="fileGroups"
-					xilinx:value="758aca02"/>
+					xilinx:value="f45623a9"/>
 			<xilinx:checksum xilinx:scope="ports"
-					xilinx:value="98e03006"/>
+					xilinx:value="0683749c"/>
 			<xilinx:checksum xilinx:scope="hdlParameters"
-					xilinx:value="dace351b"/>
+					xilinx:value="3121ee06"/>
 			<xilinx:checksum xilinx:scope="parameters"
-					xilinx:value="d880c25a"/>
+					xilinx:value="d6eaf153"/>
 		</xilinx:packagingInfo>
 	</spirit:vendorExtensions>
 </spirit:component>
