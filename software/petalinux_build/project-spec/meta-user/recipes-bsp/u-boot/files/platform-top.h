@@ -11,7 +11,7 @@
 #endif
 
 /* Override default preboot settings */
-#define CONFIG_PREBOOT	"echo; echo U-BOOT for ABCD ZynqMP; echo"
+#define CONFIG_PREBOOT	"echo; echo U-BOOT for Zynq Microzed; echo"
 
 /* Extra U-Boot Env settings */
 #define CONFIG_EXTRA_ENV_SETTINGS \
@@ -23,8 +23,8 @@
 	"fpga_dev=0\0" \
 	"root_dev=/dev/mmcblk0p2\0" \
 	"boot_env=uEnv.txt\0" \
-	"fpga_addr=0x15800000\0" \
-	"boot_env_addr=0x13800000\0" \
+	"fpga_addr=0x3A00000\0" \
+	"boot_env_addr=0x3B00000\0" \
 	"dtb_addr=0x2A00000\0" \
 	"kernel_addr=0x3000000\0" \
 	"loadbootenv=fatload mmc $sd_dev:$sd_part ${boot_env_addr} ${boot_env}\0" \ 

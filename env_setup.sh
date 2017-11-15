@@ -20,8 +20,3 @@ source software/fpga_image/build_fpga_image.sh
 # Setup HW environment
 source fpga/$FPGA_PROJ/build_fpga.sh
 source $VIVADO_INSTALL_PATH/settings64.sh
-
-# Fix petalinux error: 'No space left on device or exceeds fs.inotify.max_user_watches?'
-# This keeps happening... why Xilinx, why?
-# Needs root permissions
-fix_petalinux

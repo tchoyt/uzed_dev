@@ -77,10 +77,12 @@ then
 	echo "-----------------------------"
 	echo "       Clean Complete        "
 	echo "-----------------------------"	
+	exit
 else
 	# Build everything
 	build_all	
 	echo "-----------------------------"
 	echo "       Build Complete        "
 	echo "-----------------------------"	
+	exit
 fi
