@@ -23,6 +23,7 @@ To fix it - setup your envrionment and run 'fix_petalinux'
 
 Python Peek/Poke:
 A 4K block memory has been implemented in the FPGA fabric with a peek/poke python library
+RD/WR Benchmark functions require numpy to be installed
 
 Build FPGA: 
 1. Build FPGA: cd fpga/uzed_base

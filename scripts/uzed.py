@@ -2,10 +2,13 @@
 
 from fpga_mmap import devmem
 import time
+import numpy as np
 
 # Board/FPGA Constants
 AXI_GP0_ADDR_L = 0x40000000
 AXI_GP0_ADDR_H = 0x40000FFF
+TEST_BRAM_ADDR = 0x0
+TEST_BRAM_DEPTH = 1024
 
 # Generic peek/poke
 # Read/Write registers in the specified address space
@@ -42,23 +45,57 @@ def poke(addr,value,mask=None):
 
 # Write 4K, record the time elapsed and print throughput
 # Throughput = 4Kbyte / time elapsed
-def wr_benchmark():
-	wr_value = [i for i in range(0,1024)]
+def wr_benchmark(echo=True):
+	wr_value = [i for i in range(0,TEST_BRAM_DEPTH)]
 	t1 = time.time()
-	poke(0x0,wr_value)
+	poke(TEST_BRAM_ADDR,wr_value)
 	t2 = time.time()
-	print "Time elapsed: %.5fs" % (t2 - t1)
-	bps = 4096.000 / (t2 - t1)
-	Mbps = bps / 1024
-	print "Throughput: %.5fMbps" % Mbps
+	Bps = TEST_BRAM_DEPTH * 4 / (t2 - t1)
+	MBps = Bps / 1024
+	Mbps = MBps * 8
+	Gbps = Mbps / 1024
+	if echo:
+		print "Time elapsed: %.3fs" % (t2 - t1)
+		print "MB/s: %.3f" % MBps
+		print "Mb/s: %.3f" % Mbps
+		print "Gb/s: %.3f" % Gbps
+	else:
+		return [MBps,Mbps,Gbps]
 
 # Read 4K, record the time elapsed and print throughput
 # Throughput = 4Kbyte / time elapsed
-def rd_benchmark():
+def rd_benchmark(echo=True):
 	t1 = time.time()
-	rd_value = peek(0x0,1024)
+	rd_value = peek(TEST_BRAM_ADDR,TEST_BRAM_DEPTH)
 	t2 = time.time()
-	print "Time elapsed: %.5fs" % (t2 - t1)
-	bps = 4096.000 / (t2 - t1)
-	Mbps = bps / 1024
-	print "Throughput: %.5fMbps" % Mbps
+	Bps = TEST_BRAM_DEPTH * 4 / (t2 - t1)
+	MBps = Bps / 1024
+	Mbps = MBps * 8
+	Gbps = Mbps / 1024
+	if echo:
+		print "Time elapsed: %.3fs" % (t2 - t1)
+		print "MB/s: %.3f" % MBps
+		print "Mb/s: %.3f" % Mbps
+		print "Gb/s: %.3f" % Gbps
+	else:
+		return [MBps,Mbps,Gbps]
+
+# Run a rd/wr benchmark of the FPGA fabbric
+# Read and write 4K blocks of memory for 'loop_cnt' iterations, print results
+def fpga_benchmark(loop_cnt):
+	print "Running WR Benchmark..."
+	wr_results = [0.0,0.0,0.0]
+	for i in range(0,loop_cnt):
+		wr_results = np.add(wr_results,wr_benchmark(False))
+	print "Running RD Benchmark..."
+	rd_results = [0.0,0.0,0.0]
+	for i in range(0,loop_cnt):
+		rd_results = np.add(rd_results,rd_benchmark(False))
+	print "WR Throughput:"
+	print "MB/s: %.3f" % (wr_results[0] / float(loop_cnt))
+	print "Mb/s: %.3f" % (wr_results[1] / float(loop_cnt))
+	print "Gb/s: %.3f" % (wr_results[2] / float(loop_cnt))
+	print "RD Throughput:"
+	print "MB/s: %.3f" % (rd_results[0] / float(loop_cnt))
+	print "Mb/s: %.3f" % (rd_results[1] / float(loop_cnt))
+	print "Gb/s: %.3f" % (rd_results[2] / float(loop_cnt))
