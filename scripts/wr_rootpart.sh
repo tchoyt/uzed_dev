@@ -17,7 +17,7 @@ function cp_rootfs()
 # Copy Python libraries
 function cp_apps()
 {
-	# Replace with FPGA python library
+	sudo cp -v uzed.py fpga_mmap.py ${ROOTFS_INSTALL_DIR}/home/ubuntu/.
 }
 
 # Write /etc/network/interfaces

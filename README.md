@@ -21,6 +21,9 @@ ERROR: Root privilege is required to modify max_user_watches.
 
 To fix it - setup your envrionment and run 'fix_petalinux'
 
+Python Peek/Poke:
+A 4K block memory has been implemented in the FPGA fabric with a peek/poke python library
+
 Build FPGA: 
 1. Build FPGA: cd fpga/uzed_base
 2. build_fpga
