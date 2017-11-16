@@ -4558,7 +4558,7 @@
 					<spirit:name>FREQ_HZ</spirit:name>
 					<spirit:value spirit:format="long"
 							spirit:resolve="generated"
-							spirit:id="BUSIFPARAM_VALUE.M_AXI_GP0.FREQ_HZ">100000000</spirit:value>
+							spirit:id="BUSIFPARAM_VALUE.M_AXI_GP0.FREQ_HZ">166666672</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
 							<xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -10076,7 +10076,7 @@
 							spirit:id="BUSIFPARAM_VALUE.FCLK_CLK0.FREQ_HZ"
 							spirit:dependency="(spirit:decode(id(PARAM_VALUE.PCW_CLK0_FREQ)))"
 							spirit:minimum="100000"
-							spirit:maximum="333000000">100000000</spirit:value>
+							spirit:maximum="333000000">166666672</spirit:value>
 				</spirit:parameter>
 				<spirit:parameter>
 					<spirit:name>PHASE</spirit:name>
@@ -12243,7 +12243,7 @@
 					<spirit:name>FREQ_HZ</spirit:name>
 					<spirit:value spirit:format="long"
 							spirit:resolve="generated"
-							spirit:id="BUSIFPARAM_VALUE.M_AXI_GP0_ACLK.FREQ_HZ">100000000</spirit:value>
+							spirit:id="BUSIFPARAM_VALUE.M_AXI_GP0_ACLK.FREQ_HZ">166666672</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
 							<xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -36626,7 +36626,7 @@
 					spirit:id="PARAM_VALUE.PCW_QSPI_PERIPHERAL_FREQMHZ"
 					spirit:order="23700"
 					spirit:minimum="10.000000"
-					spirit:maximum="200.000000">200.000000</spirit:value>
+					spirit:maximum="200.000000">200</spirit:value>
 		</spirit:parameter>
 		<spirit:parameter>
 			<spirit:name>PCW_SMC_PERIPHERAL_FREQMHZ</spirit:name>
@@ -36948,7 +36948,7 @@
 					spirit:id="PARAM_VALUE.PCW_FPGA0_PERIPHERAL_FREQMHZ"
 					spirit:order="26000"
 					spirit:minimum="0.100000"
-					spirit:maximum="250.000000">100</spirit:value>
+					spirit:maximum="250.000000">160</spirit:value>
 		</spirit:parameter>
 		<spirit:parameter>
 			<spirit:name>PCW_FPGA1_PERIPHERAL_FREQMHZ</spirit:name>
@@ -37188,7 +37188,7 @@
 					spirit:id="PARAM_VALUE.PCW_ACT_FPGA0_PERIPHERAL_FREQMHZ"
 					spirit:order="28200"
 					spirit:minimum="0.100000"
-					spirit:maximum="250.000000">100.000000</spirit:value>
+					spirit:maximum="250.000000">166.666672</spirit:value>
 		</spirit:parameter>
 		<spirit:parameter>
 			<spirit:name>PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ</spirit:name>
@@ -37288,7 +37288,7 @@
 					spirit:id="PARAM_VALUE.PCW_CLK0_FREQ"
 					spirit:order="62600"
 					spirit:minimum="100000"
-					spirit:maximum="333000000">100000000</spirit:value>
+					spirit:maximum="333000000">166666672</spirit:value>
 		</spirit:parameter>
 		<spirit:parameter>
 			<spirit:name>PCW_CLK1_FREQ</spirit:name>
@@ -37460,7 +37460,7 @@
 			<spirit:displayName>CLKPARAM</spirit:displayName>
 			<spirit:value spirit:resolve="user"
 					spirit:id="PARAM_VALUE.PCW_FCLK0_PERIPHERAL_DIVISOR0"
-					spirit:order="62900">5</spirit:value>
+					spirit:order="62900">6</spirit:value>
 			<spirit:vendorExtensions>
 				<xilinx:parameterInfo>
 					<xilinx:enablement>
@@ -37516,7 +37516,7 @@
 			<spirit:displayName>CLKPARAM</spirit:displayName>
 			<spirit:value spirit:resolve="user"
 					spirit:id="PARAM_VALUE.PCW_FCLK0_PERIPHERAL_DIVISOR1"
-					spirit:order="62900">2</spirit:value>
+					spirit:order="62900">1</spirit:value>
 			<spirit:vendorExtensions>
 				<xilinx:parameterInfo>
 					<xilinx:enablement>
@@ -39134,7 +39134,7 @@
 					<xilinx:enablement>
 						<xilinx:isEnabled xilinx:resolve="dependent"
 								xilinx:id="PARAM_ENABLEMENT.PCW_S_AXI_HP0_DATA_WIDTH"
-								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP0)) = 1) ">false</xilinx:isEnabled>
+								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP0)) = 1) ">true</xilinx:isEnabled>
 					</xilinx:enablement>
 				</xilinx:parameterInfo>
 			</spirit:vendorExtensions>
@@ -39170,7 +39170,7 @@
 					<xilinx:enablement>
 						<xilinx:isEnabled xilinx:resolve="dependent"
 								xilinx:id="PARAM_ENABLEMENT.PCW_S_AXI_HP1_DATA_WIDTH"
-								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP1)) = 1) ">false</xilinx:isEnabled>
+								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP1)) = 1) ">true</xilinx:isEnabled>
 					</xilinx:enablement>
 				</xilinx:parameterInfo>
 			</spirit:vendorExtensions>
@@ -39206,7 +39206,7 @@
 					<xilinx:enablement>
 						<xilinx:isEnabled xilinx:resolve="dependent"
 								xilinx:id="PARAM_ENABLEMENT.PCW_S_AXI_HP2_DATA_WIDTH"
-								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP2)) = 1) ">false</xilinx:isEnabled>
+								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP2)) = 1) ">true</xilinx:isEnabled>
 					</xilinx:enablement>
 				</xilinx:parameterInfo>
 			</spirit:vendorExtensions>
@@ -39242,7 +39242,7 @@
 					<xilinx:enablement>
 						<xilinx:isEnabled xilinx:resolve="dependent"
 								xilinx:id="PARAM_ENABLEMENT.PCW_S_AXI_HP3_DATA_WIDTH"
-								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP3)) = 1) ">false</xilinx:isEnabled>
+								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_USE_S_AXI_HP3)) = 1) ">true</xilinx:isEnabled>
 					</xilinx:enablement>
 				</xilinx:parameterInfo>
 			</spirit:vendorExtensions>
@@ -40268,7 +40268,7 @@
 					<xilinx:enablement>
 						<xilinx:isEnabled xilinx:resolve="dependent"
 								xilinx:id="PARAM_ENABLEMENT.PCW_IRQ_F2P_MODE"
-								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_IRQ_F2P_INTR)) = 1) ">false</xilinx:isEnabled>
+								xilinx:dependency="(spirit:decode(id(PARAM_VALUE.PCW_IRQ_F2P_INTR)) = 1) ">true</xilinx:isEnabled>
 					</xilinx:enablement>
 				</xilinx:parameterInfo>
 			</spirit:vendorExtensions>
@@ -41265,13 +41265,6 @@
 					spirit:id="PARAM_VALUE.PCW_ENET0_RESET_IO"
 					spirit:choiceRef="choice_list_d679c87d"
 					spirit:order="6104">&lt;Select></spirit:value>
-			<spirit:vendorExtensions>
-				<xilinx:parameterInfo>
-					<xilinx:enablement>
-						<xilinx:isEnabled xilinx:id="PARAM_ENABLEMENT.PCW_ENET0_RESET_IO">false</xilinx:isEnabled>
-					</xilinx:enablement>
-				</xilinx:parameterInfo>
-			</spirit:vendorExtensions>
 		</spirit:parameter>
 		<spirit:parameter>
 			<spirit:name>PCW_ENET1_PERIPHERAL_ENABLE</spirit:name>

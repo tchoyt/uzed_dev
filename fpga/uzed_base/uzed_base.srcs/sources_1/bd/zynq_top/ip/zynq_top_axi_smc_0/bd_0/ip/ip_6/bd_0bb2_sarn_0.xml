@@ -516,7 +516,7 @@
 					<spirit:name>FREQ_HZ</spirit:name>
 					<spirit:value spirit:format="long"
 							spirit:resolve="generated"
-							spirit:id="BUSIFPARAM_VALUE.ACLK.FREQ_HZ">100000000</spirit:value>
+							spirit:id="BUSIFPARAM_VALUE.ACLK.FREQ_HZ">166666672</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
 							<xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -658,7 +658,7 @@
 					<spirit:name>FREQ_HZ</spirit:name>
 					<spirit:value spirit:format="long"
 							spirit:resolve="generated"
-							spirit:id="BUSIFPARAM_VALUE.M_SC_ACLK.FREQ_HZ">100000000</spirit:value>
+							spirit:id="BUSIFPARAM_VALUE.M_SC_ACLK.FREQ_HZ">166666672</spirit:value>
 					<spirit:vendorExtensions>
 						<xilinx:parameterInfo>
 							<xilinx:parameterUsage>none</xilinx:parameterUsage>

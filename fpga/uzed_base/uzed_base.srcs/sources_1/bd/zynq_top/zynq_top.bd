@@ -269,12 +269,12 @@
           <spirit:configurableElementValue spirit:referenceId="PCW_CRYSTAL_PERIPHERAL_FREQMHZ">33.333333</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_APU_PERIPHERAL_FREQMHZ">667</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_DCI_PERIPHERAL_FREQMHZ">10.159</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="PCW_QSPI_PERIPHERAL_FREQMHZ">200.000000</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PCW_QSPI_PERIPHERAL_FREQMHZ">200</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_SDIO_PERIPHERAL_FREQMHZ">25</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_UART_PERIPHERAL_FREQMHZ">50</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_TTC_PERIPHERAL_FREQMHZ">50</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_PCAP_PERIPHERAL_FREQMHZ">200</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="PCW_FPGA0_PERIPHERAL_FREQMHZ">100</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PCW_FPGA0_PERIPHERAL_FREQMHZ">160</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_FPGA1_PERIPHERAL_FREQMHZ">100</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_FPGA2_PERIPHERAL_FREQMHZ">33.333333</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_FPGA3_PERIPHERAL_FREQMHZ">50</spirit:configurableElementValue>
@@ -298,7 +298,7 @@
           <spirit:configurableElementValue spirit:referenceId="PCW_ACT_TTC_PERIPHERAL_FREQMHZ">50</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_ACT_PCAP_PERIPHERAL_FREQMHZ">200.000000</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_ACT_TPIU_PERIPHERAL_FREQMHZ">200.000000</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="PCW_ACT_FPGA0_PERIPHERAL_FREQMHZ">100.000000</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PCW_ACT_FPGA0_PERIPHERAL_FREQMHZ">166.666672</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ">10.000000</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_ACT_FPGA2_PERIPHERAL_FREQMHZ">10.000000</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_ACT_FPGA3_PERIPHERAL_FREQMHZ">10.000000</spirit:configurableElementValue>
@@ -308,7 +308,7 @@
           <spirit:configurableElementValue spirit:referenceId="PCW_ACT_TTC1_CLK0_PERIPHERAL_FREQMHZ">111.111115</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_ACT_TTC1_CLK1_PERIPHERAL_FREQMHZ">111.111115</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_ACT_TTC1_CLK2_PERIPHERAL_FREQMHZ">111.111115</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="PCW_CLK0_FREQ">100000000</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PCW_CLK0_FREQ">166666672</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_CLK1_FREQ">10000000</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_CLK2_FREQ">10000000</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_CLK3_FREQ">10000000</spirit:configurableElementValue>
@@ -390,6 +390,10 @@
           <spirit:configurableElementValue spirit:referenceId="PCW_M_AXI_GP0_SUPPORT_NARROW_BURST">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_M_AXI_GP0_THREAD_ID_WIDTH">12</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_INCLUDE_ACP_TRANS_CHECK">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PCW_S_AXI_HP0_DATA_WIDTH">64</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PCW_S_AXI_HP1_DATA_WIDTH">64</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PCW_S_AXI_HP2_DATA_WIDTH">64</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PCW_S_AXI_HP3_DATA_WIDTH">64</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_EN_DDR">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_EN_SMC">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_EN_QSPI">1</spirit:configurableElementValue>
@@ -431,6 +435,7 @@
           <spirit:configurableElementValue spirit:referenceId="PCW_EN_CLKTRIG1_PORT">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_EN_CLKTRIG2_PORT">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_EN_CLKTRIG3_PORT">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PCW_IRQ_F2P_MODE">DIRECT</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_VALUE_SILVERSION">3</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_GP0_EN_MODIFIABLE_TXN">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_GP1_EN_MODIFIABLE_TXN">0</spirit:configurableElementValue>

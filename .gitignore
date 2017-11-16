@@ -8,3 +8,5 @@ scripts/boot_part
 scripts/ubuntu-16.04.3-minimal-armhf-*
 software/fpga_image/*.bin
 software/fpga_image/*.bit
+software/boot_image/*.bin
+software/boot_image/*.elf
