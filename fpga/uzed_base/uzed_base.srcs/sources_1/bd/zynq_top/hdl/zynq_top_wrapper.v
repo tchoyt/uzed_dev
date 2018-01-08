@@ -1,7 +1,7 @@
 //Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2017.3.1 (lin64) Build 2035080 Fri Oct 20 14:20:00 MDT 2017
-//Date        : Thu Nov 16 11:23:54 2017
+//Tool Version: Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
+//Date        : Mon Jan  8 09:12:47 2018
 //Host        : tchoytdell7510 running 64-bit Ubuntu 16.04.3 LTS
 //Command     : generate_target zynq_top_wrapper.bd
 //Design      : zynq_top_wrapper
