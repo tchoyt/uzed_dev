@@ -62,9 +62,9 @@ function cp_boot()
 
 # Define variables
 BOOT_MOUNT_DIR=./boot_install
-BOOT_INSTALL_DIR=./boot_part
+BOOT_INSTALL_DIR=../software/boot_part
 ROOTFS_MOUNT_DIR=./rootfs_install
-ROOTFS_INSTALL_DIR=./rootfs_part
+ROOTFS_INSTALL_DIR=../software/rootfs_part
 
 # Parse command line options
 options=()

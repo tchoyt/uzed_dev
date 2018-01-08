@@ -3,8 +3,8 @@
 # Copy FPGA image
 function cp_fpga_image()
 {
-	cp -v ../${FPGA_PROJ}/${FPGA_IMG} ${BOOT_INSTALL_DIR}/${FPGA_IMG}
-	cp -v ../${FPGA_PROJ}/${FPGA_BIN} ${BOOT_INSTALL_DIR}/${FPGA_BIN}
+	cp -v ../fpga/${FPGA_PROJ}/${FPGA_IMG} ${BOOT_INSTALL_DIR}/${FPGA_IMG}
+	cp -v ../fpga/${FPGA_PROJ}/${FPGA_BIN} ${BOOT_INSTALL_DIR}/${FPGA_BIN}
 }
 
 # Copy boot image

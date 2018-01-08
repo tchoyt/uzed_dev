@@ -3,10 +3,6 @@ fpga/*/*.runs/
 fpga/*/*.ip_user_files/
 fpga/*/*.hw
 fpga/*/*.ioplanning
-scripts/rootfs_part
-scripts/boot_part
-scripts/ubuntu-16.04.3-minimal-armhf-*
-software/fpga_image/*.bin
-software/fpga_image/*.bit
-software/boot_image/*.bin
-software/boot_image/*.elf
+software/rootfs_part
+software/boot_part
+software/ubuntu-16.04.3-minimal-armhf-*

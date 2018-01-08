@@ -17,8 +17,8 @@ function cp_rootfs()
 # Copy peek/poke application
 function cp_apps()
 {
-	sudo cp -v ./uzed.py ${ROOTFS_INSTALL_DIR}/root/.
-	sudo cp -v ./mmio.py ${ROOTFS_INSTALL_DIR}/root/.
+	sudo cp -v ./uzed.py ${ROOTFS_INSTALL_DIR}/home/ubuntu/.
+	sudo cp -v ./mmio.py ${ROOTFS_INSTALL_DIR}/home/ubuntu/.
 }
 
 # Write /etc/network/interfaces
@@ -65,12 +65,13 @@ function wr_fstab()
 BOARD_HOSTNAME=uzed
 BOARD_IP_ADDR=172.20.2.28
 ROOTFS_INSTALL_DIR=./rootfs_part
-ROOTFS_TARBALL=ubuntu-16.04.3-minimal-armhf-2017-12-09.tar.xz
+ROOTFS_TARBALL=ubuntu-16.04.3-minimal-armhf-2017-10-10.tar.xz
 
 # Install and configure rootFS
 sudo rm -fr ${ROOTFS_INSTALL_DIR}
 mkdir ${ROOTFS_INSTALL_DIR}
 cp_rootfs
+cp_apps
 wr_ethinterface
 wr_hostname
 wr_fstab
