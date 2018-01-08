@@ -10,7 +10,7 @@ ${VIVADO_PROJ}.bit:
 
 ${VIVADO_PROJ}.bin:
 	echo "fpgaimage : { ${VIVADO_PROJ}.bit }" > ./fpga.bif
-	bootgen -image fpga.bif -arch zynqmp -process_bitstream bin -w on
+	bootgen -image fpga.bif -arch zynq -process_bitstream bin -w on
 	mv ${VIVADO_PROJ}.bit.bin ${FPGA_BIN}
 
 .PHONY: clean

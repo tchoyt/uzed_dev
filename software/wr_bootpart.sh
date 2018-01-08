@@ -3,30 +3,29 @@
 # Copy FPGA image
 function cp_fpga_image()
 {
-	cp -v ../fpga/$FPGA_PROJ/$FPGA_PROJ.runs/impl_1/$FPGA_IMG.bit ${BOOT_INSTALL_DIR}/.
+	cp -v ../${FPGA_PROJ}/${FPGA_IMG} ${BOOT_INSTALL_DIR}/${FPGA_IMG}
+	cp -v ../${FPGA_PROJ}/${FPGA_BIN} ${BOOT_INSTALL_DIR}/${FPGA_BIN}
 }
 
 # Copy boot image
 function cp_boot_image()
 {
-	cp -v ../software/boot_image/BOOT.bin ${BOOT_INSTALL_DIR}/.
+	cp -v ./BOOT.bin ${BOOT_INSTALL_DIR}/.
 }
 
 # Copy kernel image
 function cp_kernel()
 {
-	cp -v ../software/petalinux_build/images/linux/zImage ${BOOT_INSTALL_DIR}/.
+	cp -v ${PETA_PROJ}/images/linux/zImage ${BOOT_INSTALL_DIR}/.
 }
 
 # Copy device tree
 function cp_dtb()
 {
-	cp -v ../software/petalinux_build/images/linux/system.dtb ${BOOT_INSTALL_DIR}/.
+	cp -v ${PETA_PROJ}/images/linux/system.dtb ${BOOT_INSTALL_DIR}/.
 }
 
 # Define variables
-FPGA_PROJ=uzed_base
-FPGA_IMG=uzed_top
 BOOT_INSTALL_DIR=./boot_part
 
 # Install boot partitions

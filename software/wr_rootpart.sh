@@ -14,10 +14,11 @@ function cp_rootfs()
 	fi
 }
 
-# Copy Python libraries
+# Copy peek/poke application
 function cp_apps()
 {
-	sudo cp -v uzed.py fpga_mmap.py ${ROOTFS_INSTALL_DIR}/home/ubuntu/.
+	sudo cp -v ./uzed.py ${ROOTFS_INSTALL_DIR}/root/.
+	sudo cp -v ./mmio.py ${ROOTFS_INSTALL_DIR}/root/.
 }
 
 # Write /etc/network/interfaces
@@ -61,16 +62,15 @@ function wr_fstab()
 }
 
 # Define variables
-BOARD_HOSTNAME=zynq_uzed
+BOARD_HOSTNAME=uzed
 BOARD_IP_ADDR=172.20.2.28
 ROOTFS_INSTALL_DIR=./rootfs_part
-ROOTFS_TARBALL=ubuntu-16.04.3-minimal-armhf-2017-10-07.tar.xz
+ROOTFS_TARBALL=ubuntu-16.04.3-minimal-armhf-2017-12-09.tar.xz
 
 # Install and configure rootFS
 sudo rm -fr ${ROOTFS_INSTALL_DIR}
 mkdir ${ROOTFS_INSTALL_DIR}
 cp_rootfs
-cp_apps
 wr_ethinterface
 wr_hostname
 wr_fstab
